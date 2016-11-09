@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace IIS_Costumes
 {
-    public partial class Form1 : Form
+    public partial class OrderForm : Form
     {
-        public Form1()
+        public OrderForm()
         {
             InitializeComponent();
         }
