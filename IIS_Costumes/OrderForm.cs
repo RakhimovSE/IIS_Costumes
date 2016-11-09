@@ -16,7 +16,9 @@ namespace IIS_Costumes
         // Сообщение Севастьян
         public OrderForm()
         {
+            DataSet ds = DBConnector.GetDBDataSet("SELECT * FROM `carnaval`.`client`");
+            dataGridView1.DataSource = ds.Tables[0];
             InitializeComponent();
         }
-    }
+    }//сообщение 11
 }
