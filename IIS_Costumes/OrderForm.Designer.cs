@@ -37,8 +37,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -131,17 +131,17 @@
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
+            // выходToolStripMenuItem
+            // 
+            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.выходToolStripMenuItem.Text = "Выход";
+            // 
             // справочникиToolStripMenuItem
             // 
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.справочникиToolStripMenuItem.Text = "Справочники";
-            // 
-            // выходToolStripMenuItem
-            // 
-            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.выходToolStripMenuItem.Text = "Выход";
             // 
             // OrderForm
             // 
@@ -159,6 +159,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "OrderForm";
             this.Text = "Карнавальные костюмы - Заказы";
+            this.Load += new System.EventHandler(this.OrderForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
