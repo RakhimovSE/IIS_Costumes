@@ -17,5 +17,5 @@ namespace IIS_Costumes
         {
             InitializeComponent();
         }
-    }
+    }//сообщение 11
 }
