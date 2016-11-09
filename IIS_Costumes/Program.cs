@@ -9,6 +9,7 @@ namespace IIS_Costumes
     static class Program
     {
         /// <summary>
+        /// Hello!
         /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
