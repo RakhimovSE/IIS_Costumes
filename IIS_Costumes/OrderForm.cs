@@ -20,7 +20,7 @@ namespace IIS_Costumes
         private void OrderForm_Load(object sender, EventArgs e)
         {
             DataSet ds = DBConnector.GetDBDataSet("SELECT * FROM `carnaval`.`client`");
-            dataGridView1.DataSource = ds.Tables[0];
+            mainDgv.DataSource = ds.Tables[0];
         }
     }
 }
