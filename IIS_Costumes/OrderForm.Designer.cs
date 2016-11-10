@@ -39,6 +39,9 @@
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.костюмыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.типыКостюмовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -139,9 +142,31 @@
             // 
             // справочникиToolStripMenuItem
             // 
+            this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.клиентыToolStripMenuItem,
+            this.костюмыToolStripMenuItem,
+            this.типыКостюмовToolStripMenuItem});
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.справочникиToolStripMenuItem.Text = "Справочники";
+            // 
+            // клиентыToolStripMenuItem
+            // 
+            this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
+            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.клиентыToolStripMenuItem.Text = "Клиенты";
+            // 
+            // костюмыToolStripMenuItem
+            // 
+            this.костюмыToolStripMenuItem.Name = "костюмыToolStripMenuItem";
+            this.костюмыToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.костюмыToolStripMenuItem.Text = "Костюмы";
+            // 
+            // типыКостюмовToolStripMenuItem
+            // 
+            this.типыКостюмовToolStripMenuItem.Name = "типыКостюмовToolStripMenuItem";
+            this.типыКостюмовToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.типыКостюмовToolStripMenuItem.Text = "Типы костюмов";
             // 
             // OrderForm
             // 
@@ -181,6 +206,9 @@
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem справочникиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem клиентыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem костюмыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem типыКостюмовToolStripMenuItem;
     }
 }
 

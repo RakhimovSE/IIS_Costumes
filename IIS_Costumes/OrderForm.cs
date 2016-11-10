@@ -12,8 +12,6 @@ namespace IIS_Costumes
 {
     public partial class OrderForm : Form
     {
-        // Hello Ivan!
-        // Сообщение Севастьян
         public OrderForm()
         {
             InitializeComponent();
@@ -24,5 +22,5 @@ namespace IIS_Costumes
             DataSet ds = DBConnector.GetDBDataSet("SELECT * FROM `carnaval`.`client`");
             dataGridView1.DataSource = ds.Tables[0];
         }
-    }//сообщение 11
+    }
 }

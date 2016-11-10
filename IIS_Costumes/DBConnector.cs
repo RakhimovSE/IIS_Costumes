@@ -12,7 +12,7 @@ namespace IIS_Costumes
 {
     public abstract class DBConnector
     {
-        protected string connStr = Properties.Resources.ConnectionString;
+        protected static string connStr = Properties.Resources.ConnectionString;
 
         public static string DtToMysql(DateTime dt, bool date = true, bool time = true)
         {
