@@ -13,8 +13,6 @@ namespace IIS_Costumes
         /// </summary>
         [STAThread]
 
-
-
         static void Main()
         {
             Application.EnableVisualStyles();

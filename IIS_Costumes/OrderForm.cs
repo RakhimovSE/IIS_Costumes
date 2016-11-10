@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using MySql.Data.MySqlClient;
-
 namespace IIS_Costumes
 {
     public partial class OrderForm : Form
@@ -21,7 +19,7 @@ namespace IIS_Costumes
 
         private void OrderForm_Load(object sender, EventArgs e)
         {
-            DBConnector.FillDGV(dataGridView1, "SELECT * FROM `client`");
+            DBConnector.FillDGV(mainDgv, "SELECT * FROM `client`");
         }
     }
 }
