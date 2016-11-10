@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using MySql.Data.MySqlClient;
+
 namespace IIS_Costumes
 {
     public partial class OrderForm : Form
@@ -19,8 +21,7 @@ namespace IIS_Costumes
 
         private void OrderForm_Load(object sender, EventArgs e)
         {
-            DataSet ds = DBConnector.GetDBDataSet("SELECT * FROM `carnaval`.`client`");
-            dataGridView1.DataSource = ds.Tables[0];
+            DBConnector.FillDGV(dataGridView1, "SELECT * FROM `client`");
         }
     }
 }

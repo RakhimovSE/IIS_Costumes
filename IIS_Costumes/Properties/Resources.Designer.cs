@@ -61,11 +61,20 @@ namespace IIS_Costumes.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на datasource=db4free.net;port=3306;username=rakhimovse;password=rNRNQ4Wqsh3npef;charset=utf8.
+        ///   Ищет локализованную строку, похожую на server=127.0.0.1;port=3306;user id=root;password=;database=carnaval;characterset=utf8.
         /// </summary>
         internal static string ConnectionString {
             get {
                 return ResourceManager.GetString("ConnectionString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на server=db4free.net;port=3306;user id=rakhimovse;password=rNRNQ4Wqsh3npef;database=carnaval;characterset=utf8.
+        /// </summary>
+        internal static string ConnectionStringRemote {
+            get {
+                return ResourceManager.GetString("ConnectionStringRemote", resourceCulture);
             }
         }
     }

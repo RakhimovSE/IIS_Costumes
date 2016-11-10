@@ -21,11 +21,11 @@ namespace IIS_Costumes
             string result = dt.ToString(format);
             return result;
         }
+
         public static void SetNoResultQuery(string query)
         {
             try
             {
-                string connStr = Properties.Resources.ConnectionString;
                 MySqlConnection conn = new MySqlConnection(connStr);
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conn;
@@ -39,12 +39,12 @@ namespace IIS_Costumes
                 MessageBox.Show(ex.Message);
             }
         }
-        public static DataSet GetDBDataSet(string query = null)
+
+        public static DataSet GetDBDataSet(string query)
         {
             DataSet result = null;
             try
             {
-                string connStr = Properties.Resources.ConnectionString;
                 MySqlConnection conn = new MySqlConnection(connStr);
                 MySqlDataAdapter da = new MySqlDataAdapter();
                 da.SelectCommand = new MySqlCommand(query, conn);
@@ -59,6 +59,11 @@ namespace IIS_Costumes
                 MessageBox.Show(ex.Message);
             }
             return result;
+        }
+
+        public static void FillDGV(DataGridView dgv, string query)
+        {
+            dgv.DataSource = GetDBDataSet(query).Tables[0];
         }
     }
 }
