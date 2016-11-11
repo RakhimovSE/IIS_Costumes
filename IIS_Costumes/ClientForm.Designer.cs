@@ -31,6 +31,19 @@
             this.OKButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.mainGB = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.passDepartRTB = new System.Windows.Forms.RichTextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.passDateDTP = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.passNumTB = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.adressTB = new System.Windows.Forms.TextBox();
+            this.phoneTB = new System.Windows.Forms.TextBox();
+            this.fioTB = new System.Windows.Forms.TextBox();
             this.delButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
@@ -38,22 +51,9 @@
             this.searchTB = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.fioTB = new System.Windows.Forms.TextBox();
-            this.phoneTB = new System.Windows.Forms.TextBox();
-            this.adressTB = new System.Windows.Forms.TextBox();
-            this.passNumTB = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.passDateDTP = new System.Windows.Forms.DateTimePicker();
-            this.passDepartRTB = new System.Windows.Forms.RichTextBox();
             this.mainGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainDgv)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainDgv)).BeginInit();
             this.SuspendLayout();
             // 
             // OKButton
@@ -100,6 +100,119 @@
             this.mainGB.TabIndex = 18;
             this.mainGB.TabStop = false;
             this.mainGB.Text = "Карточка";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 175);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(129, 17);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Место жительства";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 104);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 17);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Телефон";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.passDepartRTB);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.passDateDTP);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.passNumTB);
+            this.groupBox1.Location = new System.Drawing.Point(365, 21);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(265, 271);
+            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Паспорт";
+            // 
+            // passDepartRTB
+            // 
+            this.passDepartRTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.passDepartRTB.Location = new System.Drawing.Point(9, 174);
+            this.passDepartRTB.Name = "passDepartRTB";
+            this.passDepartRTB.Size = new System.Drawing.Size(250, 91);
+            this.passDepartRTB.TabIndex = 25;
+            this.passDepartRTB.Text = "";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 154);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(77, 17);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Кто выдал";
+            // 
+            // passDateDTP
+            // 
+            this.passDateDTP.Location = new System.Drawing.Point(9, 113);
+            this.passDateDTP.Name = "passDateDTP";
+            this.passDateDTP.Size = new System.Drawing.Size(148, 22);
+            this.passDateDTP.TabIndex = 24;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(106, 17);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Серия и номер";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 92);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(95, 17);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Дата выдачи";
+            // 
+            // passNumTB
+            // 
+            this.passNumTB.Location = new System.Drawing.Point(9, 49);
+            this.passNumTB.Name = "passNumTB";
+            this.passNumTB.Size = new System.Drawing.Size(149, 22);
+            this.passNumTB.TabIndex = 17;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 17);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "ФИО";
+            // 
+            // adressTB
+            // 
+            this.adressTB.Location = new System.Drawing.Point(6, 195);
+            this.adressTB.Name = "adressTB";
+            this.adressTB.Size = new System.Drawing.Size(353, 22);
+            this.adressTB.TabIndex = 15;
+            // 
+            // phoneTB
+            // 
+            this.phoneTB.Location = new System.Drawing.Point(6, 124);
+            this.phoneTB.Name = "phoneTB";
+            this.phoneTB.Size = new System.Drawing.Size(245, 22);
+            this.phoneTB.TabIndex = 13;
+            // 
+            // fioTB
+            // 
+            this.fioTB.Location = new System.Drawing.Point(6, 58);
+            this.fioTB.Name = "fioTB";
+            this.fioTB.Size = new System.Drawing.Size(353, 22);
+            this.fioTB.TabIndex = 12;
             // 
             // delButton
             // 
@@ -179,119 +292,6 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Заказы";
             // 
-            // fioTB
-            // 
-            this.fioTB.Location = new System.Drawing.Point(6, 58);
-            this.fioTB.Name = "fioTB";
-            this.fioTB.Size = new System.Drawing.Size(353, 22);
-            this.fioTB.TabIndex = 12;
-            // 
-            // phoneTB
-            // 
-            this.phoneTB.Location = new System.Drawing.Point(6, 124);
-            this.phoneTB.Name = "phoneTB";
-            this.phoneTB.Size = new System.Drawing.Size(245, 22);
-            this.phoneTB.TabIndex = 13;
-            // 
-            // adressTB
-            // 
-            this.adressTB.Location = new System.Drawing.Point(6, 195);
-            this.adressTB.Name = "adressTB";
-            this.adressTB.Size = new System.Drawing.Size(353, 22);
-            this.adressTB.TabIndex = 15;
-            // 
-            // passNumTB
-            // 
-            this.passNumTB.Location = new System.Drawing.Point(9, 49);
-            this.passNumTB.Name = "passNumTB";
-            this.passNumTB.Size = new System.Drawing.Size(149, 22);
-            this.passNumTB.TabIndex = 17;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 38);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 17);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "ФИО";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.passDepartRTB);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.passDateDTP);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.passNumTB);
-            this.groupBox1.Location = new System.Drawing.Point(365, 21);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(265, 271);
-            this.groupBox1.TabIndex = 19;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Паспорт";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 104);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 17);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "Телефон";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 175);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(129, 17);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Место жительства";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 29);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(106, 17);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "Серия и номер";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 92);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(95, 17);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Дата выдачи";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 154);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 17);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "Кто выдал";
-            // 
-            // passDateDTP
-            // 
-            this.passDateDTP.Location = new System.Drawing.Point(9, 113);
-            this.passDateDTP.Name = "passDateDTP";
-            this.passDateDTP.Size = new System.Drawing.Size(148, 22);
-            this.passDateDTP.TabIndex = 24;
-            // 
-            // passDepartRTB
-            // 
-            this.passDepartRTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.passDepartRTB.Location = new System.Drawing.Point(9, 174);
-            this.passDepartRTB.Name = "passDepartRTB";
-            this.passDepartRTB.Size = new System.Drawing.Size(250, 91);
-            this.passDepartRTB.TabIndex = 25;
-            this.passDepartRTB.Text = "";
-            // 
             // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -307,11 +307,12 @@
             this.Controls.Add(this.label1);
             this.Name = "ClientForm";
             this.Text = "ClientForm";
+            this.Load += new System.EventHandler(this.ClientForm_Load);
             this.mainGB.ResumeLayout(false);
             this.mainGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainDgv)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainDgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

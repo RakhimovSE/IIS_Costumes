@@ -56,6 +56,7 @@ namespace IIS_Costumes
         
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            resetGB();
             hide();
         }
 
@@ -95,6 +96,11 @@ namespace IIS_Costumes
                                  {5});",fio,phone,adress,numPass,datePass,departPass);
 
             }
+        }
+
+        private void ClientForm_Load(object sender, EventArgs e)
+        {
+            hide();
         }
     }
 }
