@@ -61,6 +61,14 @@ namespace IIS_Costumes
             return result;
         }
 
+        public static void FillCB(ComboBox cb, string query, string valueMember, string displayMember)
+        {
+            DataSet ds = GetDBDataSet(query);
+            cb.DataSource = ds.Tables[0];
+            cb.ValueMember = valueMember;
+            cb.DisplayMember = displayMember;
+        }
+
         public static void FillDGV(DataGridView dgv, string query)
         {
             dgv.DataSource = GetDBDataSet(query).Tables[0];
