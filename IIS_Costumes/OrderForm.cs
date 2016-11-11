@@ -19,8 +19,13 @@ namespace IIS_Costumes
 
         private void OrderForm_Load(object sender, EventArgs e)
         {
-            DataSet ds = DBConnector.GetDBDataSet("SELECT * FROM `carnaval`.`client`");
-            mainDgv.DataSource = ds.Tables[0];
+            mainDgv.AutoGenerateColumns = false;
+            DBConnector.FillDGV(mainDgv, "SELECT * FROM `client`");
+        }
+
+        private void mainDgv_SelectionChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
