@@ -22,5 +22,11 @@ namespace IIS_Costumes
             DataSet ds = DBConnector.GetDBDataSet("SELECT * FROM `carnaval`.`client`");
             mainDgv.DataSource = ds.Tables[0];
         }
+
+        private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClientForm client = new ClientForm();
+            client.Show();
+        }
     }
 }

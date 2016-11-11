@@ -43,8 +43,8 @@
             this.костюмыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.типыКостюмовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cancelButton = new System.Windows.Forms.Button();
             this.OKButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainDgv)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -76,7 +76,7 @@
             this.searchTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchTB.Location = new System.Drawing.Point(16, 73);
-            this.searchTB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchTB.Margin = new System.Windows.Forms.Padding(4);
             this.searchTB.Name = "searchTB";
             this.searchTB.Size = new System.Drawing.Size(693, 22);
             this.searchTB.TabIndex = 2;
@@ -88,7 +88,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mainDgv.Location = new System.Drawing.Point(16, 105);
-            this.mainDgv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mainDgv.Margin = new System.Windows.Forms.Padding(4);
             this.mainDgv.Name = "mainDgv";
             this.mainDgv.Size = new System.Drawing.Size(695, 375);
             this.mainDgv.TabIndex = 3;
@@ -97,7 +97,7 @@
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addButton.Location = new System.Drawing.Point(719, 105);
-            this.addButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addButton.Margin = new System.Windows.Forms.Padding(4);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(125, 28);
             this.addButton.TabIndex = 4;
@@ -108,7 +108,7 @@
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.editButton.Location = new System.Drawing.Point(719, 140);
-            this.editButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editButton.Margin = new System.Windows.Forms.Padding(4);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(125, 28);
             this.editButton.TabIndex = 5;
@@ -119,7 +119,7 @@
             // 
             this.delButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.delButton.Location = new System.Drawing.Point(719, 212);
-            this.delButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.delButton.Margin = new System.Windows.Forms.Padding(4);
             this.delButton.Name = "delButton";
             this.delButton.Size = new System.Drawing.Size(125, 28);
             this.delButton.TabIndex = 7;
@@ -150,7 +150,7 @@
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
             this.выходToolStripMenuItem.Text = "Выход";
             // 
             // справочникиToolStripMenuItem
@@ -168,6 +168,7 @@
             this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
             this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
             this.клиентыToolStripMenuItem.Text = "Клиенты";
+            this.клиентыToolStripMenuItem.Click += new System.EventHandler(this.клиентыToolStripMenuItem_Click);
             // 
             // костюмыToolStripMenuItem
             // 
@@ -192,17 +193,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Карточка";
             // 
-            // cancelButton
-            // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(600, 340);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(4);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(89, 28);
-            this.cancelButton.TabIndex = 10;
-            this.cancelButton.Text = "Отмена";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            // 
             // OKButton
             // 
             this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -213,6 +203,17 @@
             this.OKButton.TabIndex = 11;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.Location = new System.Drawing.Point(600, 340);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(89, 28);
+            this.cancelButton.TabIndex = 10;
+            this.cancelButton.Text = "Отмена";
+            this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // OrderForm
             // 
@@ -229,7 +230,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "OrderForm";
             this.Text = "Карнавальные костюмы - Заказы";
             this.Load += new System.EventHandler(this.OrderForm_Load);
