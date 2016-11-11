@@ -22,21 +22,31 @@ namespace IIS_Costumes
             return result;
         }
 
-        public static void SetNoResultQuery(string query)
+        public static object GetRowCol(DataGridViewRow row, string columnName)
         {
+            return (row.DataBoundItem as DataRowView).Row[columnName].ToString();
+        }
+
+        public static bool SetNoResultQuery(string query)
+        {
+            MySqlConnection conn = new MySqlConnection(connStr);
             try
             {
-                MySqlConnection conn = new MySqlConnection(connStr);
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandText = query;
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                conn.Close();
+                return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (conn != null || conn.State == ConnectionState.Open)
+                    conn.Close();
             }
         }
 

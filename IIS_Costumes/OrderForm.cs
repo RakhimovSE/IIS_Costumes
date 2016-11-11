@@ -25,12 +25,8 @@ namespace IIS_Costumes
 
         private void mainDgv_SelectionChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-           
+            DataGridViewRow row = mainDgv.SelectedCells[0].OwningRow;
+            MessageBox.Show(DBConnector.GetRowCol(row, "id_client").ToString());
         }
 
         private void клиентыToolStripMenuItem_Click_1(object sender, EventArgs e)
