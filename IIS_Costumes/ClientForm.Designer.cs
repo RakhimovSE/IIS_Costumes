@@ -154,10 +154,13 @@
             // 
             // passDateDTP
             // 
+            this.passDateDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.passDateDTP.Location = new System.Drawing.Point(9, 113);
+            this.passDateDTP.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.passDateDTP.Name = "passDateDTP";
-            this.passDateDTP.Size = new System.Drawing.Size(148, 22);
+            this.passDateDTP.Size = new System.Drawing.Size(126, 22);
             this.passDateDTP.TabIndex = 24;
+            this.passDateDTP.Value = new System.DateTime(2016, 11, 5, 0, 0, 0, 0);
             // 
             // label6
             // 
