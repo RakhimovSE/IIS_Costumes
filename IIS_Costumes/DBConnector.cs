@@ -71,7 +71,9 @@ namespace IIS_Costumes
 
         public static void FillDGV(DataGridView dgv, string query)
         {
-            dgv.DataSource = GetDBDataSet(query).Tables[0];
+            DataSet ds = GetDBDataSet(query);
+            if (ds.Tables.Count == 0) return;
+            dgv.DataSource = ds.Tables[0].DefaultView;
         }
     }
 }

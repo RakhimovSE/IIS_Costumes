@@ -19,7 +19,13 @@ namespace IIS_Costumes
 
         private void OrderForm_Load(object sender, EventArgs e)
         {
+            mainDgv.AutoGenerateColumns = false;
             DBConnector.FillDGV(mainDgv, "SELECT * FROM `client`");
+        }
+
+        private void mainDgv_SelectionChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

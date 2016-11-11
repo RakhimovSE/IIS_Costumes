@@ -45,6 +45,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.OKButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.mainClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.mainDgv)).BeginInit();
             this.mainMenuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -84,10 +85,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.mainDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.mainClient});
             this.mainDgv.Location = new System.Drawing.Point(12, 85);
             this.mainDgv.Name = "mainDgv";
             this.mainDgv.Size = new System.Drawing.Size(521, 305);
             this.mainDgv.TabIndex = 3;
+            this.mainDgv.SelectionChanged += new System.EventHandler(this.mainDgv_SelectionChanged);
             // 
             // addButton
             // 
@@ -206,6 +210,12 @@
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
+            // mainClient
+            // 
+            this.mainClient.DataPropertyName = "name";
+            this.mainClient.HeaderText = "Клиент";
+            this.mainClient.Name = "mainClient";
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,6 +262,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainClient;
     }
 }
 
