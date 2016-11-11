@@ -16,33 +16,42 @@ namespace IIS_Costumes
         {
             InitializeComponent();
         }
-        void hide()
-        {
-            OKButton.Enabled = true;
-            cancelButton.Enabled = true;
-            searchTB.Enabled = true;
-            mainDgv.Enabled = true;
-            mainGB.Enabled = false;
-        }
         void show(string str)
         {
-            OKButton.Enabled = false;
-            cancelButton.Enabled = false;
+            passDateDTP.ResetText();
+            mainGB.Visible = true;
+            OKButton.Enabled = true;
+            cancelButton.Enabled = true;
             searchTB.Enabled = false;
             mainDgv.Enabled = true;
-            mainGB.Enabled = false;
+            addButton.Enabled = false;
+            editButton.Enabled = false;
+            delButton.Enabled = false;
             if (str == "add")
                 mainGB.Text = "Добавление клиента";
             else
                 mainGB.Text = "Редактирование клиента ";
         }
+        void hide()
+        {
+            addButton.Enabled = true;
+            editButton.Enabled = true;
+            delButton.Enabled = true;
+            mainGB.Visible = false;
+            OKButton.Enabled = false;
+            cancelButton.Enabled = false;
+            searchTB.Enabled = true;
+            mainDgv.Enabled = true;
+            
+        }
         void resetGB()
-        { 
-            OKButton.ResetText();
-            cancelButton.ResetText();
-            searchTB.ResetText();
-            mainDgv.ResetText();
-            mainGB.ResetText();
+        {
+            fioTB.ResetText();
+            phoneTB.ResetText();
+            adressTB.ResetText();
+            passDateDTP.ResetText();
+            passDepartRTB.ResetText();
+            passNumTB.ResetText();
         }
         private void addButton_Click(object sender, EventArgs e)
         {
@@ -73,11 +82,11 @@ namespace IIS_Costumes
                 if (adressTB.Text.Trim(' ') != "")
                     adress = "'" + adressTB.Text + "'";
                 if (passDateDTP.Value != null)
-                    datePass = "'" + passDateDTP.Value + "'";
+                    datePass = "'" + DBConnector.DtToMysql(passDateDTP.Value,true,false) + "'";
                 if (passNumTB.Text.Trim(' ') != "")
-                    adress = "'" + passNumTB.Text + "'";
+                    numPass = "'" + passNumTB.Text + "'";
                 if (passDepartRTB.Text.Trim(' ') != "")
-                    adress = "'" + passDepartRTB.Text + "'";
+                    departPass = "'" + passDepartRTB.Text + "'";
 
                 string query = String.Format(@"INSERT INTO `carnaval`.`client`
                                 (`name`,
@@ -94,6 +103,7 @@ namespace IIS_Costumes
                                  {3},
                                  {4},
                                  {5});",fio,phone,adress,numPass,datePass,departPass);
+                DBConnector.SetNoResultQuery(query);
 
             }
         }
