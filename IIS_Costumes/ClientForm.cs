@@ -103,7 +103,17 @@ namespace IIS_Costumes
                                  {3},
                                  {4},
                                  {5});",fio,phone,adress,numPass,datePass,departPass);
-                DBConnector.SetNoResultQuery(query);
+                bool res = DBConnector.SetNoResultQuery(query);
+                if (res == true)
+                {
+                    hide();
+                    //mainDgv.Rows.Count;
+                }
+                else
+                {
+                    MessageBox.Show("При добавлении клиента произошла ошибка, \nобратитесь к системному администратору!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
 
             }
         }
