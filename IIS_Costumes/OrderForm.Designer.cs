@@ -31,7 +31,7 @@
             this.headerLabel = new System.Windows.Forms.Label();
             this.searchLabel = new System.Windows.Forms.Label();
             this.searchTB = new System.Windows.Forms.TextBox();
-            this.mainDgv = new System.Windows.Forms.DataGridView();
+            this.mainDGV = new System.Windows.Forms.DataGridView();
             this.addButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
             this.delButton = new System.Windows.Forms.Button();
@@ -45,8 +45,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.OKButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.mainTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.mainDgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).BeginInit();
             this.mainMenuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -79,19 +80,22 @@
             this.searchTB.Size = new System.Drawing.Size(521, 20);
             this.searchTB.TabIndex = 2;
             // 
-            // mainDgv
+            // mainDGV
             // 
-            this.mainDgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainDGV.AllowUserToAddRows = false;
+            this.mainDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.mainDgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.mainDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.mainDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.mainTelephone,
             this.mainClient});
-            this.mainDgv.Location = new System.Drawing.Point(12, 85);
-            this.mainDgv.Name = "mainDgv";
-            this.mainDgv.Size = new System.Drawing.Size(521, 305);
-            this.mainDgv.TabIndex = 3;
-            this.mainDgv.SelectionChanged += new System.EventHandler(this.mainDgv_SelectionChanged);
+            this.mainDGV.Location = new System.Drawing.Point(12, 85);
+            this.mainDGV.Name = "mainDGV";
+            this.mainDGV.ReadOnly = true;
+            this.mainDGV.Size = new System.Drawing.Size(521, 305);
+            this.mainDGV.TabIndex = 3;
+            this.mainDGV.SelectionChanged += new System.EventHandler(this.mainDgv_SelectionChanged);
             // 
             // addButton
             // 
@@ -171,6 +175,7 @@
             this.костюмыToolStripMenuItem.Name = "костюмыToolStripMenuItem";
             this.костюмыToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.костюмыToolStripMenuItem.Text = "Костюмы";
+            this.костюмыToolStripMenuItem.Click += new System.EventHandler(this.костюмыToolStripMenuItem_Click);
             // 
             // типыКостюмовToolStripMenuItem
             // 
@@ -183,9 +188,9 @@
             this.groupBox1.Controls.Add(this.OKButton);
             this.groupBox1.Controls.Add(this.cancelButton);
             this.groupBox1.Location = new System.Drawing.Point(12, 85);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(522, 305);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
@@ -211,11 +216,19 @@
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
+            // mainTelephone
+            // 
+            this.mainTelephone.DataPropertyName = "date";
+            this.mainTelephone.HeaderText = "Дата";
+            this.mainTelephone.Name = "mainTelephone";
+            this.mainTelephone.ReadOnly = true;
+            // 
             // mainClient
             // 
-            this.mainClient.DataPropertyName = "name";
+            this.mainClient.DataPropertyName = "client_name";
             this.mainClient.HeaderText = "Клиент";
             this.mainClient.Name = "mainClient";
+            this.mainClient.ReadOnly = true;
             this.mainClient.Width = 200;
             // 
             // OrderForm
@@ -226,7 +239,7 @@
             this.Controls.Add(this.delButton);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.addButton);
-            this.Controls.Add(this.mainDgv);
+            this.Controls.Add(this.mainDGV);
             this.Controls.Add(this.searchTB);
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.headerLabel);
@@ -236,7 +249,7 @@
             this.Name = "OrderForm";
             this.Text = "Карнавальные костюмы - Заказы";
             this.Load += new System.EventHandler(this.OrderForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mainDgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).EndInit();
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -250,7 +263,7 @@
         private System.Windows.Forms.Label headerLabel;
         private System.Windows.Forms.Label searchLabel;
         private System.Windows.Forms.TextBox searchTB;
-        private System.Windows.Forms.DataGridView mainDgv;
+        private System.Windows.Forms.DataGridView mainDGV;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.Button delButton;
@@ -264,6 +277,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainTelephone;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainClient;
     }
 }

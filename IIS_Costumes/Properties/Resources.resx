@@ -123,4 +123,7 @@
   <data name="ConnectionStringRemote" xml:space="preserve">
     <value>server=db4free.net;port=3306;user id=rakhimovse;password=rNRNQ4Wqsh3npef;database=carnaval;characterset=utf8</value>
   </data>
+  <data name="VOrderQuery" xml:space="preserve">
+    <value>SELECT * FROM `v_order`</value>
+  </data>
 </root>

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using MySql.Data.MySqlClient;
+
 namespace IIS_Costumes
 {
     public partial class OrderForm : Form
@@ -17,22 +19,32 @@ namespace IIS_Costumes
             InitializeComponent();
         }
 
+        ClientForm clientForm;
+        CostumeForm costumeForm;
+
         private void OrderForm_Load(object sender, EventArgs e)
         {
-            mainDgv.AutoGenerateColumns = false;
-            DBConnector.FillDGV(mainDgv, "SELECT * FROM `client`");
+            clientForm = new ClientForm();
+            costumeForm = new CostumeForm();
+
+            mainDGV.AutoGenerateColumns = false;
+            DBConnector.FillDGV(mainDGV, Properties.Resources.VOrderQuery);
         }
 
         private void mainDgv_SelectionChanged(object sender, EventArgs e)
         {
-            DataGridViewRow row = mainDgv.SelectedCells[0].OwningRow;
-            MessageBox.Show(DBConnector.GetRowCol(row, "id_client").ToString());
+            DataGridViewRow row = mainDGV.SelectedCells[0].OwningRow;
+            searchTB.Text = (string)DBConnector.GetRowCol(row, "address");
         }
 
         private void клиентыToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            ClientForm client = new ClientForm();
-            client.Show();
+            clientForm = (ClientForm)Controller.ShowForm(clientForm);
+        }
+
+        private void костюмыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            costumeForm = (CostumeForm)Controller.ShowForm(costumeForm);
         }
     }
 }

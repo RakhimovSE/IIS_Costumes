@@ -23,7 +23,7 @@ namespace IIS_Costumes
             OKButton.Enabled = true;
             cancelButton.Enabled = true;
             searchTB.Enabled = false;
-            mainDgv.Enabled = true;
+            mainDGV.Enabled = true;
             addButton.Enabled = false;
             editButton.Enabled = false;
             delButton.Enabled = false;
@@ -41,7 +41,7 @@ namespace IIS_Costumes
             OKButton.Enabled = false;
             cancelButton.Enabled = false;
             searchTB.Enabled = true;
-            mainDgv.Enabled = true;
+            mainDGV.Enabled = true;
             
         }
         void resetGB()
@@ -110,6 +110,8 @@ namespace IIS_Costumes
 
         private void ClientForm_Load(object sender, EventArgs e)
         {
+            mainDGV.AutoGenerateColumns = false;
+            DBConnector.FillDGV(mainDGV, "SELECT * FROM `client`");
             hide();
         }
     }

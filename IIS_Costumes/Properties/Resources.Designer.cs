@@ -77,5 +77,14 @@ namespace IIS_Costumes.Properties {
                 return ResourceManager.GetString("ConnectionStringRemote", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на SELECT * FROM `v_order`.
+        /// </summary>
+        internal static string VOrderQuery {
+            get {
+                return ResourceManager.GetString("VOrderQuery", resourceCulture);
+            }
+        }
     }
 }
