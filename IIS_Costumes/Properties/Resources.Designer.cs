@@ -61,6 +61,15 @@ namespace IIS_Costumes.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на SELECT * FROM `client`.
+        /// </summary>
+        internal static string ClientQuery {
+            get {
+                return ResourceManager.GetString("ClientQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на server=127.0.0.1;port=3306;user id=root;password=;database=carnaval;characterset=utf8.
         /// </summary>
         internal static string ConnectionString {

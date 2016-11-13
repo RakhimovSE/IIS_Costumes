@@ -32,12 +32,6 @@
             this.searchLabel = new System.Windows.Forms.Label();
             this.searchTB = new System.Windows.Forms.TextBox();
             this.mainDGV = new System.Windows.Forms.DataGridView();
-            this.mainSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.mainName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainClientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainClientTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainReturndateShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.issueButton = new System.Windows.Forms.Button();
             this.takeButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
@@ -51,14 +45,17 @@
             this.костюмыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.типыКостюмовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderGB = new System.Windows.Forms.GroupBox();
+            this.costumeDGV = new System.Windows.Forms.DataGridView();
+            this.returnGB = new System.Windows.Forms.GroupBox();
+            this.sheduleDTP = new System.Windows.Forms.DateTimePicker();
+            this.returnedChB = new System.Windows.Forms.CheckBox();
+            this.sheduleLabel = new System.Windows.Forms.Label();
+            this.actualDTP = new System.Windows.Forms.DateTimePicker();
+            this.actualLabel = new System.Windows.Forms.Label();
             this.costumeRemoveButton = new System.Windows.Forms.Button();
             this.costumeAddButton = new System.Windows.Forms.Button();
             this.totalLabel = new System.Windows.Forms.Label();
             this.clientButton = new System.Windows.Forms.Button();
-            this.actualLabel = new System.Windows.Forms.Label();
-            this.actualDTP = new System.Windows.Forms.DateTimePicker();
-            this.sheduleLabel = new System.Windows.Forms.Label();
-            this.sheduleDTP = new System.Windows.Forms.DateTimePicker();
             this.costumeLabel = new System.Windows.Forms.Label();
             this.clientCB = new System.Windows.Forms.ComboBox();
             this.clientLabel = new System.Windows.Forms.Label();
@@ -67,14 +64,22 @@
             this.OKButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.returnedChB = new System.Windows.Forms.CheckBox();
-            this.returnGB = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.mainSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.mainName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainVendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainClientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainClientTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainReturndateShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeVendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).BeginInit();
             this.mainMenuStrip.SuspendLayout();
             this.orderGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costumeDGV)).BeginInit();
             this.returnGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // headerLabel
@@ -102,7 +107,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchTB.Location = new System.Drawing.Point(12, 59);
             this.searchTB.Name = "searchTB";
-            this.searchTB.Size = new System.Drawing.Size(712, 20);
+            this.searchTB.Size = new System.Drawing.Size(763, 20);
             this.searchTB.TabIndex = 2;
             this.searchTB.TextChanged += new System.EventHandler(this.searchTB_TextChanged);
             // 
@@ -117,6 +122,7 @@
             this.mainDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.mainSelected,
             this.mainName,
+            this.mainVendor,
             this.mainSizeName,
             this.mainClientName,
             this.mainClientTelephone,
@@ -127,65 +133,15 @@
             this.mainDGV.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.mainDGV.RowHeadersVisible = false;
             this.mainDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.mainDGV.Size = new System.Drawing.Size(712, 319);
+            this.mainDGV.Size = new System.Drawing.Size(763, 319);
             this.mainDGV.TabIndex = 3;
             this.mainDGV.SelectionChanged += new System.EventHandler(this.mainDgv_SelectionChanged);
-            // 
-            // mainSelected
-            // 
-            this.mainSelected.HeaderText = "";
-            this.mainSelected.Name = "mainSelected";
-            this.mainSelected.ReadOnly = true;
-            this.mainSelected.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.mainSelected.Width = 30;
-            // 
-            // mainName
-            // 
-            this.mainName.DataPropertyName = "costume_name";
-            this.mainName.HeaderText = "Костюм";
-            this.mainName.Name = "mainName";
-            this.mainName.ReadOnly = true;
-            this.mainName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.mainName.Width = 200;
-            // 
-            // mainSizeName
-            // 
-            this.mainSizeName.DataPropertyName = "size_name";
-            this.mainSizeName.HeaderText = "Размер";
-            this.mainSizeName.Name = "mainSizeName";
-            this.mainSizeName.ReadOnly = true;
-            this.mainSizeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.mainSizeName.Width = 50;
-            // 
-            // mainClientName
-            // 
-            this.mainClientName.DataPropertyName = "client_name";
-            this.mainClientName.HeaderText = "Клиент";
-            this.mainClientName.Name = "mainClientName";
-            this.mainClientName.ReadOnly = true;
-            this.mainClientName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.mainClientName.Width = 200;
-            // 
-            // mainClientTelephone
-            // 
-            this.mainClientTelephone.DataPropertyName = "client_telephone";
-            this.mainClientTelephone.HeaderText = "Телефон";
-            this.mainClientTelephone.Name = "mainClientTelephone";
-            this.mainClientTelephone.ReadOnly = true;
-            this.mainClientTelephone.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // mainReturndateShedule
-            // 
-            this.mainReturndateShedule.DataPropertyName = "returndate_shedule";
-            this.mainReturndateShedule.HeaderText = "Дата возвр. план.";
-            this.mainReturndateShedule.Name = "mainReturndateShedule";
-            this.mainReturndateShedule.ReadOnly = true;
-            this.mainReturndateShedule.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.mainDGV.Sorted += new System.EventHandler(this.mainDGV_Sorted);
             // 
             // issueButton
             // 
             this.issueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.issueButton.Location = new System.Drawing.Point(730, 85);
+            this.issueButton.Location = new System.Drawing.Point(781, 85);
             this.issueButton.Name = "issueButton";
             this.issueButton.Size = new System.Drawing.Size(110, 23);
             this.issueButton.TabIndex = 4;
@@ -196,7 +152,7 @@
             // takeButton
             // 
             this.takeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.takeButton.Location = new System.Drawing.Point(730, 114);
+            this.takeButton.Location = new System.Drawing.Point(781, 114);
             this.takeButton.Name = "takeButton";
             this.takeButton.Size = new System.Drawing.Size(110, 23);
             this.takeButton.TabIndex = 5;
@@ -207,7 +163,7 @@
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(729, 143);
+            this.editButton.Location = new System.Drawing.Point(780, 143);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(110, 23);
             this.editButton.TabIndex = 7;
@@ -223,7 +179,7 @@
             this.справочникиToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(852, 24);
+            this.mainMenuStrip.Size = new System.Drawing.Size(903, 24);
             this.mainMenuStrip.TabIndex = 8;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -289,7 +245,7 @@
             this.orderGB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.orderGB.Controls.Add(this.dataGridView1);
+            this.orderGB.Controls.Add(this.costumeDGV);
             this.orderGB.Controls.Add(this.returnGB);
             this.orderGB.Controls.Add(this.costumeRemoveButton);
             this.orderGB.Controls.Add(this.costumeAddButton);
@@ -306,15 +262,95 @@
             this.orderGB.Margin = new System.Windows.Forms.Padding(2);
             this.orderGB.Name = "orderGB";
             this.orderGB.Padding = new System.Windows.Forms.Padding(2);
-            this.orderGB.Size = new System.Drawing.Size(712, 319);
+            this.orderGB.Size = new System.Drawing.Size(763, 319);
             this.orderGB.TabIndex = 9;
             this.orderGB.TabStop = false;
             this.orderGB.Text = "orderGB";
             // 
+            // costumeDGV
+            // 
+            this.costumeDGV.AllowUserToAddRows = false;
+            this.costumeDGV.AllowUserToResizeRows = false;
+            this.costumeDGV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.costumeDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.costumeDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.costumeVendor,
+            this.costumeName,
+            this.costumeSizeName,
+            this.costumePrice});
+            this.costumeDGV.Location = new System.Drawing.Point(363, 45);
+            this.costumeDGV.Name = "costumeDGV";
+            this.costumeDGV.ReadOnly = true;
+            this.costumeDGV.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.costumeDGV.RowHeadersVisible = false;
+            this.costumeDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.costumeDGV.Size = new System.Drawing.Size(365, 240);
+            this.costumeDGV.TabIndex = 29;
+            // 
+            // returnGB
+            // 
+            this.returnGB.Controls.Add(this.sheduleDTP);
+            this.returnGB.Controls.Add(this.returnedChB);
+            this.returnGB.Controls.Add(this.sheduleLabel);
+            this.returnGB.Controls.Add(this.actualDTP);
+            this.returnGB.Controls.Add(this.actualLabel);
+            this.returnGB.Location = new System.Drawing.Point(5, 124);
+            this.returnGB.Name = "returnGB";
+            this.returnGB.Size = new System.Drawing.Size(253, 83);
+            this.returnGB.TabIndex = 28;
+            this.returnGB.TabStop = false;
+            this.returnGB.Text = "Возврат";
+            // 
+            // sheduleDTP
+            // 
+            this.sheduleDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.sheduleDTP.Location = new System.Drawing.Point(6, 55);
+            this.sheduleDTP.Name = "sheduleDTP";
+            this.sheduleDTP.Size = new System.Drawing.Size(80, 20);
+            this.sheduleDTP.TabIndex = 19;
+            // 
+            // returnedChB
+            // 
+            this.returnedChB.AutoSize = true;
+            this.returnedChB.Location = new System.Drawing.Point(105, 19);
+            this.returnedChB.Name = "returnedChB";
+            this.returnedChB.Size = new System.Drawing.Size(142, 17);
+            this.returnedChB.TabIndex = 27;
+            this.returnedChB.Text = "Костюмы возвращены";
+            this.returnedChB.UseVisualStyleBackColor = true;
+            this.returnedChB.CheckedChanged += new System.EventHandler(this.returnedChB_CheckedChanged);
+            // 
+            // sheduleLabel
+            // 
+            this.sheduleLabel.AutoSize = true;
+            this.sheduleLabel.Location = new System.Drawing.Point(6, 39);
+            this.sheduleLabel.Name = "sheduleLabel";
+            this.sheduleLabel.Size = new System.Drawing.Size(83, 13);
+            this.sheduleLabel.TabIndex = 20;
+            this.sheduleLabel.Text = "Плановая дата";
+            // 
+            // actualDTP
+            // 
+            this.actualDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.actualDTP.Location = new System.Drawing.Point(105, 55);
+            this.actualDTP.Name = "actualDTP";
+            this.actualDTP.Size = new System.Drawing.Size(80, 20);
+            this.actualDTP.TabIndex = 21;
+            // 
+            // actualLabel
+            // 
+            this.actualLabel.AutoSize = true;
+            this.actualLabel.Location = new System.Drawing.Point(105, 39);
+            this.actualLabel.Name = "actualLabel";
+            this.actualLabel.Size = new System.Drawing.Size(102, 13);
+            this.actualLabel.TabIndex = 22;
+            this.actualLabel.Text = "Фактическая дата";
+            // 
             // costumeRemoveButton
             // 
             this.costumeRemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.costumeRemoveButton.Location = new System.Drawing.Point(683, 74);
+            this.costumeRemoveButton.Location = new System.Drawing.Point(734, 74);
             this.costumeRemoveButton.Name = "costumeRemoveButton";
             this.costumeRemoveButton.Size = new System.Drawing.Size(24, 23);
             this.costumeRemoveButton.TabIndex = 26;
@@ -325,7 +361,7 @@
             // costumeAddButton
             // 
             this.costumeAddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.costumeAddButton.Location = new System.Drawing.Point(683, 45);
+            this.costumeAddButton.Location = new System.Drawing.Point(734, 45);
             this.costumeAddButton.Name = "costumeAddButton";
             this.costumeAddButton.Size = new System.Drawing.Size(24, 23);
             this.costumeAddButton.TabIndex = 24;
@@ -338,7 +374,7 @@
             this.totalLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.totalLabel.AutoSize = true;
             this.totalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.totalLabel.Location = new System.Drawing.Point(309, 296);
+            this.totalLabel.Location = new System.Drawing.Point(360, 296);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(85, 13);
             this.totalLabel.TabIndex = 11;
@@ -354,45 +390,11 @@
             this.clientButton.UseVisualStyleBackColor = true;
             this.clientButton.Click += new System.EventHandler(this.clientButton_Click);
             // 
-            // actualLabel
-            // 
-            this.actualLabel.AutoSize = true;
-            this.actualLabel.Location = new System.Drawing.Point(105, 39);
-            this.actualLabel.Name = "actualLabel";
-            this.actualLabel.Size = new System.Drawing.Size(102, 13);
-            this.actualLabel.TabIndex = 22;
-            this.actualLabel.Text = "Фактическая дата";
-            // 
-            // actualDTP
-            // 
-            this.actualDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.actualDTP.Location = new System.Drawing.Point(105, 55);
-            this.actualDTP.Name = "actualDTP";
-            this.actualDTP.Size = new System.Drawing.Size(80, 20);
-            this.actualDTP.TabIndex = 21;
-            // 
-            // sheduleLabel
-            // 
-            this.sheduleLabel.AutoSize = true;
-            this.sheduleLabel.Location = new System.Drawing.Point(6, 39);
-            this.sheduleLabel.Name = "sheduleLabel";
-            this.sheduleLabel.Size = new System.Drawing.Size(83, 13);
-            this.sheduleLabel.TabIndex = 20;
-            this.sheduleLabel.Text = "Плановая дата";
-            // 
-            // sheduleDTP
-            // 
-            this.sheduleDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.sheduleDTP.Location = new System.Drawing.Point(6, 55);
-            this.sheduleDTP.Name = "sheduleDTP";
-            this.sheduleDTP.Size = new System.Drawing.Size(80, 20);
-            this.sheduleDTP.TabIndex = 19;
-            // 
             // costumeLabel
             // 
             this.costumeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.costumeLabel.AutoSize = true;
-            this.costumeLabel.Location = new System.Drawing.Point(309, 29);
+            this.costumeLabel.Location = new System.Drawing.Point(360, 29);
             this.costumeLabel.Name = "costumeLabel";
             this.costumeLabel.Size = new System.Drawing.Size(55, 13);
             this.costumeLabel.TabIndex = 18;
@@ -405,6 +407,7 @@
             this.clientCB.Location = new System.Drawing.Point(5, 89);
             this.clientCB.Name = "clientCB";
             this.clientCB.Size = new System.Drawing.Size(229, 21);
+            this.clientCB.Sorted = true;
             this.clientCB.TabIndex = 16;
             // 
             // clientLabel
@@ -436,7 +439,7 @@
             // OKButton
             // 
             this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKButton.Location = new System.Drawing.Point(567, 291);
+            this.OKButton.Location = new System.Drawing.Point(618, 291);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(67, 23);
             this.OKButton.TabIndex = 11;
@@ -447,7 +450,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(640, 291);
+            this.cancelButton.Location = new System.Drawing.Point(691, 291);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(67, 23);
             this.cancelButton.TabIndex = 10;
@@ -458,7 +461,7 @@
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.Location = new System.Drawing.Point(730, 201);
+            this.deleteButton.Location = new System.Drawing.Point(781, 201);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(110, 23);
             this.deleteButton.TabIndex = 10;
@@ -466,51 +469,93 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // returnedChB
+            // mainSelected
             // 
-            this.returnedChB.AutoSize = true;
-            this.returnedChB.Location = new System.Drawing.Point(105, 19);
-            this.returnedChB.Name = "returnedChB";
-            this.returnedChB.Size = new System.Drawing.Size(142, 17);
-            this.returnedChB.TabIndex = 27;
-            this.returnedChB.Text = "Костюмы возвращены";
-            this.returnedChB.UseVisualStyleBackColor = true;
+            this.mainSelected.HeaderText = "";
+            this.mainSelected.Name = "mainSelected";
+            this.mainSelected.ReadOnly = true;
+            this.mainSelected.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.mainSelected.Width = 30;
             // 
-            // returnGB
+            // mainName
             // 
-            this.returnGB.Controls.Add(this.sheduleDTP);
-            this.returnGB.Controls.Add(this.returnedChB);
-            this.returnGB.Controls.Add(this.sheduleLabel);
-            this.returnGB.Controls.Add(this.actualDTP);
-            this.returnGB.Controls.Add(this.actualLabel);
-            this.returnGB.Location = new System.Drawing.Point(5, 124);
-            this.returnGB.Name = "returnGB";
-            this.returnGB.Size = new System.Drawing.Size(253, 83);
-            this.returnGB.TabIndex = 28;
-            this.returnGB.TabStop = false;
-            this.returnGB.Text = "Возврат";
+            this.mainName.DataPropertyName = "costume_name";
+            this.mainName.HeaderText = "Костюм";
+            this.mainName.Name = "mainName";
+            this.mainName.ReadOnly = true;
+            this.mainName.Width = 200;
             // 
-            // dataGridView1
+            // mainVendor
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(312, 45);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(365, 240);
-            this.dataGridView1.TabIndex = 29;
+            this.mainVendor.DataPropertyName = "vendor";
+            this.mainVendor.HeaderText = "Артикул";
+            this.mainVendor.Name = "mainVendor";
+            this.mainVendor.ReadOnly = true;
+            this.mainVendor.Width = 60;
+            // 
+            // mainSizeName
+            // 
+            this.mainSizeName.DataPropertyName = "size_name";
+            this.mainSizeName.HeaderText = "Размер";
+            this.mainSizeName.Name = "mainSizeName";
+            this.mainSizeName.ReadOnly = true;
+            this.mainSizeName.Width = 50;
+            // 
+            // mainClientName
+            // 
+            this.mainClientName.DataPropertyName = "client_name";
+            this.mainClientName.HeaderText = "Клиент";
+            this.mainClientName.Name = "mainClientName";
+            this.mainClientName.ReadOnly = true;
+            this.mainClientName.Width = 200;
+            // 
+            // mainClientTelephone
+            // 
+            this.mainClientTelephone.DataPropertyName = "client_telephone";
+            this.mainClientTelephone.HeaderText = "Телефон";
+            this.mainClientTelephone.Name = "mainClientTelephone";
+            this.mainClientTelephone.ReadOnly = true;
+            // 
+            // mainReturndateShedule
+            // 
+            this.mainReturndateShedule.DataPropertyName = "returndate_shedule";
+            this.mainReturndateShedule.HeaderText = "Дата возвр. план.";
+            this.mainReturndateShedule.Name = "mainReturndateShedule";
+            this.mainReturndateShedule.ReadOnly = true;
+            // 
+            // costumeVendor
+            // 
+            this.costumeVendor.HeaderText = "Артикул";
+            this.costumeVendor.Name = "costumeVendor";
+            this.costumeVendor.ReadOnly = true;
+            this.costumeVendor.Width = 60;
+            // 
+            // costumeName
+            // 
+            this.costumeName.HeaderText = "Название";
+            this.costumeName.Name = "costumeName";
+            this.costumeName.ReadOnly = true;
+            this.costumeName.Width = 180;
+            // 
+            // costumeSizeName
+            // 
+            this.costumeSizeName.HeaderText = "Размер";
+            this.costumeSizeName.Name = "costumeSizeName";
+            this.costumeSizeName.ReadOnly = true;
+            this.costumeSizeName.Width = 50;
+            // 
+            // costumePrice
+            // 
+            this.costumePrice.HeaderText = "Цена";
+            this.costumePrice.Name = "costumePrice";
+            this.costumePrice.ReadOnly = true;
+            this.costumePrice.Width = 50;
             // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 416);
+            this.ClientSize = new System.Drawing.Size(903, 416);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.takeButton);
@@ -521,9 +566,7 @@
             this.Controls.Add(this.mainMenuStrip);
             this.Controls.Add(this.orderGB);
             this.Controls.Add(this.mainDGV);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mainMenuStrip;
-            this.MaximizeBox = false;
             this.Name = "OrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Карнавальные костюмы - Заказы";
@@ -533,9 +576,9 @@
             this.mainMenuStrip.PerformLayout();
             this.orderGB.ResumeLayout(false);
             this.orderGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costumeDGV)).EndInit();
             this.returnGB.ResumeLayout(false);
             this.returnGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -563,12 +606,6 @@
         private System.Windows.Forms.ToolStripMenuItem счетаToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn mainSelected;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mainName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mainSizeName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mainClientName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mainClientTelephone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mainReturndateShedule;
         private System.Windows.Forms.Label actualLabel;
         private System.Windows.Forms.DateTimePicker actualDTP;
         private System.Windows.Forms.Label sheduleLabel;
@@ -584,7 +621,18 @@
         private System.Windows.Forms.Button clientButton;
         private System.Windows.Forms.GroupBox returnGB;
         private System.Windows.Forms.CheckBox returnedChB;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView costumeDGV;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn mainSelected;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainVendor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainSizeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainClientName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainClientTelephone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainReturndateShedule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn costumeVendor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn costumeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn costumeSizeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn costumePrice;
     }
 }
 

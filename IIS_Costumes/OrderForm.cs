@@ -32,6 +32,7 @@ namespace IIS_Costumes
                 searchTB.Enabled = mainDGV.Visible = issueButton.Enabled = takeButton.Enabled =
                     editButton.Enabled = deleteButton.Enabled = value == State.Table;
                 orderGB.Visible = value != State.Table;
+                costumeAddButton.Enabled = costumeRemoveButton.Enabled = value == State.Issue;
                 orderGB.Text = value == State.Issue ? "Выдача костюмов" : "Редактирование записи о выдаче";
             }
         }
@@ -43,6 +44,11 @@ namespace IIS_Costumes
         {
             string query = string.Format("CALL order_search('{0}')", search);
             DBConnector.FillDGV(mainDGV, query);
+            SetDgvBgColor();
+        }
+
+        private void SetDgvBgColor()
+        {
             foreach (DataGridViewRow row in mainDGV.Rows)
             {
                 DateTime dtShedule;
@@ -68,7 +74,17 @@ namespace IIS_Costumes
 
         private void SetGB(int id_order = -1)
         {
-
+            if (id_order == -1)
+            {
+                dateDTP.Value = DateTime.Now;
+                DBConnector.FillCB(clientCB, Properties.Resources.ClientQuery, "id_client", "name");
+                sheduleDTP.Value = DateTime.Now.AddDays(7);
+                returnedChB.Checked = true;
+                returnedChB.Checked = false;
+                actualDTP.Value = DateTime.Now;
+                costumeDGV.Rows.Clear();
+                return;
+            }
         }
         #endregion
         #region Main
@@ -93,6 +109,11 @@ namespace IIS_Costumes
             SetMainDGV(searchTB.Text);
         }
 
+        private void mainDGV_Sorted(object sender, EventArgs e)
+        {
+            SetDgvBgColor();
+        }
+
         private void mainDgv_SelectionChanged(object sender, EventArgs e)
         {
             CheckSelectedRows();
@@ -113,6 +134,7 @@ namespace IIS_Costumes
         private void issueButton_Click(object sender, EventArgs e)
         {
             CurState = State.Issue;
+            SetGB();
         }
 
         private void takeButton_Click(object sender, EventArgs e)
@@ -127,13 +149,49 @@ namespace IIS_Costumes
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            DataGridViewSelectedRowCollection rows = mainDGV.SelectedRows;
+            int n = rows.Count;
+            string text;
+            string caption;
+            if (n == 1)
+            {
+                text = string.Format("Вы уверены, что хотите удалить запись о выдаче костюма\n{0}?",
+                    DBConnector.GetRowCol(rows[0], "costume_name"));
+                caption = "Удаление записи о выдаче костюма";
+            }
+            else
+            {
+                Func<string> GetWordForm = () =>
+                {
+                    if (n % 100 >= 11 && n % 100 <= 19) return "записей";
+                    if (n % 10 == 1) return "запись";
+                    if (n % 10 >= 2 && n % 10 <= 4) return "записи";
+                    return "записей";
+                };
 
+                text = string.Format("Вы уверены, что хотите удалить {0} {1} о выдаче костюмов?",
+                    n, GetWordForm());
+                caption = "Удаление записей о выдаче костюма";
+            }
+            DialogResult answer = MessageBox.Show(text, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (answer == DialogResult.No) return;
+
+            var ids = from DataGridViewRow x in rows
+                      select DBConnector.GetRowCol(x, "id_order");
+            string query = string.Format("DELETE FROM `order` WHERE `id_order` IN ({0})", string.Join(", ", ids));
+            DBConnector.SetNoResultQuery(query);
+            SetMainDGV(searchTB.Text);
         }
         #endregion
         #region OrderGroupBox
         private void clientButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void returnedChB_CheckedChanged(object sender, EventArgs e)
+        {
+            actualDTP.Enabled = returnedChB.Checked;
         }
 
         private void costumeAddButton_Click(object sender, EventArgs e)
