@@ -24,7 +24,7 @@ namespace IIS_Costumes
 
         public static object GetRowCol(DataGridViewRow row, string columnName)
         {
-            try { return (row.DataBoundItem as DataRowView).Row[columnName].ToString(); }
+            try { return (row.DataBoundItem as DataRowView).Row[columnName]; }
             catch { return null; }
         }
 
