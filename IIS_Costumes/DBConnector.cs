@@ -24,29 +24,26 @@ namespace IIS_Costumes
 
         public static object GetRowCol(DataGridViewRow row, string columnName)
         {
-            return (row.DataBoundItem as DataRowView).Row[columnName].ToString();
+            try { return (row.DataBoundItem as DataRowView).Row[columnName]; }
+            catch { return null; }
         }
 
         public static bool SetNoResultQuery(string query)
         {
-            MySqlConnection conn = new MySqlConnection(connStr);
             try
             {
+                MySqlConnection conn = new MySqlConnection(connStr);
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandText = query;
                 conn.Open();
                 cmd.ExecuteNonQuery();
+                conn.Close();
                 return true;
             }
             catch (Exception ex)
             {
                 return false;
-            }
-            finally
-            {
-                if (conn != null || conn.State == ConnectionState.Open)
-                    conn.Close();
             }
         }
 
@@ -57,6 +54,7 @@ namespace IIS_Costumes
             {
                 MySqlConnection conn = new MySqlConnection(connStr);
                 MySqlDataAdapter da = new MySqlDataAdapter();
+                
                 da.SelectCommand = new MySqlCommand(query, conn);
                 MySqlCommandBuilder cb = new MySqlCommandBuilder(da);
                 conn.Open();
@@ -66,7 +64,6 @@ namespace IIS_Costumes
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
             }
             return result;
         }
@@ -83,7 +80,7 @@ namespace IIS_Costumes
         {
             DataSet ds = GetDBDataSet(query);
             if (ds.Tables.Count == 0) return;
-            dgv.DataSource = ds.Tables[0].DefaultView;
+            dgv.DataSource = ds.Tables[0];
         }
     }
 }

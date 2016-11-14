@@ -117,16 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClientQuery" xml:space="preserve">
-    <value>SELECT * FROM `client`</value>
-  </data>
-  <data name="ConnectionString" xml:space="preserve">
-    <value>server=127.0.0.1;port=3306;user id=root;password=;database=carnaval;characterset=utf8</value>
-  </data>
-  <data name="ConnectionStringRemote" xml:space="preserve">
-    <value>server=db4free.net;port=3306;user id=rakhimovse;password=rNRNQ4Wqsh3npef;database=carnaval;characterset=utf8</value>
-  </data>
-  <data name="VOrderQuery" xml:space="preserve">
-    <value>SELECT * FROM `v_order`</value>
-  </data>
+  <metadata name="mainName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="mainCostumeType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="mainPrice.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>
