@@ -29,9 +29,9 @@ namespace IIS_Costumes
             set
             {
                 curState = value;
+                orderGB.Visible = value != State.Table;
                 searchTB.Enabled = mainDGV.Visible = issueButton.Enabled = takeButton.Enabled =
                     editButton.Enabled = deleteButton.Enabled = value == State.Table;
-                orderGB.Visible = value != State.Table;
                 costumeAddButton.Enabled = costumeRemoveButton.Enabled = value == State.Issue;
                 orderGB.Text = value == State.Issue ? "Выдача костюмов" : "Редактирование записи о выдаче";
             }
@@ -44,25 +44,24 @@ namespace IIS_Costumes
         {
             string query = string.Format("CALL order_search('{0}')", search);
             DBConnector.FillDGV(mainDGV, query);
-            SetDgvBgColor();
+            SetDGVStyle();
         }
 
-        private void SetDgvBgColor()
+        private void SetDGVStyle()
         {
-            foreach (DataGridViewRow row in mainDGV.Rows)
+            for (int i = 0; i < mainDGV.Rows.Count; i++)
             {
+                mainDGV.Rows[i].HeaderCell.Value = (i + 1).ToString();
                 DateTime dtShedule;
-                dtShedule = (DateTime)DBConnector.GetRowCol(row, "returndate_shedule");
-                object objActual = DBConnector.GetRowCol(row, "returndate_actual");
+                dtShedule = (DateTime)DBConnector.GetRowCol(mainDGV.Rows[i], "returndate_shedule");
+                object objActual = DBConnector.GetRowCol(mainDGV.Rows[i], "returndate_actual");
                 if (objActual.GetType() == typeof(DBNull))
                 {
                     if (dtShedule < DateTime.Now)
-                        row.DefaultCellStyle.BackColor = Color.Red;
+                        mainDGV.Rows[i].DefaultCellStyle.BackColor = Color.Red;
                 }
                 else
-                {
-                    row.DefaultCellStyle.BackColor = Color.LightGray;
-                }
+                    mainDGV.Rows[i].DefaultCellStyle.BackColor = Color.LightGray;
             }
         }
 
@@ -72,9 +71,17 @@ namespace IIS_Costumes
                 row.Cells["mainSelected"].Value = row.Selected;
         }
 
-        private void SetGB(int id_order = -1)
+        private void PerformEdit()
         {
-            if (id_order == -1)
+            IEnumerable<DataGridViewRow> filter = from DataGridViewRow x in mainDGV.SelectedRows
+                                                  select x;
+            CurState = State.Edit;
+            SetGB(filter.ToList());
+        }
+
+        private void SetGB(List<DataGridViewRow> rows = null)
+        {
+            if (rows == null)
             {
                 dateDTP.Value = DateTime.Now;
                 DBConnector.FillCB(clientCB, Properties.Resources.ClientQuery, "id_client", "name");
@@ -85,6 +92,7 @@ namespace IIS_Costumes
                 costumeDGV.Rows.Clear();
                 return;
             }
+
         }
         #endregion
         #region Main
@@ -111,16 +119,21 @@ namespace IIS_Costumes
 
         private void mainDGV_Sorted(object sender, EventArgs e)
         {
-            SetDgvBgColor();
+            SetDGVStyle();
         }
 
         private void mainDgv_SelectionChanged(object sender, EventArgs e)
         {
             CheckSelectedRows();
         }
+
+        private void mainDGV_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            PerformEdit();
+        }
         #endregion
         #region Menu
-        private void клиентыToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             clientForm = (ClientForm)Controller.ShowForm(clientForm);
         }
@@ -144,7 +157,7 @@ namespace IIS_Costumes
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            CurState = State.Edit;
+            PerformEdit();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -216,5 +229,20 @@ namespace IIS_Costumes
             CurState = State.Table;
         }
         #endregion
+
+        private void журналЗаказовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void счетаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void типыКостюмовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
