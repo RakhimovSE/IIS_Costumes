@@ -186,7 +186,8 @@ namespace IIS_Costumes
         #region OrderGroupBox
         private void clientButton_Click(object sender, EventArgs e)
         {
-
+            ClientForm client = new ClientForm("r");
+            client.Show();
         }
 
         private void returnedChB_CheckedChanged(object sender, EventArgs e)

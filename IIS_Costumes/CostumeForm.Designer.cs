@@ -30,6 +30,9 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.mainDGV = new System.Windows.Forms.DataGridView();
+            this.mainName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainCostumeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
@@ -38,9 +41,6 @@
             this.mainGB = new System.Windows.Forms.GroupBox();
             this.OKButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.mainName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainCostumeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).BeginInit();
             this.mainGB.SuspendLayout();
             this.SuspendLayout();
@@ -49,9 +49,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(16, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.Size = new System.Drawing.Size(75, 17);
             this.label1.TabIndex = 20;
             this.label1.Text = "Костюмы";
             // 
@@ -66,95 +67,12 @@
             this.mainName,
             this.mainCostumeType,
             this.mainPrice});
-            this.mainDGV.Location = new System.Drawing.Point(12, 69);
+            this.mainDGV.Location = new System.Drawing.Point(16, 85);
+            this.mainDGV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mainDGV.Name = "mainDGV";
             this.mainDGV.ReadOnly = true;
-            this.mainDGV.Size = new System.Drawing.Size(501, 323);
+            this.mainDGV.Size = new System.Drawing.Size(668, 398);
             this.mainDGV.TabIndex = 27;
-            // 
-            // delButton
-            // 
-            this.delButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.delButton.Location = new System.Drawing.Point(519, 156);
-            this.delButton.Name = "delButton";
-            this.delButton.Size = new System.Drawing.Size(94, 23);
-            this.delButton.TabIndex = 25;
-            this.delButton.Text = "Удалить";
-            this.delButton.UseVisualStyleBackColor = true;
-            // 
-            // editButton
-            // 
-            this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(519, 97);
-            this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(94, 23);
-            this.editButton.TabIndex = 24;
-            this.editButton.Text = "Редактировать";
-            this.editButton.UseVisualStyleBackColor = true;
-            // 
-            // addButton
-            // 
-            this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.Location = new System.Drawing.Point(519, 69);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(94, 23);
-            this.addButton.TabIndex = 23;
-            this.addButton.Text = "Добавить";
-            this.addButton.UseVisualStyleBackColor = true;
-            // 
-            // searchTB
-            // 
-            this.searchTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchTB.Location = new System.Drawing.Point(12, 43);
-            this.searchTB.Name = "searchTB";
-            this.searchTB.Size = new System.Drawing.Size(501, 20);
-            this.searchTB.TabIndex = 22;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Поиск";
-            // 
-            // mainGB
-            // 
-            this.mainGB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainGB.Controls.Add(this.OKButton);
-            this.mainGB.Controls.Add(this.cancelButton);
-            this.mainGB.Location = new System.Drawing.Point(12, 69);
-            this.mainGB.Margin = new System.Windows.Forms.Padding(2);
-            this.mainGB.Name = "mainGB";
-            this.mainGB.Padding = new System.Windows.Forms.Padding(2);
-            this.mainGB.Size = new System.Drawing.Size(501, 323);
-            this.mainGB.TabIndex = 26;
-            this.mainGB.TabStop = false;
-            this.mainGB.Text = "Карточка";
-            // 
-            // OKButton
-            // 
-            this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKButton.Location = new System.Drawing.Point(356, 294);
-            this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(67, 23);
-            this.OKButton.TabIndex = 11;
-            this.OKButton.Text = "OK";
-            this.OKButton.UseVisualStyleBackColor = true;
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(429, 294);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(67, 23);
-            this.cancelButton.TabIndex = 10;
-            this.cancelButton.Text = "Отмена";
-            this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // mainName
             // 
@@ -180,11 +98,104 @@
             this.mainPrice.ReadOnly = true;
             this.mainPrice.Width = 50;
             // 
+            // delButton
+            // 
+            this.delButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.delButton.Location = new System.Drawing.Point(692, 192);
+            this.delButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.delButton.Name = "delButton";
+            this.delButton.Size = new System.Drawing.Size(125, 28);
+            this.delButton.TabIndex = 25;
+            this.delButton.Text = "Удалить";
+            this.delButton.UseVisualStyleBackColor = true;
+            this.delButton.Click += new System.EventHandler(this.delButton_Click);
+            // 
+            // editButton
+            // 
+            this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.editButton.Location = new System.Drawing.Point(692, 119);
+            this.editButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(125, 28);
+            this.editButton.TabIndex = 24;
+            this.editButton.Text = "Редактировать";
+            this.editButton.UseVisualStyleBackColor = true;
+            // 
+            // addButton
+            // 
+            this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addButton.Location = new System.Drawing.Point(692, 85);
+            this.addButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(125, 28);
+            this.addButton.TabIndex = 23;
+            this.addButton.Text = "Добавить";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // searchTB
+            // 
+            this.searchTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchTB.Location = new System.Drawing.Point(16, 53);
+            this.searchTB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchTB.Name = "searchTB";
+            this.searchTB.Size = new System.Drawing.Size(667, 22);
+            this.searchTB.TabIndex = 22;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 32);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 17);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Поиск";
+            // 
+            // mainGB
+            // 
+            this.mainGB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainGB.Controls.Add(this.OKButton);
+            this.mainGB.Controls.Add(this.cancelButton);
+            this.mainGB.Location = new System.Drawing.Point(16, 85);
+            this.mainGB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mainGB.Name = "mainGB";
+            this.mainGB.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mainGB.Size = new System.Drawing.Size(668, 398);
+            this.mainGB.TabIndex = 26;
+            this.mainGB.TabStop = false;
+            this.mainGB.Text = "Карточка";
+            // 
+            // OKButton
+            // 
+            this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OKButton.Location = new System.Drawing.Point(475, 362);
+            this.OKButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OKButton.Name = "OKButton";
+            this.OKButton.Size = new System.Drawing.Size(89, 28);
+            this.OKButton.TabIndex = 11;
+            this.OKButton.Text = "OK";
+            this.OKButton.UseVisualStyleBackColor = true;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.Location = new System.Drawing.Point(572, 362);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(89, 28);
+            this.cancelButton.TabIndex = 10;
+            this.cancelButton.Text = "Отмена";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            // 
             // CostumeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(625, 433);
+            this.ClientSize = new System.Drawing.Size(833, 533);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.delButton);
             this.Controls.Add(this.editButton);
@@ -193,6 +204,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.mainDGV);
             this.Controls.Add(this.mainGB);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CostumeForm";
             this.Text = "Карнавальные костюмы - Костюмы";
             this.Load += new System.EventHandler(this.CostumeForm_Load);
