@@ -17,11 +17,15 @@ namespace IIS_Costumes
             InitializeComponent();
         }
         string stat;
-        public ClientForm(string cmd)
+        public ClientForm(Form form = null)
         {
             InitializeComponent();
-            stat = "r";
+            if (form.GetType() == typeof(OrderForm))
+                orderForm = (OrderForm)form;
         }
+
+        OrderForm orderForm;
+
         void show(string str)
         {
             passDateDTP.ResetText();
@@ -147,11 +151,10 @@ namespace IIS_Costumes
 
         private void mainDGV_DoubleClick(object sender, EventArgs e)
         {
-            if (stat == "r")
+            if (orderForm != null)
             {
-              
-                OrderForm or = new OrderForm();
-                or.clientCB.SelectedValue = Convert.ToInt32(DBConnector.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_client"));
+                int client_id = (int)DBConnector.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_client");
+                orderForm.clientCB.SelectedValue = client_id;
                 this.Close();
             }
         }

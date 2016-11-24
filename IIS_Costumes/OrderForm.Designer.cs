@@ -508,7 +508,6 @@
             this.clientCB.Location = new System.Drawing.Point(5, 89);
             this.clientCB.Name = "clientCB";
             this.clientCB.Size = new System.Drawing.Size(229, 21);
-            this.clientCB.Sorted = true;
             this.clientCB.TabIndex = 16;
             // 
             // clientLabel
@@ -630,7 +629,6 @@
         private System.Windows.Forms.Label sheduleLabel;
         private System.Windows.Forms.DateTimePicker sheduleDTP;
         private System.Windows.Forms.Label costumeLabel;
-        private System.Windows.Forms.ComboBox clientCB;
         private System.Windows.Forms.Label clientLabel;
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.DateTimePicker dateDTP;
@@ -654,6 +652,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn costumePrice;
         private System.Windows.Forms.ToolStripMenuItem журналЗаказовToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        public System.Windows.Forms.ComboBox clientCB;
     }
 }
 

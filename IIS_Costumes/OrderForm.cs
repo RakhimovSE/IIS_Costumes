@@ -199,7 +199,7 @@ namespace IIS_Costumes
         #region OrderGroupBox
         private void clientButton_Click(object sender, EventArgs e)
         {
-            ClientForm client = new ClientForm("r");
+            ClientForm client = new ClientForm(this);
             client.Show();
         }
 

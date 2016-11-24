@@ -72,8 +72,8 @@ namespace IIS_Costumes
         {
             DataSet ds = GetDBDataSet(query);
             cb.DataSource = ds.Tables[0];
-            cb.ValueMember = valueMember;
             cb.DisplayMember = displayMember;
+            cb.ValueMember = valueMember;
         }
 
         public static void FillDGV(DataGridView dgv, string query)

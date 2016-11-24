@@ -61,7 +61,7 @@ namespace IIS_Costumes.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на SELECT * FROM `client`.
+        ///   Ищет локализованную строку, похожую на SELECT * FROM `v_client`.
         /// </summary>
         internal static string ClientQuery {
             get {
