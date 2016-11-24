@@ -16,6 +16,12 @@ namespace IIS_Costumes
         {
             InitializeComponent();
         }
+        string stat;
+        public ClientForm(string cmd)
+        {
+            InitializeComponent();
+            stat = "r";
+        }
         void show(string str)
         {
             passDateDTP.ResetText();
@@ -42,7 +48,7 @@ namespace IIS_Costumes
             cancelButton.Enabled = false;
             searchTB.Enabled = true;
             mainDGV.Enabled = true;
-            
+
         }
         void resetGB()
         {
@@ -53,16 +59,24 @@ namespace IIS_Costumes
             passDepartRTB.ResetText();
             passNumTB.ResetText();
         }
+        void focusOnRowDGV()
+        {
+            mainDGV.Rows[mainDGV.RowCount - 1].Selected = true;
+        }
         private void addButton_Click(object sender, EventArgs e)
         {
             show("add");
         }
-
+        void refreshData()
+        {
+            mainDGV.AutoGenerateColumns = false;
+            DBConnector.FillDGV(mainDGV, "SELECT * FROM `client`");
+        }
         private void editButton_Click(object sender, EventArgs e)
         {
             show("edit");
         }
-        
+
         private void cancelButton_Click(object sender, EventArgs e)
         {
             resetGB();
@@ -82,7 +96,7 @@ namespace IIS_Costumes
                 if (adressTB.Text.Trim(' ') != "")
                     adress = "'" + adressTB.Text + "'";
                 if (passDateDTP.Value != null)
-                    datePass = "'" + DBConnector.DtToMysql(passDateDTP.Value,true,false) + "'";
+                    datePass = "'" + DBConnector.DtToMysql(passDateDTP.Value, true, false) + "'";
                 if (passNumTB.Text.Trim(' ') != "")
                     numPass = "'" + passNumTB.Text + "'";
                 if (passDepartRTB.Text.Trim(' ') != "")
@@ -102,12 +116,14 @@ namespace IIS_Costumes
                                  {2},
                                  {3},
                                  {4},
-                                 {5});",fio,phone,adress,numPass,datePass,departPass);
+                                 {5});", fio, phone, adress, numPass, datePass, departPass);
                 bool res = DBConnector.SetNoResultQuery(query);
                 if (res == true)
                 {
                     hide();
-                    //mainDgv.Rows.Count;
+                    //  mainDGV.Rows.Add(fio, phone);
+                    //focusOnRowDGV();
+                    refreshData();
                 }
                 else
                 {
@@ -120,9 +136,65 @@ namespace IIS_Costumes
 
         private void ClientForm_Load(object sender, EventArgs e)
         {
-            mainDGV.AutoGenerateColumns = false;
-            DBConnector.FillDGV(mainDGV, "SELECT * FROM `client`");
+            refreshData();
             hide();
+        }
+
+        private void mainDGV_SelectionChanged(object sender, EventArgs e)
+        {
+            mainDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void mainDGV_DoubleClick(object sender, EventArgs e)
+        {
+            if (stat == "r")
+            {
+              
+                OrderForm or = new OrderForm();
+                or.clientCB.SelectedValue = Convert.ToInt32(DBConnector.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_client"));
+                this.Close();
+            }
+        }
+
+        private void delButton_Click(object sender, EventArgs e)
+        {
+
+
+
+            DataGridViewSelectedRowCollection rows = mainDGV.SelectedRows;
+            int n = rows.Count;
+            string text;
+            string caption;
+            if (n == 1)
+            {
+                if (MessageBox.Show(String.Format("Вы уверены, что хотите удалить запись о клиенте\n{0}?",
+                                    mainDGV[0, mainDGV.CurrentRow.Index].Value.ToString()), "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.OK)
+                {
+                    string query = String.Format(@"
+                                        DELETE FROM `carnaval`.`client`
+                                        WHERE id_client={0};", DBConnector.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_client"));
+                    DBConnector.SetNoResultQuery(query);
+                }
+                mainDGV.Refresh();
+            }
+            else
+            {
+                Func<string> GetWordForm = () =>
+                {
+                    if (n % 100 >= 11 && n % 100 <= 19) return "записей";
+                    if (n % 10 == 1) return "запись";
+                    if (n % 10 >= 2 && n % 10 <= 4) return "записи";
+                    return "записей";
+                };
+
+                text = string.Format("Вы уверены, что хотите удалить {0} {1} о выдаче костюмов?",
+                    n, GetWordForm());
+                caption = "Удаление записей о выдаче костюма";
+                string query = String.Format(@"
+                                        DELETE FROM `carnaval`.`client`
+                                        WHERE id_client={0};", DBConnector.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_client"));
+                DBConnector.SetNoResultQuery(query);
+            }
         }
     }
 }

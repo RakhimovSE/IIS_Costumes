@@ -22,5 +22,15 @@ namespace IIS_Costumes
             mainDGV.AutoGenerateColumns = false;
             DBConnector.FillDGV(mainDGV, "SELECT * FROM `costume`");
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void delButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
