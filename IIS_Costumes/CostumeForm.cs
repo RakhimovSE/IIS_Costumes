@@ -12,6 +12,13 @@ namespace IIS_Costumes
 {
     public partial class CostumeForm: Form
     {
+
+        private void SetMainDGV(string search = "")
+        {
+            string query = string.Format("CALL costume_search('{0}')", search);
+            DBConnector.FillDGV(mainDGV, query);
+        }
+
         public CostumeForm()
         {
             InitializeComponent();
@@ -20,7 +27,7 @@ namespace IIS_Costumes
         private void CostumeForm_Load(object sender, EventArgs e)
         {
             mainDGV.AutoGenerateColumns = false;
-            DBConnector.FillDGV(mainDGV, "SELECT * FROM `costume`");
+            SetMainDGV("");
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -31,6 +38,11 @@ namespace IIS_Costumes
         private void delButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void searchTB_TextChanged(object sender, EventArgs e)
+        {
+            SetMainDGV(searchTB.Text);
         }
     }
 }
