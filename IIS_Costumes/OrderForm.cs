@@ -8,9 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using MySql.Data.MySqlClient;
-
-
 namespace IIS_Costumes
 {
     public partial class OrderForm : Form
