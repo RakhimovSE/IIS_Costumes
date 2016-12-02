@@ -28,12 +28,13 @@ namespace IIS_Costumes
 
         void show(string str)
         {
+            mainDGV.Visible = false;
             passDateDTP.ResetText();
             mainGB.Visible = true;
             OKButton.Enabled = true;
             cancelButton.Enabled = true;
             searchTB.Enabled = false;
-            mainDGV.Enabled = true;
+            mainDGV.Enabled = false;
             addButton.Enabled = false;
             editButton.Enabled = false;
             delButton.Enabled = false;
@@ -44,6 +45,7 @@ namespace IIS_Costumes
         }
         void hide()
         {
+            mainDGV.Visible = true;
             addButton.Enabled = true;
             editButton.Enabled = true;
             delButton.Enabled = true;
@@ -53,6 +55,11 @@ namespace IIS_Costumes
             searchTB.Enabled = true;
             mainDGV.Enabled = true;
 
+        }
+        private void SetMainDGV(string search = "")
+        {
+            string query = string.Format("CALL client_search('{0}')", search);
+            DBConnector.FillDGV(mainDGV, query);
         }
         void resetGB()
         {
@@ -178,7 +185,7 @@ namespace IIS_Costumes
                                         WHERE id_client={0};", DBConnector.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_client"));
                     DBConnector.SetNoResultQuery(query);
                 }
-                mainDGV.Refresh();
+                refreshData();
             }
             else
             {
@@ -189,15 +196,21 @@ namespace IIS_Costumes
                     if (n % 10 >= 2 && n % 10 <= 4) return "записи";
                     return "записей";
                 };
-
-                text = string.Format("Вы уверены, что хотите удалить {0} {1} о выдаче костюмов?",
-                    n, GetWordForm());
-                caption = "Удаление записей о выдаче костюма";
-                string query = String.Format(@"
-                                        DELETE FROM `carnaval`.`client`
-                                        WHERE id_client={0};", DBConnector.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_client"));
-                DBConnector.SetNoResultQuery(query);
+                if (MessageBox.Show(String.Format("Вы уверены, что хотите удалить {0} {1} о клиентах?",
+                                                   n, GetWordForm()), "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.OK)
+                {
+                    var ids = from DataGridViewRow x in rows
+                              select DBConnector.GetRowCol(x, "id_client");
+                    string query = string.Format("DELETE FROM `client` WHERE `id_client` IN ({0})", string.Join(", ", ids));
+                    DBConnector.SetNoResultQuery(query);
+                    refreshData();
+                }
             }
+        }
+
+        private void searchTB_TextChanged(object sender, EventArgs e)
+        {
+            SetMainDGV(searchTB.Text);
         }
     }
 }
