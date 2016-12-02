@@ -32,5 +32,10 @@ namespace IIS_Costumes
         {
 
         }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
