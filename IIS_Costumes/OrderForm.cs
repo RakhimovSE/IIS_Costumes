@@ -27,16 +27,31 @@ namespace IIS_Costumes
             set
             {
                 curState = value;
+                if (value == State.Issue || value == State.Edit) costumeDT = null;
                 orderGB.Visible = value != State.Table;
                 searchTB.Enabled = mainDGV.Visible = issueButton.Enabled = takeButton.Enabled =
                     editButton.Enabled = deleteButton.Enabled = value == State.Table;
                 costumeAddButton.Enabled = costumeRemoveButton.Enabled = value == State.Issue;
                 orderGB.Text = value == State.Issue ? "Выдача костюмов" : "Редактирование записи о выдаче";
+                CancelButton = value == State.Edit || value == State.Issue ? cancelButton : null;
             }
         }
 
         ClientForm clientForm;
         CostumeForm costumeForm;
+        DataTable costumeDT;
+        int total;
+
+        int Total
+        {
+            get { return total; }
+            set
+            {
+                total = value;
+                totalLabel.Text = string.Format("Итого: {0} руб.", total);
+            }
+        }
+
         #region Methods
         private void SetMainDGV(string search = "")
         {
@@ -79,18 +94,44 @@ namespace IIS_Costumes
 
         private void SetGB(List<DataGridViewRow> rows = null)
         {
-            if (rows == null)
+            SetCostumeDT();
+            Total = 0;
+            if (rows == null || rows.Count == 0)
             {
                 dateDTP.Value = DateTime.Now;
-                DBConnector.FillCB(clientCB, Properties.Resources.ClientQuery, "id_client", "name");
-                sheduleDTP.Value = DateTime.Now.AddDays(7);
-                returnedChB.Checked = true;
-                returnedChB.Checked = false;
-                actualDTP.Value = DateTime.Now;
-                costumeDGV.Rows.Clear();
+                costumeDGV.DataSource = costumeDT;
                 return;
             }
+            foreach (DataGridViewRow row in rows)
+            {
+                int costume_size_id = (int)DBConnector.GetRowCol(row, "costume_size_id");
+                string costume_name = DBConnector.GetRowCol(row, "costume_name").ToString();
+                string vendor = DBConnector.GetRowCol(row, "vendor").ToString();
+                string size_name = DBConnector.GetRowCol(row, "size_name").ToString();
+                int price = Convert.ToInt32(DBConnector.GetRowCol(row, "price"));
+                int costume_daily_price = (int)DBConnector.GetRowCol(row, "costume_daily_price");
+                DateTime returndate_shedule = (DateTime)DBConnector.GetRowCol(row, "returndate_shedule");
+                string note = DBConnector.GetRowCol(row, "note").ToString();
+                costumeDT.Rows.Add(costume_size_id, costume_name, vendor,
+                    size_name, price, costume_daily_price, returndate_shedule, note);
 
+                Total += price;
+            }
+            costumeDGV.DataSource = costumeDT;
+            clientCB.SelectedValue = DBConnector.GetRowCol(rows[0], "client_id");
+        }
+
+        private void SetCostumeDT()
+        {
+            costumeDT = new DataTable();
+            costumeDT.Columns.Add("costume_size_id", typeof(int));
+            costumeDT.Columns.Add("costume_name", typeof(string));
+            costumeDT.Columns.Add("vendor", typeof(string));
+            costumeDT.Columns.Add("size_name", typeof(string));
+            costumeDT.Columns.Add("price", typeof(int));
+            costumeDT.Columns.Add("costume_daily_price", typeof(int));
+            costumeDT.Columns.Add("returndate_shedule", typeof(DateTime));
+            costumeDT.Columns.Add("note", typeof(string));
         }
         #endregion
         #region Main
@@ -106,8 +147,11 @@ namespace IIS_Costumes
 
             mainDGV.AutoGenerateColumns = false;
             SetMainDGV();
-
             CurState = State.Table;
+
+            costumeDGV.AutoGenerateColumns = false;
+            employeeTB.Text = Program.employee_name;
+            DBConnector.FillCB(clientCB, Properties.Resources.ClientQuery, "id_client", "name");
         }
 
         private void searchTB_TextChanged(object sender, EventArgs e)
@@ -139,6 +183,21 @@ namespace IIS_Costumes
         private void костюмыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             costumeForm = (CostumeForm)Controller.ShowForm(costumeForm);
+        }
+
+        private void журналЗаказовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void счетаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void типыКостюмовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion
         #region Tools
@@ -201,14 +260,9 @@ namespace IIS_Costumes
             client.Show();
         }
 
-        private void returnedChB_CheckedChanged(object sender, EventArgs e)
-        {
-            actualDTP.Enabled = returnedChB.Checked;
-        }
-
         private void costumeAddButton_Click(object sender, EventArgs e)
         {
-
+            // Перейти на форму "Костюмы" в режим MultiSelectionTable
         }
 
         private void costumeRemoveButton_Click(object sender, EventArgs e)
@@ -229,19 +283,9 @@ namespace IIS_Costumes
         }
         #endregion
 
-        private void журналЗаказовToolStripMenuItem_Click(object sender, EventArgs e)
+        private void costumeDGV_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-
-        }
-
-        private void счетаToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void типыКостюмовToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            // Перейти в форму "Костюмы" в режим SingleSelectionParameters
         }
     }
 }

@@ -54,17 +54,9 @@
             this.костюмыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.типыКостюмовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderGB = new System.Windows.Forms.GroupBox();
+            this.employeeLabel = new System.Windows.Forms.Label();
+            this.employeeTB = new System.Windows.Forms.TextBox();
             this.costumeDGV = new System.Windows.Forms.DataGridView();
-            this.costumeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumeVendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumeSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.returnGB = new System.Windows.Forms.GroupBox();
-            this.sheduleDTP = new System.Windows.Forms.DateTimePicker();
-            this.returnedChB = new System.Windows.Forms.CheckBox();
-            this.sheduleLabel = new System.Windows.Forms.Label();
-            this.actualDTP = new System.Windows.Forms.DateTimePicker();
-            this.actualLabel = new System.Windows.Forms.Label();
             this.costumeRemoveButton = new System.Windows.Forms.Button();
             this.costumeAddButton = new System.Windows.Forms.Button();
             this.totalLabel = new System.Windows.Forms.Label();
@@ -77,11 +69,17 @@
             this.OKButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.costumeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeVendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeDailyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).BeginInit();
             this.mainMenuStrip.SuspendLayout();
             this.orderGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.costumeDGV)).BeginInit();
-            this.returnGB.SuspendLayout();
             this.SuspendLayout();
             // 
             // headerLabel
@@ -159,7 +157,7 @@
             // 
             // mainVendor
             // 
-            this.mainVendor.DataPropertyName = "vendor";
+            this.mainVendor.DataPropertyName = "costume_vendor";
             this.mainVendor.HeaderText = "Артикул";
             this.mainVendor.Name = "mainVendor";
             this.mainVendor.ReadOnly = true;
@@ -318,8 +316,9 @@
             this.orderGB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.orderGB.Controls.Add(this.employeeLabel);
+            this.orderGB.Controls.Add(this.employeeTB);
             this.orderGB.Controls.Add(this.costumeDGV);
-            this.orderGB.Controls.Add(this.returnGB);
             this.orderGB.Controls.Add(this.costumeRemoveButton);
             this.orderGB.Controls.Add(this.costumeAddButton);
             this.orderGB.Controls.Add(this.totalLabel);
@@ -340,6 +339,23 @@
             this.orderGB.TabStop = false;
             this.orderGB.Text = "orderGB";
             // 
+            // employeeLabel
+            // 
+            this.employeeLabel.AutoSize = true;
+            this.employeeLabel.Location = new System.Drawing.Point(192, 15);
+            this.employeeLabel.Name = "employeeLabel";
+            this.employeeLabel.Size = new System.Drawing.Size(56, 13);
+            this.employeeLabel.TabIndex = 31;
+            this.employeeLabel.Text = "Оператор";
+            // 
+            // employeeTB
+            // 
+            this.employeeTB.Location = new System.Drawing.Point(192, 31);
+            this.employeeTB.Name = "employeeTB";
+            this.employeeTB.ReadOnly = true;
+            this.employeeTB.Size = new System.Drawing.Size(229, 20);
+            this.employeeTB.TabIndex = 30;
+            // 
             // costumeDGV
             // 
             this.costumeDGV.AllowUserToAddRows = false;
@@ -351,107 +367,24 @@
             this.costumeName,
             this.costumeVendor,
             this.costumeSizeName,
-            this.costumePrice});
-            this.costumeDGV.Location = new System.Drawing.Point(429, 45);
+            this.costumePrice,
+            this.costumeDailyPrice,
+            this.costumeShedule,
+            this.costumeNote});
+            this.costumeDGV.Location = new System.Drawing.Point(8, 74);
             this.costumeDGV.Name = "costumeDGV";
             this.costumeDGV.ReadOnly = true;
             this.costumeDGV.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.costumeDGV.RowHeadersVisible = false;
             this.costumeDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.costumeDGV.Size = new System.Drawing.Size(365, 240);
+            this.costumeDGV.Size = new System.Drawing.Size(786, 211);
             this.costumeDGV.TabIndex = 29;
-            // 
-            // costumeName
-            // 
-            this.costumeName.HeaderText = "Название";
-            this.costumeName.Name = "costumeName";
-            this.costumeName.ReadOnly = true;
-            this.costumeName.Width = 180;
-            // 
-            // costumeVendor
-            // 
-            this.costumeVendor.HeaderText = "Артикул";
-            this.costumeVendor.Name = "costumeVendor";
-            this.costumeVendor.ReadOnly = true;
-            this.costumeVendor.Width = 60;
-            // 
-            // costumeSizeName
-            // 
-            this.costumeSizeName.HeaderText = "Размер";
-            this.costumeSizeName.Name = "costumeSizeName";
-            this.costumeSizeName.ReadOnly = true;
-            this.costumeSizeName.Width = 50;
-            // 
-            // costumePrice
-            // 
-            this.costumePrice.HeaderText = "Цена";
-            this.costumePrice.Name = "costumePrice";
-            this.costumePrice.ReadOnly = true;
-            this.costumePrice.Width = 50;
-            // 
-            // returnGB
-            // 
-            this.returnGB.Controls.Add(this.sheduleDTP);
-            this.returnGB.Controls.Add(this.returnedChB);
-            this.returnGB.Controls.Add(this.sheduleLabel);
-            this.returnGB.Controls.Add(this.actualDTP);
-            this.returnGB.Controls.Add(this.actualLabel);
-            this.returnGB.Location = new System.Drawing.Point(5, 124);
-            this.returnGB.Name = "returnGB";
-            this.returnGB.Size = new System.Drawing.Size(253, 83);
-            this.returnGB.TabIndex = 28;
-            this.returnGB.TabStop = false;
-            this.returnGB.Text = "Возврат";
-            // 
-            // sheduleDTP
-            // 
-            this.sheduleDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.sheduleDTP.Location = new System.Drawing.Point(6, 55);
-            this.sheduleDTP.Name = "sheduleDTP";
-            this.sheduleDTP.Size = new System.Drawing.Size(80, 20);
-            this.sheduleDTP.TabIndex = 19;
-            // 
-            // returnedChB
-            // 
-            this.returnedChB.AutoSize = true;
-            this.returnedChB.Location = new System.Drawing.Point(105, 19);
-            this.returnedChB.Name = "returnedChB";
-            this.returnedChB.Size = new System.Drawing.Size(142, 17);
-            this.returnedChB.TabIndex = 27;
-            this.returnedChB.Text = "Костюмы возвращены";
-            this.returnedChB.UseVisualStyleBackColor = true;
-            this.returnedChB.CheckedChanged += new System.EventHandler(this.returnedChB_CheckedChanged);
-            // 
-            // sheduleLabel
-            // 
-            this.sheduleLabel.AutoSize = true;
-            this.sheduleLabel.Location = new System.Drawing.Point(6, 39);
-            this.sheduleLabel.Name = "sheduleLabel";
-            this.sheduleLabel.Size = new System.Drawing.Size(83, 13);
-            this.sheduleLabel.TabIndex = 20;
-            this.sheduleLabel.Text = "Плановая дата";
-            // 
-            // actualDTP
-            // 
-            this.actualDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.actualDTP.Location = new System.Drawing.Point(105, 55);
-            this.actualDTP.Name = "actualDTP";
-            this.actualDTP.Size = new System.Drawing.Size(80, 20);
-            this.actualDTP.TabIndex = 21;
-            // 
-            // actualLabel
-            // 
-            this.actualLabel.AutoSize = true;
-            this.actualLabel.Location = new System.Drawing.Point(105, 39);
-            this.actualLabel.Name = "actualLabel";
-            this.actualLabel.Size = new System.Drawing.Size(102, 13);
-            this.actualLabel.TabIndex = 22;
-            this.actualLabel.Text = "Фактическая дата";
+            this.costumeDGV.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.costumeDGV_CellMouseDoubleClick);
             // 
             // costumeRemoveButton
             // 
             this.costumeRemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.costumeRemoveButton.Location = new System.Drawing.Point(800, 74);
+            this.costumeRemoveButton.Location = new System.Drawing.Point(800, 103);
             this.costumeRemoveButton.Name = "costumeRemoveButton";
             this.costumeRemoveButton.Size = new System.Drawing.Size(24, 23);
             this.costumeRemoveButton.TabIndex = 26;
@@ -462,7 +395,7 @@
             // costumeAddButton
             // 
             this.costumeAddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.costumeAddButton.Location = new System.Drawing.Point(800, 45);
+            this.costumeAddButton.Location = new System.Drawing.Point(800, 74);
             this.costumeAddButton.Name = "costumeAddButton";
             this.costumeAddButton.Size = new System.Drawing.Size(24, 23);
             this.costumeAddButton.TabIndex = 24;
@@ -475,7 +408,7 @@
             this.totalLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.totalLabel.AutoSize = true;
             this.totalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.totalLabel.Location = new System.Drawing.Point(426, 296);
+            this.totalLabel.Location = new System.Drawing.Point(8, 296);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(85, 13);
             this.totalLabel.TabIndex = 11;
@@ -483,7 +416,7 @@
             // 
             // clientButton
             // 
-            this.clientButton.Location = new System.Drawing.Point(234, 88);
+            this.clientButton.Location = new System.Drawing.Point(770, 30);
             this.clientButton.Name = "clientButton";
             this.clientButton.Size = new System.Drawing.Size(24, 23);
             this.clientButton.TabIndex = 23;
@@ -495,7 +428,7 @@
             // 
             this.costumeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.costumeLabel.AutoSize = true;
-            this.costumeLabel.Location = new System.Drawing.Point(426, 29);
+            this.costumeLabel.Location = new System.Drawing.Point(8, 58);
             this.costumeLabel.Name = "costumeLabel";
             this.costumeLabel.Size = new System.Drawing.Size(55, 13);
             this.costumeLabel.TabIndex = 18;
@@ -505,7 +438,7 @@
             // 
             this.clientCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.clientCB.FormattingEnabled = true;
-            this.clientCB.Location = new System.Drawing.Point(5, 89);
+            this.clientCB.Location = new System.Drawing.Point(541, 31);
             this.clientCB.Name = "clientCB";
             this.clientCB.Size = new System.Drawing.Size(229, 21);
             this.clientCB.TabIndex = 16;
@@ -513,7 +446,7 @@
             // clientLabel
             // 
             this.clientLabel.AutoSize = true;
-            this.clientLabel.Location = new System.Drawing.Point(5, 75);
+            this.clientLabel.Location = new System.Drawing.Point(541, 15);
             this.clientLabel.Name = "clientLabel";
             this.clientLabel.Size = new System.Drawing.Size(43, 13);
             this.clientLabel.TabIndex = 15;
@@ -522,7 +455,7 @@
             // dateLabel
             // 
             this.dateLabel.AutoSize = true;
-            this.dateLabel.Location = new System.Drawing.Point(5, 29);
+            this.dateLabel.Location = new System.Drawing.Point(8, 15);
             this.dateLabel.Name = "dateLabel";
             this.dateLabel.Size = new System.Drawing.Size(73, 13);
             this.dateLabel.TabIndex = 13;
@@ -531,7 +464,7 @@
             // dateDTP
             // 
             this.dateDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateDTP.Location = new System.Drawing.Point(5, 45);
+            this.dateDTP.Location = new System.Drawing.Point(8, 31);
             this.dateDTP.Name = "dateDTP";
             this.dateDTP.Size = new System.Drawing.Size(80, 20);
             this.dateDTP.TabIndex = 12;
@@ -569,6 +502,62 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // costumeName
+            // 
+            this.costumeName.DataPropertyName = "costume_name";
+            this.costumeName.HeaderText = "Название";
+            this.costumeName.Name = "costumeName";
+            this.costumeName.ReadOnly = true;
+            this.costumeName.Width = 180;
+            // 
+            // costumeVendor
+            // 
+            this.costumeVendor.DataPropertyName = "vendor";
+            this.costumeVendor.HeaderText = "Артикул";
+            this.costumeVendor.Name = "costumeVendor";
+            this.costumeVendor.ReadOnly = true;
+            this.costumeVendor.Width = 60;
+            // 
+            // costumeSizeName
+            // 
+            this.costumeSizeName.DataPropertyName = "size_name";
+            this.costumeSizeName.HeaderText = "Размер";
+            this.costumeSizeName.Name = "costumeSizeName";
+            this.costumeSizeName.ReadOnly = true;
+            this.costumeSizeName.Width = 50;
+            // 
+            // costumePrice
+            // 
+            this.costumePrice.DataPropertyName = "price";
+            this.costumePrice.HeaderText = "Цена";
+            this.costumePrice.Name = "costumePrice";
+            this.costumePrice.ReadOnly = true;
+            this.costumePrice.Width = 50;
+            // 
+            // costumeDailyPrice
+            // 
+            this.costumeDailyPrice.DataPropertyName = "costume_daily_price";
+            this.costumeDailyPrice.HeaderText = "Цена/день";
+            this.costumeDailyPrice.Name = "costumeDailyPrice";
+            this.costumeDailyPrice.ReadOnly = true;
+            this.costumeDailyPrice.Width = 70;
+            // 
+            // costumeShedule
+            // 
+            this.costumeShedule.DataPropertyName = "returndate_shedule";
+            this.costumeShedule.HeaderText = "Возврат план.";
+            this.costumeShedule.Name = "costumeShedule";
+            this.costumeShedule.ReadOnly = true;
+            this.costumeShedule.Width = 70;
+            // 
+            // costumeNote
+            // 
+            this.costumeNote.DataPropertyName = "note";
+            this.costumeNote.HeaderText = "Примечание";
+            this.costumeNote.Name = "costumeNote";
+            this.costumeNote.ReadOnly = true;
+            this.costumeNote.Width = 200;
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -595,8 +584,6 @@
             this.orderGB.ResumeLayout(false);
             this.orderGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.costumeDGV)).EndInit();
-            this.returnGB.ResumeLayout(false);
-            this.returnGB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -624,10 +611,6 @@
         private System.Windows.Forms.ToolStripMenuItem счетаToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.Label actualLabel;
-        private System.Windows.Forms.DateTimePicker actualDTP;
-        private System.Windows.Forms.Label sheduleLabel;
-        private System.Windows.Forms.DateTimePicker sheduleDTP;
         private System.Windows.Forms.Label costumeLabel;
         private System.Windows.Forms.Label clientLabel;
         private System.Windows.Forms.Label dateLabel;
@@ -636,9 +619,12 @@
         private System.Windows.Forms.Button costumeAddButton;
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.Button clientButton;
-        private System.Windows.Forms.GroupBox returnGB;
-        private System.Windows.Forms.CheckBox returnedChB;
         private System.Windows.Forms.DataGridView costumeDGV;
+        private System.Windows.Forms.ToolStripMenuItem журналЗаказовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        public System.Windows.Forms.ComboBox clientCB;
+        private System.Windows.Forms.Label employeeLabel;
+        private System.Windows.Forms.TextBox employeeTB;
         private System.Windows.Forms.DataGridViewCheckBoxColumn mainSelected;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainName;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainVendor;
@@ -650,9 +636,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeVendor;
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeSizeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn costumePrice;
-        private System.Windows.Forms.ToolStripMenuItem журналЗаказовToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        public System.Windows.Forms.ComboBox clientCB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn costumeDailyPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn costumeShedule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn costumeNote;
     }
 }
 
