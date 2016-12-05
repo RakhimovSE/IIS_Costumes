@@ -11,6 +11,8 @@ namespace IIS_Costumes
     static class Program
     {
         public static MySqlConnection conn = new MySqlConnection(Properties.Resources.ConnectionString);
+        public static int employee_id;
+        public static string employee_name;
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -20,7 +22,9 @@ namespace IIS_Costumes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OrderForm());
+            new AuthForm().ShowDialog();
+            if (employee_id != default(int))
+                Application.Run(new OrderForm());
         }
     }
 }

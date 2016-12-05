@@ -88,11 +88,20 @@ namespace IIS_Costumes.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string CostumeQuery {
+            get {
+                return ResourceManager.GetString("CostumeQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на SELECT * FROM `v_order`.
         /// </summary>
-        internal static string VOrderQuery {
+        internal static string OrderQuery {
             get {
-                return ResourceManager.GetString("VOrderQuery", resourceCulture);
+                return ResourceManager.GetString("OrderQuery", resourceCulture);
             }
         }
     }

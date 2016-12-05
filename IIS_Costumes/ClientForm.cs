@@ -81,7 +81,7 @@ namespace IIS_Costumes
         void refreshData()
         {
             mainDGV.AutoGenerateColumns = false;
-            DBConnector.FillDGV(mainDGV, "SELECT * FROM `client`");
+            DBConnector.FillDGV(mainDGV, Properties.Resources.ClientQuery);
         }
         private void editButton_Click(object sender, EventArgs e)
         {
