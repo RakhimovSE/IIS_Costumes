@@ -127,7 +127,7 @@
     <value>server=db4free.net;port=3306;user id=rakhimovse;password=rNRNQ4Wqsh3npef;database=carnaval;characterset=utf8</value>
   </data>
   <data name="CostumeQuery" xml:space="preserve">
-    <value />
+    <value>SELECT * FROM `v_costume`</value>
   </data>
   <data name="OrderQuery" xml:space="preserve">
     <value>SELECT * FROM `v_order`</value>

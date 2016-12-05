@@ -27,6 +27,7 @@ namespace IIS_Costumes
         {
             resetGB();
             mainDGV.Visible = false;
+            DBConnector.FillCB(typeCB, Properties.Resources.ClientQuery, "id_costume", "name");
             mainGB.Visible = true;
             OKButton.Enabled = true;
             cancelButton.Enabled = true;
