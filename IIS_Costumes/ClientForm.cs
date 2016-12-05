@@ -166,7 +166,7 @@ namespace IIS_Costumes
             }
         }
 
-        private void delButton_Click(object sender, EventArgs e)
+        private void delButton_Click(object sender, EventArgs e) //удаление 
         {
             DataGridViewSelectedRowCollection rows = mainDGV.SelectedRows;
             int n = rows.Count;

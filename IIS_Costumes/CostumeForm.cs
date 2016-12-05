@@ -171,5 +171,10 @@ namespace IIS_Costumes
 
             }
         }
+
+        private void mainDGV_SelectionChanged(object sender, EventArgs e)
+        {
+            mainDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
     }
 }
