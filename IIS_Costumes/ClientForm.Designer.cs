@@ -63,7 +63,7 @@
             // 
             this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OKButton.Location = new System.Drawing.Point(515, 362);
-            this.OKButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OKButton.Margin = new System.Windows.Forms.Padding(4);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(89, 28);
             this.OKButton.TabIndex = 11;
@@ -75,7 +75,7 @@
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.Location = new System.Drawing.Point(612, 362);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(89, 28);
             this.cancelButton.TabIndex = 10;
@@ -234,7 +234,7 @@
             // 
             this.delButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.delButton.Location = new System.Drawing.Point(728, 190);
-            this.delButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.delButton.Margin = new System.Windows.Forms.Padding(4);
             this.delButton.Name = "delButton";
             this.delButton.Size = new System.Drawing.Size(125, 28);
             this.delButton.TabIndex = 16;
@@ -246,7 +246,7 @@
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.editButton.Location = new System.Drawing.Point(728, 117);
-            this.editButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editButton.Margin = new System.Windows.Forms.Padding(4);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(125, 28);
             this.editButton.TabIndex = 15;
@@ -258,7 +258,7 @@
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addButton.Location = new System.Drawing.Point(728, 82);
-            this.addButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addButton.Margin = new System.Windows.Forms.Padding(4);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(125, 28);
             this.addButton.TabIndex = 14;
@@ -271,7 +271,7 @@
             this.searchTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchTB.Location = new System.Drawing.Point(13, 50);
-            this.searchTB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchTB.Margin = new System.Windows.Forms.Padding(4);
             this.searchTB.Name = "searchTB";
             this.searchTB.Size = new System.Drawing.Size(707, 22);
             this.searchTB.TabIndex = 12;
@@ -310,7 +310,7 @@
             this.mainTelephone,
             this.address});
             this.mainDGV.Location = new System.Drawing.Point(13, 82);
-            this.mainDGV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mainDGV.Margin = new System.Windows.Forms.Padding(4);
             this.mainDGV.Name = "mainDGV";
             this.mainDGV.ReadOnly = true;
             this.mainDGV.Size = new System.Drawing.Size(707, 398);
