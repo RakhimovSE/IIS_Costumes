@@ -216,7 +216,8 @@ namespace IIS_Costumes
 
         private void типыКостюмовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            CostumeType ct = new CostumeType();
+            ct.Show();
         }
 
         private void размерыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -287,6 +288,8 @@ namespace IIS_Costumes
 
         private void costumeAddButton_Click(object sender, EventArgs e)
         {
+            //CostumeForm cf = new CostumeForm(this);
+            //cf.Show();
             // Перейти на форму "Костюмы" в режим MultiSelectionTable
         }
 

@@ -16,7 +16,6 @@ namespace IIS_Costumes
         {
             InitializeComponent();
         }
-        string stat;
         public ClientForm(Form form = null)
         {
             InitializeComponent();
@@ -166,7 +165,7 @@ namespace IIS_Costumes
             }
         }
 
-        private void delButton_Click(object sender, EventArgs e)
+        private void delButton_Click(object sender, EventArgs e) //удаление 
         {
             DataGridViewSelectedRowCollection rows = mainDGV.SelectedRows;
             int n = rows.Count;

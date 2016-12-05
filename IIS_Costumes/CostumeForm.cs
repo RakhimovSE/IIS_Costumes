@@ -27,7 +27,7 @@ namespace IIS_Costumes
         {
             resetGB();
             mainDGV.Visible = false;
-            DBConnector.FillCB(typeCB, Properties.Resources.ClientQuery, "id_costume", "name");
+            DBConnector.FillCB(typeCB, "SELECT * FROM `costume_type`", "id_costume_type", "name");
             mainGB.Visible = true;
             OKButton.Enabled = true;
             cancelButton.Enabled = true;
@@ -134,16 +134,14 @@ namespace IIS_Costumes
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            if (nameTB.Text.Trim(' ') == "" || priceTB.Text.Trim(' ') == "" || typeCB.SelectedText.ToString()==null)
+            if (nameTB.Text.Trim(' ') == "" || priceTB.Text.Trim(' ') == "" || typeCB.SelectedText.ToString()==null || daily_priceTB.Text.Trim(' ') == "")
             {
                 MessageBox.Show("Заполните все обязательные поля!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 string priceCostume=priceTB.Text, daily_priceCostume=daily_priceTB.Text, typeCostume= typeCB.SelectedValue.ToString(), nameCostume = nameTB.Text.Replace("'", "\'");
-                if (daily_priceCostume.Trim(' ') == "")
-                    daily_priceCostume = "NULL";
-          
+              
 
                 string query = String.Format(@"INSERT INTO `carnaval`.`costume`
                                 (`name`,
@@ -170,6 +168,17 @@ namespace IIS_Costumes
                 }
 
             }
+        }
+
+        private void mainDGV_SelectionChanged(object sender, EventArgs e)
+        {
+            mainDGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void typeButton_Click(object sender, EventArgs e)
+        {
+            CostumeType ct = new CostumeType(this);
+            ct.Show();
         }
     }
 }

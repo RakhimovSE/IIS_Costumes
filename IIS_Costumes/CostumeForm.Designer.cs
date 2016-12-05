@@ -30,27 +30,27 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.mainDGV = new System.Windows.Forms.DataGridView();
+            this.mainName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainCostumeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.daily_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.searchTB = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.mainGB = new System.Windows.Forms.GroupBox();
-            this.OKButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.mainName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainCostumeType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.daily_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameTB = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.priceTB = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.daily_priceTB = new System.Windows.Forms.TextBox();
             this.typeButton = new System.Windows.Forms.Button();
             this.typeCB = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.daily_priceTB = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.priceTB = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.nameTB = new System.Windows.Forms.TextBox();
+            this.OKButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).BeginInit();
             this.mainGB.SuspendLayout();
             this.SuspendLayout();
@@ -79,17 +79,49 @@
             this.mainPrice,
             this.daily_price});
             this.mainDGV.Location = new System.Drawing.Point(16, 85);
-            this.mainDGV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mainDGV.Margin = new System.Windows.Forms.Padding(4);
             this.mainDGV.Name = "mainDGV";
             this.mainDGV.ReadOnly = true;
-            this.mainDGV.Size = new System.Drawing.Size(668, 398);
+            this.mainDGV.Size = new System.Drawing.Size(594, 419);
             this.mainDGV.TabIndex = 27;
+            this.mainDGV.SelectionChanged += new System.EventHandler(this.mainDGV_SelectionChanged);
+            // 
+            // mainName
+            // 
+            this.mainName.DataPropertyName = "name";
+            this.mainName.HeaderText = "Название";
+            this.mainName.Name = "mainName";
+            this.mainName.ReadOnly = true;
+            this.mainName.Width = 200;
+            // 
+            // mainCostumeType
+            // 
+            this.mainCostumeType.DataPropertyName = "costume_type_name";
+            this.mainCostumeType.HeaderText = "Тип";
+            this.mainCostumeType.Name = "mainCostumeType";
+            this.mainCostumeType.ReadOnly = true;
+            this.mainCostumeType.Width = 150;
+            // 
+            // mainPrice
+            // 
+            this.mainPrice.DataPropertyName = "price";
+            this.mainPrice.HeaderText = "Цена";
+            this.mainPrice.Name = "mainPrice";
+            this.mainPrice.ReadOnly = true;
+            this.mainPrice.Width = 50;
+            // 
+            // daily_price
+            // 
+            this.daily_price.DataPropertyName = "daily_price";
+            this.daily_price.HeaderText = "Стоимость аренды";
+            this.daily_price.Name = "daily_price";
+            this.daily_price.ReadOnly = true;
             // 
             // delButton
             // 
             this.delButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.delButton.Location = new System.Drawing.Point(692, 192);
-            this.delButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.delButton.Location = new System.Drawing.Point(618, 192);
+            this.delButton.Margin = new System.Windows.Forms.Padding(4);
             this.delButton.Name = "delButton";
             this.delButton.Size = new System.Drawing.Size(125, 28);
             this.delButton.TabIndex = 25;
@@ -100,8 +132,8 @@
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(692, 119);
-            this.editButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editButton.Location = new System.Drawing.Point(618, 119);
+            this.editButton.Margin = new System.Windows.Forms.Padding(4);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(125, 28);
             this.editButton.TabIndex = 24;
@@ -112,8 +144,8 @@
             // addButton
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.Location = new System.Drawing.Point(692, 85);
-            this.addButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addButton.Location = new System.Drawing.Point(618, 85);
+            this.addButton.Margin = new System.Windows.Forms.Padding(4);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(125, 28);
             this.addButton.TabIndex = 23;
@@ -126,9 +158,9 @@
             this.searchTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchTB.Location = new System.Drawing.Point(16, 53);
-            this.searchTB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchTB.Margin = new System.Windows.Forms.Padding(4);
             this.searchTB.Name = "searchTB";
-            this.searchTB.Size = new System.Drawing.Size(667, 22);
+            this.searchTB.Size = new System.Drawing.Size(593, 22);
             this.searchTB.TabIndex = 22;
             this.searchTB.TextChanged += new System.EventHandler(this.searchTB_TextChanged);
             // 
@@ -162,106 +194,31 @@
             this.mainGB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mainGB.Name = "mainGB";
             this.mainGB.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mainGB.Size = new System.Drawing.Size(668, 398);
+            this.mainGB.Size = new System.Drawing.Size(594, 419);
             this.mainGB.TabIndex = 26;
             this.mainGB.TabStop = false;
             this.mainGB.Text = "Карточка";
             // 
-            // OKButton
+            // typeButton
             // 
-            this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKButton.Location = new System.Drawing.Point(475, 362);
-            this.OKButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(89, 28);
-            this.OKButton.TabIndex = 11;
-            this.OKButton.Text = "OK";
-            this.OKButton.UseVisualStyleBackColor = true;
-            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
+            this.typeButton.Location = new System.Drawing.Point(532, 50);
+            this.typeButton.Margin = new System.Windows.Forms.Padding(4);
+            this.typeButton.Name = "typeButton";
+            this.typeButton.Size = new System.Drawing.Size(32, 28);
+            this.typeButton.TabIndex = 25;
+            this.typeButton.Text = "...";
+            this.typeButton.UseVisualStyleBackColor = true;
+            this.typeButton.Click += new System.EventHandler(this.typeButton_Click);
             // 
-            // cancelButton
+            // typeCB
             // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(572, 362);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(89, 28);
-            this.cancelButton.TabIndex = 10;
-            this.cancelButton.Text = "Отмена";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // mainName
-            // 
-            this.mainName.DataPropertyName = "name";
-            this.mainName.HeaderText = "Название";
-            this.mainName.Name = "mainName";
-            this.mainName.ReadOnly = true;
-            this.mainName.Width = 200;
-            // 
-            // mainCostumeType
-            // 
-            this.mainCostumeType.DataPropertyName = "costume_type_name";
-            this.mainCostumeType.HeaderText = "Тип";
-            this.mainCostumeType.Name = "mainCostumeType";
-            this.mainCostumeType.ReadOnly = true;
-            this.mainCostumeType.Width = 150;
-            // 
-            // mainPrice
-            // 
-            this.mainPrice.DataPropertyName = "price";
-            this.mainPrice.HeaderText = "Цена";
-            this.mainPrice.Name = "mainPrice";
-            this.mainPrice.ReadOnly = true;
-            this.mainPrice.Width = 50;
-            // 
-            // daily_price
-            // 
-            this.daily_price.DataPropertyName = "daily_price";
-            this.daily_price.HeaderText = "Стоимость аренды";
-            this.daily_price.Name = "daily_price";
-            this.daily_price.ReadOnly = true;
-            // 
-            // nameTB
-            // 
-            this.nameTB.Location = new System.Drawing.Point(6, 54);
-            this.nameTB.Name = "nameTB";
-            this.nameTB.Size = new System.Drawing.Size(277, 22);
-            this.nameTB.TabIndex = 12;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 34);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 17);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Название";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(301, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 17);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Тип костюма";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 98);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 17);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Цена";
-            // 
-            // priceTB
-            // 
-            this.priceTB.Location = new System.Drawing.Point(6, 118);
-            this.priceTB.Name = "priceTB";
-            this.priceTB.Size = new System.Drawing.Size(92, 22);
-            this.priceTB.TabIndex = 16;
+            this.typeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.typeCB.FormattingEnabled = true;
+            this.typeCB.Location = new System.Drawing.Point(304, 52);
+            this.typeCB.Margin = new System.Windows.Forms.Padding(4);
+            this.typeCB.Name = "typeCB";
+            this.typeCB.Size = new System.Drawing.Size(224, 24);
+            this.typeCB.TabIndex = 24;
             // 
             // label6
             // 
@@ -279,31 +236,76 @@
             this.daily_priceTB.Size = new System.Drawing.Size(112, 22);
             this.daily_priceTB.TabIndex = 18;
             // 
-            // typeButton
+            // label5
             // 
-            this.typeButton.Location = new System.Drawing.Point(532, 50);
-            this.typeButton.Margin = new System.Windows.Forms.Padding(4);
-            this.typeButton.Name = "typeButton";
-            this.typeButton.Size = new System.Drawing.Size(32, 28);
-            this.typeButton.TabIndex = 25;
-            this.typeButton.Text = "...";
-            this.typeButton.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 98);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 17);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Цена";
             // 
-            // typeCB
+            // priceTB
             // 
-            this.typeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.typeCB.FormattingEnabled = true;
-            this.typeCB.Location = new System.Drawing.Point(304, 52);
-            this.typeCB.Margin = new System.Windows.Forms.Padding(4);
-            this.typeCB.Name = "typeCB";
-            this.typeCB.Size = new System.Drawing.Size(224, 24);
-            this.typeCB.TabIndex = 24;
+            this.priceTB.Location = new System.Drawing.Point(6, 118);
+            this.priceTB.Name = "priceTB";
+            this.priceTB.Size = new System.Drawing.Size(92, 22);
+            this.priceTB.TabIndex = 16;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(301, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 17);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Тип костюма";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 34);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 17);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Название";
+            // 
+            // nameTB
+            // 
+            this.nameTB.Location = new System.Drawing.Point(6, 54);
+            this.nameTB.Name = "nameTB";
+            this.nameTB.Size = new System.Drawing.Size(277, 22);
+            this.nameTB.TabIndex = 12;
+            // 
+            // OKButton
+            // 
+            this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OKButton.Location = new System.Drawing.Point(401, 383);
+            this.OKButton.Margin = new System.Windows.Forms.Padding(4);
+            this.OKButton.Name = "OKButton";
+            this.OKButton.Size = new System.Drawing.Size(89, 28);
+            this.OKButton.TabIndex = 11;
+            this.OKButton.Text = "OK";
+            this.OKButton.UseVisualStyleBackColor = true;
+            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.Location = new System.Drawing.Point(498, 383);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(89, 28);
+            this.cancelButton.TabIndex = 10;
+            this.cancelButton.Text = "Отмена";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // CostumeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(833, 533);
+            this.ClientSize = new System.Drawing.Size(759, 517);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.delButton);
             this.Controls.Add(this.editButton);
@@ -312,7 +314,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.mainGB);
             this.Controls.Add(this.mainDGV);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CostumeForm";
             this.Text = "Карнавальные костюмы - Костюмы";
             this.Load += new System.EventHandler(this.CostumeForm_Load);
