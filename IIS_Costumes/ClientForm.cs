@@ -168,9 +168,6 @@ namespace IIS_Costumes
 
         private void delButton_Click(object sender, EventArgs e)
         {
-
-
-
             DataGridViewSelectedRowCollection rows = mainDGV.SelectedRows;
             int n = rows.Count;
             string text;
