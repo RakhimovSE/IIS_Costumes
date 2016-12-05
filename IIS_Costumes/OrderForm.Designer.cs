@@ -589,8 +589,8 @@
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.headerLabel);
             this.Controls.Add(this.mainMenuStrip);
-            this.Controls.Add(this.mainDGV);
             this.Controls.Add(this.orderGB);
+            this.Controls.Add(this.mainDGV);
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "OrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
