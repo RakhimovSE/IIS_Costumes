@@ -82,8 +82,7 @@ namespace IIS_Costumes
 
         private void CheckSelectedRows()
         {
-            foreach (DataGridViewRow row in mainDGV.Rows)
-                row.Cells["mainSelected"].Value = row.Selected;
+            
         }
 
         private void PerformEdit()
@@ -169,7 +168,20 @@ namespace IIS_Costumes
 
         private void mainDgv_SelectionChanged(object sender, EventArgs e)
         {
-            CheckSelectedRows();
+            foreach (DataGridViewRow row in mainDGV.Rows)
+                row.Cells["mainSelected"].Value = row.Selected;
+            if (mainDGV.SelectedRows.Count == 0) return;
+            int client_id = (int)DBConnector.GetRowCol(mainDGV.SelectedRows[0], "client_id");
+            bool oneClient = true;
+            foreach (DataGridViewRow row in mainDGV.SelectedRows)
+            {
+                if (client_id != (int)DBConnector.GetRowCol(row, "client_id"))
+                {
+                    oneClient = false;
+                    break;
+                }
+            }
+            takeButton.Enabled = editButton.Enabled = oneClient;
         }
 
         private void mainDGV_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -222,7 +234,8 @@ namespace IIS_Costumes
 
         private void takeButton_Click(object sender, EventArgs e)
         {
-            
+            new TakeCostumeForm(mainDGV.SelectedRows).ShowDialog();
+            SetMainDGV(searchTB.Text);
         }
 
         private void editButton_Click(object sender, EventArgs e)
