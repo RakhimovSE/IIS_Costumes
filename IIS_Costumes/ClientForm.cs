@@ -16,7 +16,6 @@ namespace IIS_Costumes
         {
             InitializeComponent();
         }
-        string stat;
         public ClientForm(Form form = null)
         {
             InitializeComponent();

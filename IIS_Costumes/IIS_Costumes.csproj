@@ -90,6 +90,12 @@
     <Compile Include="CostumeSizeForm.Designer.cs">
       <DependentUpon>CostumeSizeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CostumeType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CostumeType.Designer.cs">
+      <DependentUpon>CostumeType.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBConnector.cs" />
     <Compile Include="TestRelationForm.cs">
       <SubType>Form</SubType>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CostumeSizeForm.resx">
       <DependentUpon>CostumeSizeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CostumeType.resx">
+      <DependentUpon>CostumeType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderForm.resx">
       <DependentUpon>OrderForm.cs</DependentUpon>

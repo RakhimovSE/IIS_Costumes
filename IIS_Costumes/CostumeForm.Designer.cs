@@ -82,7 +82,7 @@
             this.mainDGV.Margin = new System.Windows.Forms.Padding(4);
             this.mainDGV.Name = "mainDGV";
             this.mainDGV.ReadOnly = true;
-            this.mainDGV.Size = new System.Drawing.Size(668, 398);
+            this.mainDGV.Size = new System.Drawing.Size(594, 419);
             this.mainDGV.TabIndex = 27;
             this.mainDGV.SelectionChanged += new System.EventHandler(this.mainDGV_SelectionChanged);
             // 
@@ -120,7 +120,7 @@
             // delButton
             // 
             this.delButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.delButton.Location = new System.Drawing.Point(692, 192);
+            this.delButton.Location = new System.Drawing.Point(618, 192);
             this.delButton.Margin = new System.Windows.Forms.Padding(4);
             this.delButton.Name = "delButton";
             this.delButton.Size = new System.Drawing.Size(125, 28);
@@ -132,7 +132,7 @@
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(692, 119);
+            this.editButton.Location = new System.Drawing.Point(618, 119);
             this.editButton.Margin = new System.Windows.Forms.Padding(4);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(125, 28);
@@ -144,7 +144,7 @@
             // addButton
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.Location = new System.Drawing.Point(692, 85);
+            this.addButton.Location = new System.Drawing.Point(618, 85);
             this.addButton.Margin = new System.Windows.Forms.Padding(4);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(125, 28);
@@ -160,7 +160,7 @@
             this.searchTB.Location = new System.Drawing.Point(16, 53);
             this.searchTB.Margin = new System.Windows.Forms.Padding(4);
             this.searchTB.Name = "searchTB";
-            this.searchTB.Size = new System.Drawing.Size(667, 22);
+            this.searchTB.Size = new System.Drawing.Size(593, 22);
             this.searchTB.TabIndex = 22;
             this.searchTB.TextChanged += new System.EventHandler(this.searchTB_TextChanged);
             // 
@@ -194,7 +194,7 @@
             this.mainGB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mainGB.Name = "mainGB";
             this.mainGB.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mainGB.Size = new System.Drawing.Size(668, 398);
+            this.mainGB.Size = new System.Drawing.Size(594, 419);
             this.mainGB.TabIndex = 26;
             this.mainGB.TabStop = false;
             this.mainGB.Text = "Карточка";
@@ -208,6 +208,7 @@
             this.typeButton.TabIndex = 25;
             this.typeButton.Text = "...";
             this.typeButton.UseVisualStyleBackColor = true;
+            this.typeButton.Click += new System.EventHandler(this.typeButton_Click);
             // 
             // typeCB
             // 
@@ -279,7 +280,7 @@
             // OKButton
             // 
             this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKButton.Location = new System.Drawing.Point(475, 362);
+            this.OKButton.Location = new System.Drawing.Point(401, 383);
             this.OKButton.Margin = new System.Windows.Forms.Padding(4);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(89, 28);
@@ -291,7 +292,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(572, 362);
+            this.cancelButton.Location = new System.Drawing.Point(498, 383);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(4);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(89, 28);
@@ -304,15 +305,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(833, 533);
+            this.ClientSize = new System.Drawing.Size(759, 517);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.delButton);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.searchTB);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.mainDGV);
             this.Controls.Add(this.mainGB);
+            this.Controls.Add(this.mainDGV);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CostumeForm";
             this.Text = "Карнавальные костюмы - Костюмы";
