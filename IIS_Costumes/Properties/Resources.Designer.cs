@@ -88,7 +88,7 @@ namespace IIS_Costumes.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на SELECT * FROM `v_costume`.
+        ///   Ищет локализованную строку, похожую на .
         /// </summary>
         internal static string CostumeQuery {
             get {
