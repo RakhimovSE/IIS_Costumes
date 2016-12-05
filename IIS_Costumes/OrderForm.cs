@@ -39,6 +39,8 @@ namespace IIS_Costumes
 
         ClientForm clientForm;
         CostumeForm costumeForm;
+        CostumeSizeForm costumeSizeForm;
+
         DataTable costumeDT;
         int total;
 
@@ -144,6 +146,7 @@ namespace IIS_Costumes
         {
             clientForm = new ClientForm();
             costumeForm = new CostumeForm();
+            costumeSizeForm = new CostumeSizeForm();
 
             mainDGV.AutoGenerateColumns = false;
             SetMainDGV();
@@ -175,11 +178,6 @@ namespace IIS_Costumes
         }
         #endregion
         #region Menu
-        private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            clientForm = (ClientForm)Controller.ShowForm(clientForm);
-        }
-
         private void костюмыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             costumeForm = (CostumeForm)Controller.ShowForm(costumeForm);
@@ -194,8 +192,22 @@ namespace IIS_Costumes
         {
 
         }
+        private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clientForm = (ClientForm)Controller.ShowForm(clientForm);
+        }
+
+        private void размерыКостюмовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            costumeSizeForm = (CostumeSizeForm)Controller.ShowForm(costumeSizeForm);
+        }
 
         private void типыКостюмовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void размерыToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

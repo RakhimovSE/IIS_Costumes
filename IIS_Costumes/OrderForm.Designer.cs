@@ -52,11 +52,20 @@
             this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.костюмыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.размерыКостюмовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.типыКостюмовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.размерыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderGB = new System.Windows.Forms.GroupBox();
             this.employeeLabel = new System.Windows.Forms.Label();
             this.employeeTB = new System.Windows.Forms.TextBox();
             this.costumeDGV = new System.Windows.Forms.DataGridView();
+            this.costumeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeVendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeDailyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costumeRemoveButton = new System.Windows.Forms.Button();
             this.costumeAddButton = new System.Windows.Forms.Button();
             this.totalLabel = new System.Windows.Forms.Label();
@@ -69,13 +78,6 @@
             this.OKButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.costumeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumeVendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumeSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumeDailyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumeShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumeNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).BeginInit();
             this.mainMenuStrip.SuspendLayout();
             this.orderGB.SuspendLayout();
@@ -261,7 +263,9 @@
             this.клиентыToolStripMenuItem,
             this.toolStripMenuItem1,
             this.костюмыToolStripMenuItem,
-            this.типыКостюмовToolStripMenuItem});
+            this.размерыКостюмовToolStripMenuItem,
+            this.типыКостюмовToolStripMenuItem,
+            this.размерыToolStripMenuItem});
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.справочникиToolStripMenuItem.Text = "Справочники";
@@ -269,47 +273,61 @@
             // журналЗаказовToolStripMenuItem
             // 
             this.журналЗаказовToolStripMenuItem.Name = "журналЗаказовToolStripMenuItem";
-            this.журналЗаказовToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.журналЗаказовToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.журналЗаказовToolStripMenuItem.Text = "Журнал заказов";
             this.журналЗаказовToolStripMenuItem.Click += new System.EventHandler(this.журналЗаказовToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(160, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(179, 6);
             // 
             // счетаToolStripMenuItem
             // 
             this.счетаToolStripMenuItem.Name = "счетаToolStripMenuItem";
-            this.счетаToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.счетаToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.счетаToolStripMenuItem.Text = "Счета";
             this.счетаToolStripMenuItem.Click += new System.EventHandler(this.счетаToolStripMenuItem_Click);
             // 
             // клиентыToolStripMenuItem
             // 
             this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
-            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.клиентыToolStripMenuItem.Text = "Клиенты";
             this.клиентыToolStripMenuItem.Click += new System.EventHandler(this.клиентыToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(160, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(179, 6);
             // 
             // костюмыToolStripMenuItem
             // 
             this.костюмыToolStripMenuItem.Name = "костюмыToolStripMenuItem";
-            this.костюмыToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.костюмыToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.костюмыToolStripMenuItem.Text = "Костюмы";
             this.костюмыToolStripMenuItem.Click += new System.EventHandler(this.костюмыToolStripMenuItem_Click);
+            // 
+            // размерыКостюмовToolStripMenuItem
+            // 
+            this.размерыКостюмовToolStripMenuItem.Name = "размерыКостюмовToolStripMenuItem";
+            this.размерыКостюмовToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.размерыКостюмовToolStripMenuItem.Text = "Размеры костюмов";
+            this.размерыКостюмовToolStripMenuItem.Click += new System.EventHandler(this.размерыКостюмовToolStripMenuItem_Click);
             // 
             // типыКостюмовToolStripMenuItem
             // 
             this.типыКостюмовToolStripMenuItem.Name = "типыКостюмовToolStripMenuItem";
-            this.типыКостюмовToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.типыКостюмовToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.типыКостюмовToolStripMenuItem.Text = "Типы костюмов";
             this.типыКостюмовToolStripMenuItem.Click += new System.EventHandler(this.типыКостюмовToolStripMenuItem_Click);
+            // 
+            // размерыToolStripMenuItem
+            // 
+            this.размерыToolStripMenuItem.Name = "размерыToolStripMenuItem";
+            this.размерыToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.размерыToolStripMenuItem.Text = "Размеры";
+            this.размерыToolStripMenuItem.Click += new System.EventHandler(this.размерыToolStripMenuItem_Click);
             // 
             // orderGB
             // 
@@ -380,6 +398,62 @@
             this.costumeDGV.Size = new System.Drawing.Size(786, 211);
             this.costumeDGV.TabIndex = 29;
             this.costumeDGV.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.costumeDGV_CellMouseDoubleClick);
+            // 
+            // costumeName
+            // 
+            this.costumeName.DataPropertyName = "costume_name";
+            this.costumeName.HeaderText = "Название";
+            this.costumeName.Name = "costumeName";
+            this.costumeName.ReadOnly = true;
+            this.costumeName.Width = 180;
+            // 
+            // costumeVendor
+            // 
+            this.costumeVendor.DataPropertyName = "vendor";
+            this.costumeVendor.HeaderText = "Артикул";
+            this.costumeVendor.Name = "costumeVendor";
+            this.costumeVendor.ReadOnly = true;
+            this.costumeVendor.Width = 60;
+            // 
+            // costumeSizeName
+            // 
+            this.costumeSizeName.DataPropertyName = "size_name";
+            this.costumeSizeName.HeaderText = "Размер";
+            this.costumeSizeName.Name = "costumeSizeName";
+            this.costumeSizeName.ReadOnly = true;
+            this.costumeSizeName.Width = 50;
+            // 
+            // costumePrice
+            // 
+            this.costumePrice.DataPropertyName = "price";
+            this.costumePrice.HeaderText = "Цена";
+            this.costumePrice.Name = "costumePrice";
+            this.costumePrice.ReadOnly = true;
+            this.costumePrice.Width = 50;
+            // 
+            // costumeDailyPrice
+            // 
+            this.costumeDailyPrice.DataPropertyName = "costume_daily_price";
+            this.costumeDailyPrice.HeaderText = "Цена/день";
+            this.costumeDailyPrice.Name = "costumeDailyPrice";
+            this.costumeDailyPrice.ReadOnly = true;
+            this.costumeDailyPrice.Width = 70;
+            // 
+            // costumeShedule
+            // 
+            this.costumeShedule.DataPropertyName = "returndate_shedule";
+            this.costumeShedule.HeaderText = "Возврат план.";
+            this.costumeShedule.Name = "costumeShedule";
+            this.costumeShedule.ReadOnly = true;
+            this.costumeShedule.Width = 70;
+            // 
+            // costumeNote
+            // 
+            this.costumeNote.DataPropertyName = "note";
+            this.costumeNote.HeaderText = "Примечание";
+            this.costumeNote.Name = "costumeNote";
+            this.costumeNote.ReadOnly = true;
+            this.costumeNote.Width = 200;
             // 
             // costumeRemoveButton
             // 
@@ -502,62 +576,6 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // costumeName
-            // 
-            this.costumeName.DataPropertyName = "costume_name";
-            this.costumeName.HeaderText = "Название";
-            this.costumeName.Name = "costumeName";
-            this.costumeName.ReadOnly = true;
-            this.costumeName.Width = 180;
-            // 
-            // costumeVendor
-            // 
-            this.costumeVendor.DataPropertyName = "vendor";
-            this.costumeVendor.HeaderText = "Артикул";
-            this.costumeVendor.Name = "costumeVendor";
-            this.costumeVendor.ReadOnly = true;
-            this.costumeVendor.Width = 60;
-            // 
-            // costumeSizeName
-            // 
-            this.costumeSizeName.DataPropertyName = "size_name";
-            this.costumeSizeName.HeaderText = "Размер";
-            this.costumeSizeName.Name = "costumeSizeName";
-            this.costumeSizeName.ReadOnly = true;
-            this.costumeSizeName.Width = 50;
-            // 
-            // costumePrice
-            // 
-            this.costumePrice.DataPropertyName = "price";
-            this.costumePrice.HeaderText = "Цена";
-            this.costumePrice.Name = "costumePrice";
-            this.costumePrice.ReadOnly = true;
-            this.costumePrice.Width = 50;
-            // 
-            // costumeDailyPrice
-            // 
-            this.costumeDailyPrice.DataPropertyName = "costume_daily_price";
-            this.costumeDailyPrice.HeaderText = "Цена/день";
-            this.costumeDailyPrice.Name = "costumeDailyPrice";
-            this.costumeDailyPrice.ReadOnly = true;
-            this.costumeDailyPrice.Width = 70;
-            // 
-            // costumeShedule
-            // 
-            this.costumeShedule.DataPropertyName = "returndate_shedule";
-            this.costumeShedule.HeaderText = "Возврат план.";
-            this.costumeShedule.Name = "costumeShedule";
-            this.costumeShedule.ReadOnly = true;
-            this.costumeShedule.Width = 70;
-            // 
-            // costumeNote
-            // 
-            this.costumeNote.DataPropertyName = "note";
-            this.costumeNote.HeaderText = "Примечание";
-            this.costumeNote.Name = "costumeNote";
-            this.costumeNote.ReadOnly = true;
-            this.costumeNote.Width = 200;
-            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -571,8 +589,8 @@
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.headerLabel);
             this.Controls.Add(this.mainMenuStrip);
-            this.Controls.Add(this.orderGB);
             this.Controls.Add(this.mainDGV);
+            this.Controls.Add(this.orderGB);
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "OrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -639,6 +657,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeDailyPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeShedule;
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeNote;
+        private System.Windows.Forms.ToolStripMenuItem размерыКостюмовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem размерыToolStripMenuItem;
     }
 }
 
