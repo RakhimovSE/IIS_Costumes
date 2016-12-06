@@ -85,8 +85,8 @@ namespace IIS_Costumes
                                 (`name`)
                                 VALUES
                                ('{0}');", nameCostumeType);
-                bool res = DBConnector.SetNoResultQuery(query);
-                if (res == true)
+                long inserted_id = DBConnector.SetNoResultQuery(query);
+                if (inserted_id > 0)
                 {
                     hide();
                     refreshData();

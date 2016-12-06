@@ -28,13 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.delButton = new System.Windows.Forms.Button();
+            this.headerLabel = new System.Windows.Forms.Label();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.searchTB = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.searchLabel = new System.Windows.Forms.Label();
             this.mainGB = new System.Windows.Forms.GroupBox();
+            this.selectCostumeButton = new System.Windows.Forms.Button();
+            this.amountLabel = new System.Windows.Forms.Label();
+            this.amountTB = new System.Windows.Forms.TextBox();
+            this.sizeCB = new System.Windows.Forms.ComboBox();
+            this.sizeLabel = new System.Windows.Forms.Label();
+            this.costumeCB = new System.Windows.Forms.ComboBox();
+            this.costumeLabel = new System.Windows.Forms.Label();
             this.OKButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.mainDGV = new System.Windows.Forms.DataGridView();
@@ -43,36 +50,37 @@
             this.mainSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainSizeNumeric = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainDailyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainInStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // headerLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 13);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "Размеры костюмов";
+            this.headerLabel.AutoSize = true;
+            this.headerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.headerLabel.Location = new System.Drawing.Point(12, 9);
+            this.headerLabel.Name = "headerLabel";
+            this.headerLabel.Size = new System.Drawing.Size(124, 13);
+            this.headerLabel.TabIndex = 28;
+            this.headerLabel.Text = "Размеры костюмов";
             // 
-            // delButton
+            // deleteButton
             // 
-            this.delButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.delButton.Location = new System.Drawing.Point(610, 156);
-            this.delButton.Name = "delButton";
-            this.delButton.Size = new System.Drawing.Size(94, 23);
-            this.delButton.TabIndex = 33;
-            this.delButton.Text = "Удалить";
-            this.delButton.UseVisualStyleBackColor = true;
-            this.delButton.Click += new System.EventHandler(this.delButton_Click);
+            this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteButton.Location = new System.Drawing.Point(670, 156);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(94, 23);
+            this.deleteButton.TabIndex = 33;
+            this.deleteButton.Text = "Удалить";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(610, 97);
+            this.editButton.Location = new System.Drawing.Point(670, 97);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(94, 23);
             this.editButton.TabIndex = 32;
@@ -83,7 +91,7 @@
             // addButton
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.Location = new System.Drawing.Point(610, 69);
+            this.addButton.Location = new System.Drawing.Point(670, 69);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(94, 23);
             this.addButton.TabIndex = 31;
@@ -97,54 +105,125 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchTB.Location = new System.Drawing.Point(12, 43);
             this.searchTB.Name = "searchTB";
-            this.searchTB.Size = new System.Drawing.Size(592, 20);
+            this.searchTB.Size = new System.Drawing.Size(652, 20);
             this.searchTB.TabIndex = 30;
             this.searchTB.TextChanged += new System.EventHandler(this.searchTB_TextChanged);
             // 
-            // label2
+            // searchLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Поиск";
+            this.searchLabel.AutoSize = true;
+            this.searchLabel.Location = new System.Drawing.Point(12, 26);
+            this.searchLabel.Name = "searchLabel";
+            this.searchLabel.Size = new System.Drawing.Size(39, 13);
+            this.searchLabel.TabIndex = 29;
+            this.searchLabel.Text = "Поиск";
             // 
             // mainGB
             // 
             this.mainGB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainGB.Controls.Add(this.selectCostumeButton);
+            this.mainGB.Controls.Add(this.amountLabel);
+            this.mainGB.Controls.Add(this.amountTB);
+            this.mainGB.Controls.Add(this.sizeCB);
+            this.mainGB.Controls.Add(this.sizeLabel);
+            this.mainGB.Controls.Add(this.costumeCB);
+            this.mainGB.Controls.Add(this.costumeLabel);
             this.mainGB.Controls.Add(this.OKButton);
             this.mainGB.Controls.Add(this.cancelButton);
             this.mainGB.Location = new System.Drawing.Point(12, 69);
             this.mainGB.Margin = new System.Windows.Forms.Padding(2);
             this.mainGB.Name = "mainGB";
             this.mainGB.Padding = new System.Windows.Forms.Padding(2);
-            this.mainGB.Size = new System.Drawing.Size(592, 299);
+            this.mainGB.Size = new System.Drawing.Size(652, 116);
             this.mainGB.TabIndex = 34;
             this.mainGB.TabStop = false;
-            this.mainGB.Text = "Карточка";
+            this.mainGB.Text = "mainGB";
+            // 
+            // selectCostumeButton
+            // 
+            this.selectCostumeButton.Location = new System.Drawing.Point(258, 36);
+            this.selectCostumeButton.Name = "selectCostumeButton";
+            this.selectCostumeButton.Size = new System.Drawing.Size(24, 23);
+            this.selectCostumeButton.TabIndex = 18;
+            this.selectCostumeButton.Text = "...";
+            this.selectCostumeButton.UseVisualStyleBackColor = true;
+            this.selectCostumeButton.Click += new System.EventHandler(this.selectCostumeButton_Click);
+            // 
+            // amountLabel
+            // 
+            this.amountLabel.AutoSize = true;
+            this.amountLabel.Location = new System.Drawing.Point(419, 17);
+            this.amountLabel.Name = "amountLabel";
+            this.amountLabel.Size = new System.Drawing.Size(66, 13);
+            this.amountLabel.TabIndex = 17;
+            this.amountLabel.Text = "Количество";
+            // 
+            // amountTB
+            // 
+            this.amountTB.Location = new System.Drawing.Point(422, 37);
+            this.amountTB.Name = "amountTB";
+            this.amountTB.Size = new System.Drawing.Size(43, 20);
+            this.amountTB.TabIndex = 16;
+            // 
+            // sizeCB
+            // 
+            this.sizeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sizeCB.FormattingEnabled = true;
+            this.sizeCB.Location = new System.Drawing.Point(314, 37);
+            this.sizeCB.Name = "sizeCB";
+            this.sizeCB.Size = new System.Drawing.Size(84, 21);
+            this.sizeCB.TabIndex = 15;
+            // 
+            // sizeLabel
+            // 
+            this.sizeLabel.AutoSize = true;
+            this.sizeLabel.Location = new System.Drawing.Point(314, 17);
+            this.sizeLabel.Name = "sizeLabel";
+            this.sizeLabel.Size = new System.Drawing.Size(46, 13);
+            this.sizeLabel.TabIndex = 14;
+            this.sizeLabel.Text = "Размер";
+            // 
+            // costumeCB
+            // 
+            this.costumeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.costumeCB.FormattingEnabled = true;
+            this.costumeCB.Location = new System.Drawing.Point(6, 37);
+            this.costumeCB.Name = "costumeCB";
+            this.costumeCB.Size = new System.Drawing.Size(251, 21);
+            this.costumeCB.TabIndex = 13;
+            // 
+            // costumeLabel
+            // 
+            this.costumeLabel.AutoSize = true;
+            this.costumeLabel.Location = new System.Drawing.Point(6, 17);
+            this.costumeLabel.Name = "costumeLabel";
+            this.costumeLabel.Size = new System.Drawing.Size(47, 13);
+            this.costumeLabel.TabIndex = 12;
+            this.costumeLabel.Text = "Костюм";
             // 
             // OKButton
             // 
             this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKButton.Location = new System.Drawing.Point(447, 270);
+            this.OKButton.Location = new System.Drawing.Point(507, 87);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(67, 23);
             this.OKButton.TabIndex = 11;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
+            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(520, 270);
+            this.cancelButton.Location = new System.Drawing.Point(580, 87);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(67, 23);
             this.cancelButton.TabIndex = 10;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // mainDGV
             // 
@@ -160,6 +239,7 @@
             this.mainSizeName,
             this.mainSizeNumeric,
             this.mainDailyPrice,
+            this.mainAmount,
             this.mainInStock});
             this.mainDGV.Location = new System.Drawing.Point(12, 69);
             this.mainDGV.Name = "mainDGV";
@@ -167,7 +247,7 @@
             this.mainDGV.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.mainDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.mainDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.mainDGV.Size = new System.Drawing.Size(592, 298);
+            this.mainDGV.Size = new System.Drawing.Size(652, 298);
             this.mainDGV.TabIndex = 35;
             // 
             // mainName
@@ -210,6 +290,14 @@
             this.mainDailyPrice.ReadOnly = true;
             this.mainDailyPrice.Width = 60;
             // 
+            // mainAmount
+            // 
+            this.mainAmount.DataPropertyName = "amount";
+            this.mainAmount.HeaderText = "Кол-во";
+            this.mainAmount.Name = "mainAmount";
+            this.mainAmount.ReadOnly = true;
+            this.mainAmount.Width = 60;
+            // 
             // mainInStock
             // 
             this.mainInStock.DataPropertyName = "in_stock";
@@ -222,19 +310,21 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 379);
-            this.Controls.Add(this.mainDGV);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.delButton);
+            this.ClientSize = new System.Drawing.Size(776, 379);
+            this.Controls.Add(this.headerLabel);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.searchTB);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.mainGB);
+            this.Controls.Add(this.mainDGV);
             this.Name = "CostumeSizeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Карнавальные костюмы - Размеры костюмов";
             this.Load += new System.EventHandler(this.CostumeSizeForm_Load);
             this.mainGB.ResumeLayout(false);
+            this.mainGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -243,21 +333,29 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button delButton;
+        private System.Windows.Forms.Label headerLabel;
+        private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.TextBox searchTB;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label searchLabel;
         private System.Windows.Forms.GroupBox mainGB;
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.DataGridView mainDGV;
+        private System.Windows.Forms.Label amountLabel;
+        private System.Windows.Forms.TextBox amountTB;
+        private System.Windows.Forms.ComboBox sizeCB;
+        private System.Windows.Forms.Label sizeLabel;
+        private System.Windows.Forms.Label costumeLabel;
+        private System.Windows.Forms.Button selectCostumeButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainName;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainTypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainSizeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainSizeNumeric;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainDailyPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainInStock;
+        public System.Windows.Forms.ComboBox costumeCB;
     }
 }

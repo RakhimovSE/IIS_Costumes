@@ -27,7 +27,7 @@ namespace IIS_Costumes
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            string dt = DBConnector.DtToMysql(returndateDTP.Value, true, false);
+            string dt = DBConnector.DateToMysql(returndateDTP.Value, true, false);
             var return_filter = from DataGridViewRow x in rows
                             select (int)DBConnector.GetRowCol(x, "id_order");
             string return_query = string.Format("UPDATE `order` SET `returndate_actual` = '{0}' "+

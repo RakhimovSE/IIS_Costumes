@@ -16,14 +16,13 @@ namespace IIS_Costumes
         {
             InitializeComponent();
         }
-        public ClientForm(Form form = null)
+        public ClientForm(Form callerForm = null)
         {
             InitializeComponent();
-            if (form.GetType() == typeof(OrderForm))
-                orderForm = (OrderForm)form;
+            this.callerForm = callerForm;
         }
 
-        OrderForm orderForm;
+        Form callerForm;
 
         void show(string str)
         {
@@ -106,7 +105,7 @@ namespace IIS_Costumes
                 if (adressTB.Text.Trim(' ') != "")
                     adress = "'" + adressTB.Text + "'";
                 if (passDateDTP.Value != null)
-                    datePass = "'" + DBConnector.DtToMysql(passDateDTP.Value, true, false) + "'";
+                    datePass = "'" + DBConnector.DateToMysql(passDateDTP.Value, true, false) + "'";
                 if (passNumTB.Text.Trim(' ') != "")
                     numPass = "'" + passNumTB.Text + "'";
                 if (passDepartRTB.Text.Trim(' ') != "")
@@ -127,8 +126,8 @@ namespace IIS_Costumes
                                  {3},
                                  {4},
                                  {5});", fio, phone, adress, numPass, datePass, departPass);
-                bool res = DBConnector.SetNoResultQuery(query);
-                if (res == true)
+                long inserted_id = DBConnector.SetNoResultQuery(query);
+                if (inserted_id > 0)
                 {
                     hide();
                     //  mainDGV.Rows.Add(fio, phone);
@@ -157,12 +156,16 @@ namespace IIS_Costumes
 
         private void mainDGV_DoubleClick(object sender, EventArgs e)
         {
-            if (orderForm != null)
+            if (callerForm == null)
             {
-                int client_id = (int)DBConnector.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_client");
-                orderForm.clientCB.SelectedValue = client_id;
-                this.Close();
+                show("edit");
+                return;
             }
+            int client_id = (int)DBConnector.GetRowCol(mainDGV.SelectedRows[0], "id_client");
+            Type formType = callerForm.GetType();
+            if (formType == typeof(OrderForm))
+                (callerForm as OrderForm).clientCB.SelectedValue = client_id;
+            this.Close();
         }
 
         private void delButton_Click(object sender, EventArgs e) //удаление 

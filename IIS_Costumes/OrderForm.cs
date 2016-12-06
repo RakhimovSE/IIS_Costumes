@@ -44,7 +44,7 @@ namespace IIS_Costumes
         DataTable costumeDT;
         int total;
 
-        int Total
+        public int Total
         {
             get { return total; }
             set
@@ -79,12 +79,7 @@ namespace IIS_Costumes
                     mainDGV.Rows[i].DefaultCellStyle.BackColor = Color.LightGray;
             }
         }
-
-        private void CheckSelectedRows()
-        {
-            
-        }
-
+        
         private void PerformEdit()
         {
             IEnumerable<DataGridViewRow> filter = from DataGridViewRow x in mainDGV.SelectedRows

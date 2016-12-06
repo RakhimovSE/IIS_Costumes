@@ -14,7 +14,7 @@ namespace IIS_Costumes
     {
         protected static string connStr = Properties.Resources.ConnectionString;
 
-        public static string DtToMysql(DateTime dt, bool date = true, bool time = true)
+        public static string DateToMysql(DateTime dt, bool date = true, bool time = true)
         {
             string format = string.Format("{0}{1}{2}", date ? "yyyy-MM-dd" : "",
                 date && time ? " " : "", time ? "HH:mm:ss" : "");
@@ -28,7 +28,7 @@ namespace IIS_Costumes
             catch { return null; }
         }
 
-        public static bool SetNoResultQuery(string query)
+        public static long SetNoResultQuery(string query)
         {
             try
             {
@@ -39,11 +39,30 @@ namespace IIS_Costumes
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
-                return true;
+                return cmd.LastInsertedId;
             }
             catch (Exception ex)
             {
-                return false;
+                return 0;
+            }
+        }
+
+        public static object GetValueFromDB(string query)
+        {
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(connStr);
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = query;
+                conn.Open();
+                object result = cmd.ExecuteScalar();
+                conn.Close();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
 

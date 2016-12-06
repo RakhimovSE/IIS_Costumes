@@ -12,7 +12,6 @@ namespace IIS_Costumes
 {
     public partial class CostumeForm: Form
     {
-
         private void SetMainDGV(string search = "")
         {
             string query = string.Format("CALL costume_search('{0}')", search);
@@ -35,7 +34,7 @@ namespace IIS_Costumes
             mainDGV.Enabled = false;
             addButton.Enabled = false;
             editButton.Enabled = false;
-            delButton.Enabled = false;
+            deleteButton.Enabled = false;
             if (str == "add")
                 mainGB.Text = "Добавление клиента";
             else
@@ -53,7 +52,7 @@ namespace IIS_Costumes
             mainDGV.Visible = true;
             addButton.Enabled = true;
             editButton.Enabled = true;
-            delButton.Enabled = true;
+            deleteButton.Enabled = true;
             mainGB.Visible = false;
             OKButton.Enabled = false;
             cancelButton.Enabled = false;
@@ -61,16 +60,21 @@ namespace IIS_Costumes
             mainDGV.Enabled = true;
 
         }
-        public CostumeForm()
+        public CostumeForm(Form callerForm = null)
         {
             InitializeComponent();
+            this.callerForm = callerForm;
         }
+
+        Form callerForm;
 
         private void CostumeForm_Load(object sender, EventArgs e)
         {
-           
             refreshData();
-            hide();
+            if (callerForm != null && callerForm.GetType() == typeof(CostumeSizeForm))
+                show("add");
+            else
+                hide();
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -78,7 +82,7 @@ namespace IIS_Costumes
             show("add");
         }
 
-        private void delButton_Click(object sender, EventArgs e) //не доделал
+        private void deleteButton_Click(object sender, EventArgs e) //не доделал
         {
             DataGridViewSelectedRowCollection rows = mainDGV.SelectedRows;
             int n = rows.Count;
@@ -153,13 +157,20 @@ namespace IIS_Costumes
                                  {1},
                                  {2},
                                  {3});", nameCostume, typeCostume, priceCostume, daily_priceCostume);
-                bool res = DBConnector.SetNoResultQuery(query);
-                if (res == true)
+                long inserted_id = DBConnector.SetNoResultQuery(query);
+                if (inserted_id > 0)
                 {
                     hide();
                     //  mainDGV.Rows.Add(fio, phone);
                     //focusOnRowDGV();
                     refreshData();
+                    if (callerForm != null && callerForm.GetType() == typeof(CostumeSizeForm))
+                    {
+                        CostumeSizeForm CSForm = (CostumeSizeForm)callerForm;
+                        DBConnector.FillCB(CSForm.costumeCB, Properties.Resources.CostumeQuery, "id_costume", "name");
+                        CSForm.costumeCB.SelectedValue = inserted_id;
+                        Close();
+                    }
                 }
                 else
                 {
@@ -179,6 +190,17 @@ namespace IIS_Costumes
         {
             CostumeType ct = new CostumeType(this);
             ct.Show();
+        }
+
+        private void mainDGV_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (callerForm == null)
+            {
+                show("no add");
+                return;
+            }
+            int costume_id = (int)DBConnector.GetRowCol(mainDGV.SelectedRows[0], "id_costume");
+
         }
     }
 }

@@ -104,5 +104,14 @@ namespace IIS_Costumes.Properties {
                 return ResourceManager.GetString("OrderQuery", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на SELECT * FROM `v_size`.
+        /// </summary>
+        internal static string SizeQuery {
+            get {
+                return ResourceManager.GetString("SizeQuery", resourceCulture);
+            }
+        }
     }
 }
