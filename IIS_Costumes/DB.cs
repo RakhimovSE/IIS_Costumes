@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 
 namespace IIS_Costumes
 {
-    public abstract class DBConnector
+    public abstract class DB
     {
         protected static string connStr = Properties.Resources.ConnectionString;
 
@@ -28,7 +28,7 @@ namespace IIS_Costumes
             catch { return null; }
         }
 
-        public static long SetNoResultQuery(string query)
+        public static int SetNoResultQuery(string query)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace IIS_Costumes
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
-                return cmd.LastInsertedId;
+                return Convert.ToInt32(cmd.LastInsertedId);
             }
             catch (Exception ex)
             {
@@ -100,6 +100,16 @@ namespace IIS_Costumes
             DataSet ds = GetDBDataSet(query);
             if (ds.Tables.Count == 0) return;
             dgv.DataSource = ds.Tables[0];
+        }
+
+        /// <summary>
+        /// Получает объект DataGridViewRow и преобразует к DataRow
+        /// </summary>
+        /// <param name="row"></param>
+        /// <returns></returns>
+        public static DataRow DGVR2DR(DataGridViewRow row)
+        {
+            return ((DataRowView)row.DataBoundItem).Row;
         }
     }
 }

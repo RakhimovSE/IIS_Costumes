@@ -15,18 +15,18 @@ namespace IIS_Costumes
         private void SetMainDGV(string search = "")
         {
             string query = string.Format("CALL costume_search('{0}')", search);
-            DBConnector.FillDGV(mainDGV, query);
+            DB.FillDGV(mainDGV, query);
         }
         void refreshData()
         {
             mainDGV.AutoGenerateColumns = false;
-            DBConnector.FillDGV(mainDGV, Properties.Resources.CostumeQuery);
+            DB.FillDGV(mainDGV, Properties.Resources.CostumeQuery);
         }
         void show(string str)
         {
             resetGB();
             mainDGV.Visible = false;
-            DBConnector.FillCB(typeCB, "SELECT * FROM `costume_type`", "id_costume_type", "name");
+            DB.FillCB(typeCB, "SELECT * FROM `costume_type`", "id_costume_type", "name");
             mainGB.Visible = true;
             OKButton.Enabled = true;
             cancelButton.Enabled = true;
@@ -95,8 +95,8 @@ namespace IIS_Costumes
                 {
                     string query = String.Format(@"
                                         DELETE FROM `carnaval`.`costume`
-                                        WHERE id_costume={0};", DBConnector.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_costume"));
-                    DBConnector.SetNoResultQuery(query);
+                                        WHERE id_costume={0};", DB.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_costume"));
+                    DB.SetNoResultQuery(query);
                 }
                 refreshData();
             }
@@ -113,9 +113,9 @@ namespace IIS_Costumes
                                                    n, GetWordForm()), "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.OK)
                 {
                     var ids = from DataGridViewRow x in rows
-                              select DBConnector.GetRowCol(x, "id_costume");
+                              select DB.GetRowCol(x, "id_costume");
                     string query = string.Format("DELETE FROM `costume` WHERE `id_costume` IN ({0})", string.Join(", ", ids));
-                    DBConnector.SetNoResultQuery(query);
+                    DB.SetNoResultQuery(query);
                     refreshData();
                 }
             }
@@ -157,7 +157,7 @@ namespace IIS_Costumes
                                  {1},
                                  {2},
                                  {3});", nameCostume, typeCostume, priceCostume, daily_priceCostume);
-                long inserted_id = DBConnector.SetNoResultQuery(query);
+                long inserted_id = DB.SetNoResultQuery(query);
                 if (inserted_id > 0)
                 {
                     hide();
@@ -167,7 +167,7 @@ namespace IIS_Costumes
                     if (callerForm != null && callerForm.GetType() == typeof(CostumeSizeForm))
                     {
                         CostumeSizeForm CSForm = (CostumeSizeForm)callerForm;
-                        DBConnector.FillCB(CSForm.costumeCB, Properties.Resources.CostumeQuery, "id_costume", "name");
+                        DB.FillCB(CSForm.costumeCB, Properties.Resources.CostumeQuery, "id_costume", "name");
                         CSForm.costumeCB.SelectedValue = inserted_id;
                         Close();
                     }
@@ -199,7 +199,7 @@ namespace IIS_Costumes
                 show("no add");
                 return;
             }
-            int costume_id = (int)DBConnector.GetRowCol(mainDGV.SelectedRows[0], "id_costume");
+            int costume_id = (int)DB.GetRowCol(mainDGV.SelectedRows[0], "id_costume");
 
         }
     }

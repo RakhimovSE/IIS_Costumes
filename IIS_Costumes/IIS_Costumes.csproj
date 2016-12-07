@@ -102,7 +102,7 @@
     <Compile Include="CostumeType.Designer.cs">
       <DependentUpon>CostumeType.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBConnector.cs" />
+    <Compile Include="DB.cs" />
     <Compile Include="TakeCostumeForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -15,7 +15,7 @@ namespace IIS_Costumes
         enum State
         {
             Table,
-            Issue,
+            Add,
             Edit
         }
 
@@ -27,13 +27,13 @@ namespace IIS_Costumes
             set
             {
                 curState = value;
-                if (value == State.Issue || value == State.Edit) costumeDT = null;
+                if (value == State.Add || value == State.Edit) costumeDT = null;
                 orderGB.Visible = value != State.Table;
                 searchTB.Enabled = mainDGV.Visible = issueButton.Enabled = takeButton.Enabled =
                     editButton.Enabled = deleteButton.Enabled = value == State.Table;
-                costumeAddButton.Enabled = costumeRemoveButton.Enabled = value == State.Issue;
-                orderGB.Text = value == State.Issue ? "Выдача костюмов" : "Редактирование записи о выдаче";
-                CancelButton = value == State.Edit || value == State.Issue ? cancelButton : null;
+                costumeAddButton.Enabled = costumeRemoveButton.Enabled = value == State.Add;
+                orderGB.Text = value == State.Add ? "Выдача костюмов" : "Редактирование записи о выдаче";
+                CancelButton = value == State.Edit || value == State.Add ? cancelButton : null;
             }
         }
 
@@ -41,7 +41,7 @@ namespace IIS_Costumes
         CostumeForm costumeForm;
         CostumeSizeForm costumeSizeForm;
 
-        DataTable costumeDT;
+        public DataTable costumeDT;
         int total;
 
         public int Total
@@ -58,7 +58,7 @@ namespace IIS_Costumes
         private void SetMainDGV(string search = "")
         {
             string query = string.Format("CALL order_search('{0}')", search);
-            DBConnector.FillDGV(mainDGV, query);
+            DB.FillDGV(mainDGV, query);
             SetDGVStyle();
         }
 
@@ -68,8 +68,8 @@ namespace IIS_Costumes
             {
                 mainDGV.Rows[i].HeaderCell.Value = (i + 1).ToString();
                 DateTime dtShedule;
-                dtShedule = (DateTime)DBConnector.GetRowCol(mainDGV.Rows[i], "returndate_shedule");
-                object objActual = DBConnector.GetRowCol(mainDGV.Rows[i], "returndate_actual");
+                dtShedule = (DateTime)DB.GetRowCol(mainDGV.Rows[i], "returndate_shedule");
+                object objActual = DB.GetRowCol(mainDGV.Rows[i], "returndate_actual");
                 if (objActual.GetType() == typeof(DBNull))
                 {
                     if (dtShedule < DateTime.Now)
@@ -100,21 +100,23 @@ namespace IIS_Costumes
             }
             foreach (DataGridViewRow row in rows)
             {
-                int costume_size_id = (int)DBConnector.GetRowCol(row, "costume_size_id");
-                string costume_name = DBConnector.GetRowCol(row, "costume_name").ToString();
-                string vendor = DBConnector.GetRowCol(row, "vendor").ToString();
-                string size_name = DBConnector.GetRowCol(row, "size_name").ToString();
-                int price = Convert.ToInt32(DBConnector.GetRowCol(row, "price"));
-                int costume_daily_price = (int)DBConnector.GetRowCol(row, "costume_daily_price");
-                DateTime returndate_shedule = (DateTime)DBConnector.GetRowCol(row, "returndate_shedule");
-                string note = DBConnector.GetRowCol(row, "note").ToString();
+                int costume_size_id = (int)DB.GetRowCol(row, "costume_size_id");
+                string costume_name = DB.GetRowCol(row, "costume_name").ToString();
+                string vendor = DB.GetRowCol(row, "vendor").ToString();
+                string size_name = DB.GetRowCol(row, "size_name").ToString();
+                int price = Convert.ToInt32(DB.GetRowCol(row, "price"));
+                int costume_daily_price = (int)DB.GetRowCol(row, "costume_daily_price");
+                DateTime returndate_shedule = (DateTime)DB.GetRowCol(row, "returndate_shedule");
+                string note = DB.GetRowCol(row, "note").ToString();
+                int order_id = (int)DB.GetRowCol(row, "id_order");
                 costumeDT.Rows.Add(costume_size_id, costume_name, vendor,
-                    size_name, price, costume_daily_price, returndate_shedule, note);
+                    size_name, price, costume_daily_price, returndate_shedule, note, order_id);
 
                 Total += price;
             }
             costumeDGV.DataSource = costumeDT;
-            clientCB.SelectedValue = DBConnector.GetRowCol(rows[0], "client_id");
+            clientCB.SelectedValue = DB.GetRowCol(rows[0], "client_id");
+            dateDTP.Value = (DateTime)DB.GetRowCol(rows[0], "date");
         }
 
         private void SetCostumeDT()
@@ -128,6 +130,7 @@ namespace IIS_Costumes
             costumeDT.Columns.Add("costume_daily_price", typeof(int));
             costumeDT.Columns.Add("returndate_shedule", typeof(DateTime));
             costumeDT.Columns.Add("note", typeof(string));
+            costumeDT.Columns.Add("id_order", typeof(int));
         }
         #endregion
         #region Main
@@ -148,7 +151,7 @@ namespace IIS_Costumes
 
             costumeDGV.AutoGenerateColumns = false;
             employeeTB.Text = Program.employee_name;
-            DBConnector.FillCB(clientCB, Properties.Resources.ClientQuery, "id_client", "name");
+            DB.FillCB(clientCB, Properties.Resources.ClientQuery, "id_client", "name");
         }
 
         private void searchTB_TextChanged(object sender, EventArgs e)
@@ -166,11 +169,11 @@ namespace IIS_Costumes
             foreach (DataGridViewRow row in mainDGV.Rows)
                 row.Cells["mainSelected"].Value = row.Selected;
             if (mainDGV.SelectedRows.Count == 0) return;
-            int client_id = (int)DBConnector.GetRowCol(mainDGV.SelectedRows[0], "client_id");
+            int client_id = (int)DB.GetRowCol(mainDGV.SelectedRows[0], "client_id");
             bool oneClient = true;
             foreach (DataGridViewRow row in mainDGV.SelectedRows)
             {
-                if (client_id != (int)DBConnector.GetRowCol(row, "client_id"))
+                if (client_id != (int)DB.GetRowCol(row, "client_id"))
                 {
                     oneClient = false;
                     break;
@@ -223,7 +226,7 @@ namespace IIS_Costumes
         #region Tools
         private void issueButton_Click(object sender, EventArgs e)
         {
-            CurState = State.Issue;
+            CurState = State.Add;
             SetGB();
         }
 
@@ -247,7 +250,7 @@ namespace IIS_Costumes
             if (n == 1)
             {
                 text = string.Format("Вы уверены, что хотите удалить запись о выдаче костюма\n{0}?",
-                    DBConnector.GetRowCol(rows[0], "costume_name"));
+                    DB.GetRowCol(rows[0], "costume_name"));
                 caption = "Удаление записи о выдаче костюма";
             }
             else
@@ -268,9 +271,9 @@ namespace IIS_Costumes
             if (answer == DialogResult.No) return;
 
             var ids = from DataGridViewRow x in rows
-                      select DBConnector.GetRowCol(x, "id_order");
+                      select DB.GetRowCol(x, "id_order");
             string query = string.Format("DELETE FROM `order` WHERE `id_order` IN ({0})", string.Join(", ", ids));
-            DBConnector.SetNoResultQuery(query);
+            DB.SetNoResultQuery(query);
             SetMainDGV(searchTB.Text);
         }
         #endregion
@@ -283,32 +286,66 @@ namespace IIS_Costumes
 
         private void costumeAddButton_Click(object sender, EventArgs e)
         {
-            //CostumeForm cf = new CostumeForm(this);
-            //cf.Show();
-            // Перейти на форму "Костюмы" в режим MultiSelectionTable
+            new CostumeSizeForm(this).ShowDialog();
         }
 
         private void costumeRemoveButton_Click(object sender, EventArgs e)
         {
-
+            foreach (DataGridViewRow row in costumeDGV.SelectedRows)
+            {
+                costumeDT.Rows.Remove(DB.DGVR2DR(row));
+            }
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
+            if (costumeDT.Rows.Count == 0)
+            {
+                MessageBox.Show("Выберите костюмы для выдачи");
+                return;
+            }
+            string date = DB.DateToMysql(dateDTP.Value, true, false);
+            int client_id = (int)clientCB.SelectedValue;
+            string query = "";
+            if (CurState == State.Add)
+            {
+                var values = from DataRow x in costumeDT.Rows
+                             select string.Format("('{0}', {1}, {2}, {3}, '{4}', '{5}', {6}, '{7}')",
+                                date, client_id, Program.employee_id, x["costume_size_id"], x["vendor"],
+                                DB.DateToMysql((DateTime)x["returndate_shedule"], true, false),
+                                x["price"], x["note"]);
+                query = string.Format("INSERT INTO `order` (`date`, `client_id`, `employee_id`, " +
+                        "`costume_size_id`, `vendor`, `returndate_shedule`, `price`, `note`) VALUES {0}",
+                        string.Join(", ", values));
+                DB.SetNoResultQuery(query);
+            }
+            else
+            {
+                foreach (DataRow x in costumeDT.Rows)
+                {
+                    query = string.Format("UPDATE `order` SET `date` = '{0}', `client_id` = {1}, " +
+                            "`employee_id` = {2}, `costume_size_id` = {3}, `vendor` = '{4}', " +
+                            "`returndate_shedule` = '{5}', `price` = {6}, `note` = '{7}' WHERE `id_order` = {8}",
+                            date, client_id, Program.employee_id, x["costume_size_id"], x["vendor"],
+                            DB.DateToMysql((DateTime)x["returndate_shedule"], true, false),
+                            x["price"], x["note"], x["id_order"]);
+                    DB.SetNoResultQuery(query);
+                }
+            }
             // -----
+            SetMainDGV(searchTB.Text);
             CurState = State.Table;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            // -----
             CurState = State.Table;
         }
         #endregion
 
         private void costumeDGV_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            // Перейти в форму "Костюмы" в режим SingleSelectionParameters
+            new CostumeSizeForm(DB.DGVR2DR(costumeDGV.SelectedRows[0])).ShowDialog();
         }
     }
 }
