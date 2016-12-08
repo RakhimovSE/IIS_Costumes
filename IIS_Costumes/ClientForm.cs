@@ -16,14 +16,13 @@ namespace IIS_Costumes
         {
             InitializeComponent();
         }
-        public ClientForm(Form form = null)
+        public ClientForm(Form callerForm = null)
         {
             InitializeComponent();
-            if (form.GetType() == typeof(OrderForm))
-                orderForm = (OrderForm)form;
+            this.callerForm = callerForm;
         }
 
-        OrderForm orderForm;
+        Form callerForm;
 
         void show(string str)
         {
@@ -58,7 +57,7 @@ namespace IIS_Costumes
         private void SetMainDGV(string search = "")
         {
             string query = string.Format("CALL client_search('{0}')", search);
-            DBConnector.FillDGV(mainDGV, query);
+            DB.FillDGV(mainDGV, query);
         }
         void resetGB()
         {
@@ -80,7 +79,7 @@ namespace IIS_Costumes
         void refreshData()
         {
             mainDGV.AutoGenerateColumns = false;
-            DBConnector.FillDGV(mainDGV, Properties.Resources.ClientQuery);
+            DB.FillDGV(mainDGV, Properties.Resources.ClientQuery);
         }
         private void editButton_Click(object sender, EventArgs e)
         {
@@ -106,7 +105,7 @@ namespace IIS_Costumes
                 if (adressTB.Text.Trim(' ') != "")
                     adress = "'" + adressTB.Text + "'";
                 if (passDateDTP.Value != null)
-                    datePass = "'" + DBConnector.DtToMysql(passDateDTP.Value, true, false) + "'";
+                    datePass = "'" + DB.DateToMysql(passDateDTP.Value, true, false) + "'";
                 if (passNumTB.Text.Trim(' ') != "")
                     numPass = "'" + passNumTB.Text + "'";
                 if (passDepartRTB.Text.Trim(' ') != "")
@@ -127,8 +126,8 @@ namespace IIS_Costumes
                                  {3},
                                  {4},
                                  {5});", fio, phone, adress, numPass, datePass, departPass);
-                bool res = DBConnector.SetNoResultQuery(query);
-                if (res == true)
+                long inserted_id = DB.SetNoResultQuery(query);
+                if (inserted_id > 0)
                 {
                     hide();
                     //  mainDGV.Rows.Add(fio, phone);
@@ -157,12 +156,16 @@ namespace IIS_Costumes
 
         private void mainDGV_DoubleClick(object sender, EventArgs e)
         {
-            if (orderForm != null)
+            if (callerForm == null)
             {
-                int client_id = (int)DBConnector.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_client");
-                orderForm.clientCB.SelectedValue = client_id;
-                this.Close();
+                show("edit");
+                return;
             }
+            int client_id = (int)DB.GetRowCol(mainDGV.SelectedRows[0], "id_client");
+            Type formType = callerForm.GetType();
+            if (formType == typeof(OrderForm))
+                (callerForm as OrderForm).clientCB.SelectedValue = client_id;
+            this.Close();
         }
 
         private void delButton_Click(object sender, EventArgs e) //удаление 
@@ -178,8 +181,8 @@ namespace IIS_Costumes
                 {
                     string query = String.Format(@"
                                         DELETE FROM `carnaval`.`client`
-                                        WHERE id_client={0};", DBConnector.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_client"));
-                    DBConnector.SetNoResultQuery(query);
+                                        WHERE id_client={0};", DB.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_client"));
+                    DB.SetNoResultQuery(query);
                 }
                 refreshData();
             }
@@ -196,9 +199,9 @@ namespace IIS_Costumes
                                                    n, GetWordForm()), "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.OK)
                 {
                     var ids = from DataGridViewRow x in rows
-                              select DBConnector.GetRowCol(x, "id_client");
+                              select DB.GetRowCol(x, "id_client");
                     string query = string.Format("DELETE FROM `client` WHERE `id_client` IN ({0})", string.Join(", ", ids));
-                    DBConnector.SetNoResultQuery(query);
+                    DB.SetNoResultQuery(query);
                     refreshData();
                 }
             }

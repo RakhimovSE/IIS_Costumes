@@ -27,20 +27,20 @@ namespace IIS_Costumes
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            string dt = DBConnector.DtToMysql(returndateDTP.Value, true, false);
+            string dt = DB.DateToMysql(returndateDTP.Value, true, false);
             var return_filter = from DataGridViewRow x in rows
-                            select (int)DBConnector.GetRowCol(x, "id_order");
+                            select (int)DB.GetRowCol(x, "id_order");
             string return_query = string.Format("UPDATE `order` SET `returndate_actual` = '{0}' "+
                 "WHERE `id_order` IN ({1})", dt, string.Join(", ", return_filter));
-            DBConnector.SetNoResultQuery(return_query);
+            DB.SetNoResultQuery(return_query);
             var bill_filter = from DataGridViewRow x in rows
-                              where returndateDTP.Value > (DateTime)DBConnector.GetRowCol(x, "returndate_shedule")
-                              select (int)DBConnector.GetRowCol(x, "id_order");
+                              where returndateDTP.Value > (DateTime)DB.GetRowCol(x, "returndate_shedule")
+                              select (int)DB.GetRowCol(x, "id_order");
             if (bill_filter.Count() > 0)
             {
                 string bill_query = string.Format("UPDATE `order` SET `bill_id` = `id_order` WHERE `id_order` IN ({0})",
                     string.Join(", ", bill_filter));
-                DBConnector.SetNoResultQuery(bill_query);
+                DB.SetNoResultQuery(bill_query);
                 new BillForm(bill_filter.ToList()).ShowDialog();
             }
             Close();

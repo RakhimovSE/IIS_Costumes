@@ -132,4 +132,7 @@
   <data name="OrderQuery" xml:space="preserve">
     <value>SELECT * FROM `v_order`</value>
   </data>
+  <data name="SizeQuery" xml:space="preserve">
+    <value>SELECT * FROM `v_size`</value>
+  </data>
 </root>

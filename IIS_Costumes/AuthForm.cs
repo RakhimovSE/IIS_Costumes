@@ -27,7 +27,7 @@ namespace IIS_Costumes
             string hash = Controller.GetSaltedMD5Hash(login, password);
             string query = string.Format
                 ("SELECT * FROM `employee` WHERE `login` = '{0}' AND `password` = '{1}'", login, hash);
-            DataSet ds = DBConnector.GetDBDataSet(query);
+            DataSet ds = DB.GetDBDataSet(query);
             if (ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0)
             {
                 MessageBox.Show("Неправильный логин/пароль");

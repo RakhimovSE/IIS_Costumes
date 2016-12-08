@@ -26,7 +26,7 @@ namespace IIS_Costumes
         void refreshData()
         {
             mainDGV.AutoGenerateColumns = false;
-            DBConnector.FillDGV(mainDGV, "SELECT * FROM `costume_type`");
+            DB.FillDGV(mainDGV, "SELECT * FROM `costume_type`");
         }
         void show(string str)
         {
@@ -85,8 +85,8 @@ namespace IIS_Costumes
                                 (`name`)
                                 VALUES
                                ('{0}');", nameCostumeType);
-                bool res = DBConnector.SetNoResultQuery(query);
-                if (res == true)
+                long inserted_id = DB.SetNoResultQuery(query);
+                if (inserted_id > 0)
                 {
                     hide();
                     refreshData();
@@ -124,8 +124,8 @@ namespace IIS_Costumes
                 {
                     string query = String.Format(@"
                                         DELETE FROM `costume_type`
-                                        WHERE id_costume_type={0};", DBConnector.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_costume_type"));
-                    DBConnector.SetNoResultQuery(query);
+                                        WHERE id_costume_type={0};", DB.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_costume_type"));
+                    DB.SetNoResultQuery(query);
                 }
                 refreshData();
             }
@@ -142,9 +142,9 @@ namespace IIS_Costumes
                                                    n, GetWordForm()), "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.OK)
                 {
                     var ids = from DataGridViewRow x in rows
-                              select DBConnector.GetRowCol(x, "id_costume_type");
+                              select DB.GetRowCol(x, "id_costume_type");
                     string query = string.Format("DELETE FROM `costume_type` WHERE `id_costume_type` IN ({0})", string.Join(", ", ids));
-                    DBConnector.SetNoResultQuery(query);
+                    DB.SetNoResultQuery(query);
                     refreshData();
                 }
             }
@@ -154,7 +154,7 @@ namespace IIS_Costumes
         {
             if (costume != null)
             {
-                int costume_id = (int)DBConnector.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_costume_type");
+                int costume_id = (int)DB.GetRowCol(mainDGV.Rows[mainDGV.SelectedCells[0].RowIndex], "id_costume_type");
                 costume.typeCB.SelectedValue = costume_id;
                 this.Close();
             }
