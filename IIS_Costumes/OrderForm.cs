@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.IO;
+using Microsoft.Office.Interop.Word;
+
 namespace IIS_Costumes
 {
     public partial class OrderForm : Form
@@ -53,7 +56,7 @@ namespace IIS_Costumes
         CostumeForm costumeForm;
         CostumeSizeForm costumeSizeForm;
 
-        public DataTable costumeDT;
+        public System.Data.DataTable costumeDT;
         int totalDeposit;
         int totalRent;
 
@@ -138,7 +141,7 @@ namespace IIS_Costumes
 
         private void SetCostumeDT()
         {
-            costumeDT = new DataTable();
+            costumeDT = new System.Data.DataTable();
             costumeDT.Columns.Add("costume_size_id", typeof(int));
             costumeDT.Columns.Add("costume_name", typeof(string));
             costumeDT.Columns.Add("vendor", typeof(string));
@@ -403,6 +406,18 @@ namespace IIS_Costumes
         private void costumeDGV_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             RecalculateTotal();
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                File.WriteAllBytes("Договор.docx", Properties.Resources.agreement);
+                var applicationWord = new Microsoft.Office.Interop.Word.Application();
+                applicationWord.Documents.Open(Directory.GetParent(System.Windows.Forms.Application.ExecutablePath) + "\\Договор.docx");
+                applicationWord.Visible = true;
+            }
+            catch { }
         }
     }
 }

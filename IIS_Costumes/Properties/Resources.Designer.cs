@@ -61,6 +61,16 @@ namespace IIS_Costumes.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] agreement {
+            get {
+                object obj = ResourceManager.GetObject("agreement", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на SELECT * FROM `v_client`.
         /// </summary>
         internal static string ClientQuery {

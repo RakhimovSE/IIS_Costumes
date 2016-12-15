@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.headerLabel = new System.Windows.Forms.Label();
             this.searchLabel = new System.Windows.Forms.Label();
             this.searchTB = new System.Windows.Forms.TextBox();
@@ -57,6 +57,8 @@
             this.типыКостюмовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.размерыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderGB = new System.Windows.Forms.GroupBox();
+            this.printButton = new System.Windows.Forms.Button();
+            this.totalRentLabel = new System.Windows.Forms.Label();
             this.employeeLabel = new System.Windows.Forms.Label();
             this.employeeTB = new System.Windows.Forms.TextBox();
             this.costumeDGV = new System.Windows.Forms.DataGridView();
@@ -79,7 +81,6 @@
             this.OKButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.totalRentLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).BeginInit();
             this.mainMenuStrip.SuspendLayout();
             this.orderGB.SuspendLayout();
@@ -111,7 +112,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchTB.Location = new System.Drawing.Point(12, 59);
             this.searchTB.Name = "searchTB";
-            this.searchTB.Size = new System.Drawing.Size(829, 20);
+            this.searchTB.Size = new System.Drawing.Size(801, 20);
             this.searchTB.TabIndex = 2;
             this.searchTB.TextChanged += new System.EventHandler(this.searchTB_TextChanged);
             // 
@@ -136,7 +137,7 @@
             this.mainDGV.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.mainDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.mainDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.mainDGV.Size = new System.Drawing.Size(829, 319);
+            this.mainDGV.Size = new System.Drawing.Size(801, 319);
             this.mainDGV.TabIndex = 1;
             this.mainDGV.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.mainDGV_CellMouseDoubleClick);
             this.mainDGV.SelectionChanged += new System.EventHandler(this.mainDgv_SelectionChanged);
@@ -191,7 +192,7 @@
             // issueButton
             // 
             this.issueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.issueButton.Location = new System.Drawing.Point(847, 85);
+            this.issueButton.Location = new System.Drawing.Point(819, 85);
             this.issueButton.Name = "issueButton";
             this.issueButton.Size = new System.Drawing.Size(110, 23);
             this.issueButton.TabIndex = 4;
@@ -202,7 +203,7 @@
             // takeButton
             // 
             this.takeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.takeButton.Location = new System.Drawing.Point(847, 114);
+            this.takeButton.Location = new System.Drawing.Point(819, 114);
             this.takeButton.Name = "takeButton";
             this.takeButton.Size = new System.Drawing.Size(110, 23);
             this.takeButton.TabIndex = 5;
@@ -213,7 +214,7 @@
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(846, 143);
+            this.editButton.Location = new System.Drawing.Point(818, 143);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(110, 23);
             this.editButton.TabIndex = 7;
@@ -229,7 +230,7 @@
             this.справочникиToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(969, 24);
+            this.mainMenuStrip.Size = new System.Drawing.Size(941, 24);
             this.mainMenuStrip.TabIndex = 8;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -324,9 +325,7 @@
             // 
             // orderGB
             // 
-            this.orderGB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.orderGB.Controls.Add(this.printButton);
             this.orderGB.Controls.Add(this.totalRentLabel);
             this.orderGB.Controls.Add(this.employeeLabel);
             this.orderGB.Controls.Add(this.employeeTB);
@@ -346,10 +345,31 @@
             this.orderGB.Margin = new System.Windows.Forms.Padding(2);
             this.orderGB.Name = "orderGB";
             this.orderGB.Padding = new System.Windows.Forms.Padding(2);
-            this.orderGB.Size = new System.Drawing.Size(829, 319);
+            this.orderGB.Size = new System.Drawing.Size(801, 319);
             this.orderGB.TabIndex = 9;
             this.orderGB.TabStop = false;
             this.orderGB.Text = "orderGB";
+            // 
+            // printButton
+            // 
+            this.printButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.printButton.Location = new System.Drawing.Point(541, 291);
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(67, 23);
+            this.printButton.TabIndex = 33;
+            this.printButton.Text = "Печать";
+            this.printButton.UseVisualStyleBackColor = true;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
+            // 
+            // totalRentLabel
+            // 
+            this.totalRentLabel.AutoSize = true;
+            this.totalRentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.totalRentLabel.Location = new System.Drawing.Point(11, 301);
+            this.totalRentLabel.Name = "totalRentLabel";
+            this.totalRentLabel.Size = new System.Drawing.Size(131, 13);
+            this.totalRentLabel.TabIndex = 32;
+            this.totalRentLabel.Text = "Итого аренда: 0 руб.";
             // 
             // employeeLabel
             // 
@@ -372,7 +392,8 @@
             // 
             this.costumeDGV.AllowUserToAddRows = false;
             this.costumeDGV.AllowUserToResizeRows = false;
-            this.costumeDGV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.costumeDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.costumeDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.costumeDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -383,7 +404,7 @@
             this.costumePrice,
             this.costumeDailyPrice,
             this.costumeRentPrice});
-            this.costumeDGV.Location = new System.Drawing.Point(8, 74);
+            this.costumeDGV.Location = new System.Drawing.Point(11, 74);
             this.costumeDGV.Name = "costumeDGV";
             this.costumeDGV.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.costumeDGV.RowHeadersVisible = false;
@@ -406,10 +427,10 @@
             // costumeVendor
             // 
             this.costumeVendor.DataPropertyName = "vendor";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Green;
-            this.costumeVendor.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Green;
+            this.costumeVendor.DefaultCellStyle = dataGridViewCellStyle1;
             this.costumeVendor.HeaderText = "Артикул";
             this.costumeVendor.Name = "costumeVendor";
             this.costumeVendor.Width = 70;
@@ -417,12 +438,12 @@
             // costumeShedule
             // 
             this.costumeShedule.DataPropertyName = "returndate_shedule";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle4.Format = "d";
-            dataGridViewCellStyle4.NullValue = null;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Green;
-            this.costumeShedule.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Green;
+            this.costumeShedule.DefaultCellStyle = dataGridViewCellStyle2;
             this.costumeShedule.HeaderText = "Возврат план.";
             this.costumeShedule.Name = "costumeShedule";
             this.costumeShedule.Width = 80;
@@ -461,8 +482,7 @@
             // 
             // costumeRemoveButton
             // 
-            this.costumeRemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.costumeRemoveButton.Location = new System.Drawing.Point(684, 103);
+            this.costumeRemoveButton.Location = new System.Drawing.Point(687, 103);
             this.costumeRemoveButton.Name = "costumeRemoveButton";
             this.costumeRemoveButton.Size = new System.Drawing.Size(24, 23);
             this.costumeRemoveButton.TabIndex = 26;
@@ -472,8 +492,7 @@
             // 
             // costumeAddButton
             // 
-            this.costumeAddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.costumeAddButton.Location = new System.Drawing.Point(684, 74);
+            this.costumeAddButton.Location = new System.Drawing.Point(687, 74);
             this.costumeAddButton.Name = "costumeAddButton";
             this.costumeAddButton.Size = new System.Drawing.Size(24, 23);
             this.costumeAddButton.TabIndex = 24;
@@ -483,10 +502,9 @@
             // 
             // totalDepositLabel
             // 
-            this.totalDepositLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.totalDepositLabel.AutoSize = true;
             this.totalDepositLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.totalDepositLabel.Location = new System.Drawing.Point(8, 288);
+            this.totalDepositLabel.Location = new System.Drawing.Point(11, 288);
             this.totalDepositLabel.Name = "totalDepositLabel";
             this.totalDepositLabel.Size = new System.Drawing.Size(137, 13);
             this.totalDepositLabel.TabIndex = 11;
@@ -504,9 +522,8 @@
             // 
             // costumeLabel
             // 
-            this.costumeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.costumeLabel.AutoSize = true;
-            this.costumeLabel.Location = new System.Drawing.Point(8, 58);
+            this.costumeLabel.Location = new System.Drawing.Point(11, 58);
             this.costumeLabel.Name = "costumeLabel";
             this.costumeLabel.Size = new System.Drawing.Size(55, 13);
             this.costumeLabel.TabIndex = 18;
@@ -551,7 +568,7 @@
             // OKButton
             // 
             this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKButton.Location = new System.Drawing.Point(684, 291);
+            this.OKButton.Location = new System.Drawing.Point(656, 291);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(67, 23);
             this.OKButton.TabIndex = 11;
@@ -562,7 +579,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(757, 291);
+            this.cancelButton.Location = new System.Drawing.Point(729, 291);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(67, 23);
             this.cancelButton.TabIndex = 10;
@@ -573,7 +590,7 @@
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.Location = new System.Drawing.Point(847, 201);
+            this.deleteButton.Location = new System.Drawing.Point(819, 201);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(110, 23);
             this.deleteButton.TabIndex = 10;
@@ -581,22 +598,11 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // totalRentLabel
-            // 
-            this.totalRentLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.totalRentLabel.AutoSize = true;
-            this.totalRentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.totalRentLabel.Location = new System.Drawing.Point(8, 301);
-            this.totalRentLabel.Name = "totalRentLabel";
-            this.totalRentLabel.Size = new System.Drawing.Size(131, 13);
-            this.totalRentLabel.TabIndex = 32;
-            this.totalRentLabel.Text = "Итого аренда: 0 руб.";
-            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(969, 416);
+            this.ClientSize = new System.Drawing.Size(941, 416);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.takeButton);
@@ -675,6 +681,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeDailyPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeRentPrice;
         private System.Windows.Forms.Label totalRentLabel;
+        private System.Windows.Forms.Button printButton;
     }
 }
 
