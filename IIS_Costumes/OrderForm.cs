@@ -12,7 +12,7 @@ namespace IIS_Costumes
 {
     public partial class OrderForm : Form
     {
-        enum State
+        public enum State
         {
             Table,
             Add,
@@ -21,7 +21,7 @@ namespace IIS_Costumes
 
         State curState;
 
-        State CurState
+        public State CurState
         {
             get { return curState; }
             set
@@ -33,7 +33,7 @@ namespace IIS_Costumes
                     editButton.Enabled = deleteButton.Enabled = value == State.Table;
                 costumeAddButton.Enabled = costumeRemoveButton.Enabled = value == State.Add;
                 orderGB.Text = value == State.Add ? "Выдача костюмов" : "Редактирование записи о выдаче";
-                CancelButton = value == State.Edit || value == State.Add ? cancelButton : null;
+                // CancelButton = value == State.Edit || value == State.Add ? cancelButton : null;
             }
         }
 
@@ -79,13 +79,18 @@ namespace IIS_Costumes
                     mainDGV.Rows[i].DefaultCellStyle.BackColor = Color.LightGray;
             }
         }
-        
+
         private void PerformEdit()
         {
-            IEnumerable<DataGridViewRow> filter = from DataGridViewRow x in mainDGV.SelectedRows
-                                                  select x;
+            var filter = from DataGridViewRow x in mainDGV.SelectedRows
+                         select x;
             CurState = State.Edit;
             SetGB(filter.ToList());
+        }
+
+        public int GetRentPrice(DateTime issueDate, DateTime returnDate, int dailyPrice)
+        {
+            return Math.Max(((returnDate - issueDate).Days + 1) * dailyPrice, 0);
         }
 
         private void SetGB(List<DataGridViewRow> rows = null)
@@ -103,16 +108,16 @@ namespace IIS_Costumes
                 int costume_size_id = (int)DB.GetRowCol(row, "costume_size_id");
                 string costume_name = DB.GetRowCol(row, "costume_name").ToString();
                 string vendor = DB.GetRowCol(row, "vendor").ToString();
-                string size_name = DB.GetRowCol(row, "size_name").ToString();
-                int price = Convert.ToInt32(DB.GetRowCol(row, "price"));
-                int costume_daily_price = (int)DB.GetRowCol(row, "costume_daily_price");
+                string size_name_num = DB.GetRowCol(row, "size_name_num").ToString();
                 DateTime returndate_shedule = (DateTime)DB.GetRowCol(row, "returndate_shedule");
-                string note = DB.GetRowCol(row, "note").ToString();
+                int costume_price = Convert.ToInt32(DB.GetRowCol(row, "costume_price"));
+                int costume_daily_price = (int)DB.GetRowCol(row, "costume_daily_price");
+                int rent_price = GetRentPrice(dateDTP.Value, returndate_shedule, costume_daily_price);
                 int order_id = (int)DB.GetRowCol(row, "id_order");
-                costumeDT.Rows.Add(costume_size_id, costume_name, vendor,
-                    size_name, price, costume_daily_price, returndate_shedule, note, order_id);
+                costumeDT.Rows.Add(costume_size_id, costume_name, vendor, size_name_num, costume_price,
+                    costume_daily_price, rent_price, returndate_shedule, order_id);
 
-                Total += price;
+                Total += rent_price;
             }
             costumeDGV.DataSource = costumeDT;
             clientCB.SelectedValue = DB.GetRowCol(rows[0], "client_id");
@@ -125,11 +130,11 @@ namespace IIS_Costumes
             costumeDT.Columns.Add("costume_size_id", typeof(int));
             costumeDT.Columns.Add("costume_name", typeof(string));
             costumeDT.Columns.Add("vendor", typeof(string));
-            costumeDT.Columns.Add("size_name", typeof(string));
-            costumeDT.Columns.Add("price", typeof(int));
+            costumeDT.Columns.Add("size_name_num", typeof(string));
+            costumeDT.Columns.Add("costume_price", typeof(int));
             costumeDT.Columns.Add("costume_daily_price", typeof(int));
+            costumeDT.Columns.Add("rent_price", typeof(int));
             costumeDT.Columns.Add("returndate_shedule", typeof(DateTime));
-            costumeDT.Columns.Add("note", typeof(string));
             costumeDT.Columns.Add("id_order", typeof(int));
         }
         #endregion
@@ -166,8 +171,6 @@ namespace IIS_Costumes
 
         private void mainDgv_SelectionChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in mainDGV.Rows)
-                row.Cells["mainSelected"].Value = row.Selected;
             if (mainDGV.SelectedRows.Count == 0) return;
             int client_id = (int)DB.GetRowCol(mainDGV.SelectedRows[0], "client_id");
             bool oneClient = true;
@@ -309,27 +312,35 @@ namespace IIS_Costumes
             string query = "";
             if (CurState == State.Add)
             {
-                var values = from DataRow x in costumeDT.Rows
-                             select string.Format("('{0}', {1}, {2}, {3}, '{4}', '{5}', {6}, '{7}')",
-                                date, client_id, Program.employee_id, x["costume_size_id"], x["vendor"],
-                                DB.DateToMysql((DateTime)x["returndate_shedule"], true, false),
-                                x["price"], x["note"]);
-                query = string.Format("INSERT INTO `order` (`date`, `client_id`, `employee_id`, " +
-                        "`costume_size_id`, `vendor`, `returndate_shedule`, `price`, `note`) VALUES {0}",
-                        string.Join(", ", values));
-                DB.SetNoResultQuery(query);
+                foreach (DataRow x in costumeDT.Rows)
+                {
+                    query = string.Format("INSERT INTO `order` (`date`, `client_id`, `costume_size_id`, " +
+                        "`vendor`, `costume_price`, `costume_daily_price`, `returndate_shedule`) " + 
+                        "VALUES ('{0}', {1}, {2}, '{3}', {4}, {5}, '{6}')",
+                        date, client_id, x["costume_size_id"], x["vendor"],
+                        x["costume_price"], x["costume_daily_price"],
+                        DB.DateToMysql((DateTime)x["returndate_shedule"], true, false));
+                    int order_id = DB.SetNoResultQuery(query);
+                    string bill_query = string.Format("INSERT INTO `bill` (`date`, `bill_type_id`, `order_id`, " +
+                        "`employee_id`, `price`, `paid`) VALUES ('{0}', 1, {1}, {2}, {3}, 1)",
+                        date, order_id, Program.employee_id, x["costume_price"]);
+                    DB.SetNoResultQuery(bill_query);
+                }
             }
             else
             {
                 foreach (DataRow x in costumeDT.Rows)
                 {
                     query = string.Format("UPDATE `order` SET `date` = '{0}', `client_id` = {1}, " +
-                            "`employee_id` = {2}, `costume_size_id` = {3}, `vendor` = '{4}', " +
-                            "`returndate_shedule` = '{5}', `price` = {6}, `note` = '{7}' WHERE `id_order` = {8}",
-                            date, client_id, Program.employee_id, x["costume_size_id"], x["vendor"],
+                            "`costume_size_id` = {2}, `vendor` = '{3}', `returndate_shedule` = '{4}', " +
+                            "`costume_price` = {5}, `costume_daily_price` = {6} WHERE `id_order` = {7}",
+                            date, client_id, x["costume_size_id"], x["vendor"],
                             DB.DateToMysql((DateTime)x["returndate_shedule"], true, false),
-                            x["price"], x["note"], x["id_order"]);
+                            x["costume_price"], x["costume_daily_price"], x["id_order"]);
                     DB.SetNoResultQuery(query);
+                    string bill_query = string.Format("UPDATE `bill` SET `date` = '{0}', `price` = {1} WHERE " +
+                        "`order_id` = {2} AND `bill_type_id` = 1", date, x["rent_price"], x["id_order"]);
+                    DB.SetNoResultQuery(bill_query);
                 }
             }
             // -----
@@ -345,7 +356,21 @@ namespace IIS_Costumes
 
         private void costumeDGV_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            new CostumeSizeForm(DB.DGVR2DR(costumeDGV.SelectedRows[0])).ShowDialog();
+
+        }
+
+        private void dateDTP_ValueChanged(object sender, EventArgs e)
+        {
+            foreach (DataRow x in costumeDT.Rows)
+            {
+                x["rent_price"] = GetRentPrice(dateDTP.Value, (DateTime)x["returndate_shedule"],
+                    (int)x["costume_daily_price"]);
+            }
+        }
+
+        private void costumeDGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            costumeDGV.CancelEdit();
         }
     }
 }

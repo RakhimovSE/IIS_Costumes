@@ -52,18 +52,8 @@
             this.mainDailyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainInStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.selectionGB = new System.Windows.Forms.GroupBox();
-            this.noteLabel = new System.Windows.Forms.Label();
-            this.noteRTB = new System.Windows.Forms.RichTextBox();
-            this.selectionOKButton = new System.Windows.Forms.Button();
-            this.selectionCancelButton = new System.Windows.Forms.Button();
-            this.returndateSheduleLabel = new System.Windows.Forms.Label();
-            this.returndateSheduleDTP = new System.Windows.Forms.DateTimePicker();
-            this.vendorLabel = new System.Windows.Forms.Label();
-            this.vendorTB = new System.Windows.Forms.TextBox();
             this.mainGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).BeginInit();
-            this.selectionGB.SuspendLayout();
             this.SuspendLayout();
             // 
             // headerLabel
@@ -317,98 +307,6 @@
             this.mainInStock.ReadOnly = true;
             this.mainInStock.Width = 60;
             // 
-            // selectionGB
-            // 
-            this.selectionGB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectionGB.Controls.Add(this.noteLabel);
-            this.selectionGB.Controls.Add(this.noteRTB);
-            this.selectionGB.Controls.Add(this.selectionOKButton);
-            this.selectionGB.Controls.Add(this.selectionCancelButton);
-            this.selectionGB.Controls.Add(this.returndateSheduleLabel);
-            this.selectionGB.Controls.Add(this.returndateSheduleDTP);
-            this.selectionGB.Controls.Add(this.vendorLabel);
-            this.selectionGB.Controls.Add(this.vendorTB);
-            this.selectionGB.Location = new System.Drawing.Point(12, 69);
-            this.selectionGB.Name = "selectionGB";
-            this.selectionGB.Size = new System.Drawing.Size(652, 116);
-            this.selectionGB.TabIndex = 19;
-            this.selectionGB.TabStop = false;
-            this.selectionGB.Text = "Выдача костюма";
-            // 
-            // noteLabel
-            // 
-            this.noteLabel.AutoSize = true;
-            this.noteLabel.Location = new System.Drawing.Point(311, 17);
-            this.noteLabel.Name = "noteLabel";
-            this.noteLabel.Size = new System.Drawing.Size(51, 13);
-            this.noteLabel.TabIndex = 15;
-            this.noteLabel.Text = "Заметки";
-            // 
-            // noteRTB
-            // 
-            this.noteRTB.Location = new System.Drawing.Point(314, 33);
-            this.noteRTB.Name = "noteRTB";
-            this.noteRTB.Size = new System.Drawing.Size(332, 48);
-            this.noteRTB.TabIndex = 14;
-            this.noteRTB.Text = "";
-            // 
-            // selectionOKButton
-            // 
-            this.selectionOKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectionOKButton.Location = new System.Drawing.Point(506, 87);
-            this.selectionOKButton.Name = "selectionOKButton";
-            this.selectionOKButton.Size = new System.Drawing.Size(67, 23);
-            this.selectionOKButton.TabIndex = 13;
-            this.selectionOKButton.Text = "OK";
-            this.selectionOKButton.UseVisualStyleBackColor = true;
-            this.selectionOKButton.Click += new System.EventHandler(this.selectionOKButton_Click);
-            // 
-            // selectionCancelButton
-            // 
-            this.selectionCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectionCancelButton.Location = new System.Drawing.Point(579, 87);
-            this.selectionCancelButton.Name = "selectionCancelButton";
-            this.selectionCancelButton.Size = new System.Drawing.Size(67, 23);
-            this.selectionCancelButton.TabIndex = 12;
-            this.selectionCancelButton.Text = "Отмена";
-            this.selectionCancelButton.UseVisualStyleBackColor = true;
-            this.selectionCancelButton.Click += new System.EventHandler(this.selectionCancelButton_Click);
-            // 
-            // returndateSheduleLabel
-            // 
-            this.returndateSheduleLabel.AutoSize = true;
-            this.returndateSheduleLabel.Location = new System.Drawing.Point(143, 17);
-            this.returndateSheduleLabel.Name = "returndateSheduleLabel";
-            this.returndateSheduleLabel.Size = new System.Drawing.Size(134, 13);
-            this.returndateSheduleLabel.TabIndex = 3;
-            this.returndateSheduleLabel.Text = "Дата возврата плановая";
-            // 
-            // returndateSheduleDTP
-            // 
-            this.returndateSheduleDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.returndateSheduleDTP.Location = new System.Drawing.Point(146, 33);
-            this.returndateSheduleDTP.Name = "returndateSheduleDTP";
-            this.returndateSheduleDTP.Size = new System.Drawing.Size(97, 20);
-            this.returndateSheduleDTP.TabIndex = 2;
-            // 
-            // vendorLabel
-            // 
-            this.vendorLabel.AutoSize = true;
-            this.vendorLabel.Location = new System.Drawing.Point(6, 17);
-            this.vendorLabel.Name = "vendorLabel";
-            this.vendorLabel.Size = new System.Drawing.Size(48, 13);
-            this.vendorLabel.TabIndex = 1;
-            this.vendorLabel.Text = "Артикул";
-            // 
-            // vendorTB
-            // 
-            this.vendorTB.Location = new System.Drawing.Point(5, 33);
-            this.vendorTB.Name = "vendorTB";
-            this.vendorTB.Size = new System.Drawing.Size(80, 20);
-            this.vendorTB.TabIndex = 0;
-            // 
             // CostumeSizeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -420,7 +318,6 @@
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.searchTB);
             this.Controls.Add(this.searchLabel);
-            this.Controls.Add(this.selectionGB);
             this.Controls.Add(this.mainDGV);
             this.Controls.Add(this.mainGB);
             this.Name = "CostumeSizeForm";
@@ -430,8 +327,6 @@
             this.mainGB.ResumeLayout(false);
             this.mainGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).EndInit();
-            this.selectionGB.ResumeLayout(false);
-            this.selectionGB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -463,14 +358,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn mainAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainInStock;
         public System.Windows.Forms.ComboBox costumeCB;
-        private System.Windows.Forms.GroupBox selectionGB;
-        private System.Windows.Forms.Label noteLabel;
-        private System.Windows.Forms.RichTextBox noteRTB;
-        private System.Windows.Forms.Button selectionOKButton;
-        private System.Windows.Forms.Button selectionCancelButton;
-        private System.Windows.Forms.Label returndateSheduleLabel;
-        private System.Windows.Forms.DateTimePicker returndateSheduleDTP;
-        private System.Windows.Forms.Label vendorLabel;
-        private System.Windows.Forms.TextBox vendorTB;
     }
 }

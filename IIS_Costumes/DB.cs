@@ -24,8 +24,7 @@ namespace IIS_Costumes
 
         public static object GetRowCol(DataGridViewRow row, string columnName)
         {
-            try { return (row.DataBoundItem as DataRowView).Row[columnName]; }
-            catch { return null; }
+            return (row.DataBoundItem as DataRowView).Row[columnName];
         }
 
         public static int SetNoResultQuery(string query)
@@ -41,10 +40,7 @@ namespace IIS_Costumes
                 conn.Close();
                 return Convert.ToInt32(cmd.LastInsertedId);
             }
-            catch (Exception ex)
-            {
-                return 0;
-            }
+            catch { return 0; }
         }
 
         public static object GetValueFromDB(string query)
@@ -60,15 +56,11 @@ namespace IIS_Costumes
                 conn.Close();
                 return result;
             }
-            catch (Exception ex)
-            {
-                return null;
-            }
+            catch { return null; }
         }
 
         public static DataSet GetDBDataSet(string query)
         {
-            DataSet result = null;
             try
             {
                 MySqlConnection conn = new MySqlConnection(connStr);
@@ -77,14 +69,12 @@ namespace IIS_Costumes
                 da.SelectCommand = new MySqlCommand(query, conn);
                 MySqlCommandBuilder cb = new MySqlCommandBuilder(da);
                 conn.Open();
-                result = new DataSet();
+                DataSet result = new DataSet();
                 da.Fill(result);
                 conn.Close();
+                return result;
             }
-            catch (Exception ex)
-            {
-            }
-            return result;
+            catch { return null; }
         }
 
         public static void FillCB(ComboBox cb, string query, string valueMember, string displayMember)

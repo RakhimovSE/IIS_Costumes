@@ -16,8 +16,7 @@ namespace IIS_Costumes
         {
             Table,
             Add,
-            Edit,
-            Select
+            Edit
         };
 
         public State CurState
@@ -27,18 +26,15 @@ namespace IIS_Costumes
             {
                 curState = value;
                 mainGB.Visible = value == State.Add || value == State.Edit;
-                selectionGB.Visible = value == State.Select;
                 searchTB.Enabled = mainDGV.Visible = addButton.Enabled = editButton.Enabled =
                     deleteButton.Enabled = value == State.Table;
                 mainGB.Text = value == State.Add ? "Добавление размера костюма" :
                     "Редактирование размера костюма";
 
                 if (value == State.Edit) curCS_id = (int)DB.GetRowCol(mainDGV.SelectedRows[0], "id_costume_size");
-                if (value == State.Select && orderDR == null) SetSelectGB();
             }
         }
 
-        DataRow orderDR;
         Form callerForm;
         State curState;
         int curCS_id;
@@ -60,13 +56,6 @@ namespace IIS_Costumes
             string query = string.Format("CALL costume_size_search('{0}')", search);
             DB.FillDGV(mainDGV, query);
         }
-
-        private void SetSelectGB()
-        {
-            vendorTB.Text = "";
-            returndateSheduleDTP.Value = DateTime.Now.AddDays(7);
-            noteRTB.Text = "";
-        }
         
         private void AddOrderCostume(DataGridViewRow row = null) // доделать
         {
@@ -74,7 +63,7 @@ namespace IIS_Costumes
 
             string costume_name = row == null ? costumeCB.Text :
                 DB.GetRowCol(row, "costume_name").ToString();
-            string vendor = vendorTB.Text;
+            string vendor = "";
             string size_name = row == null ? sizeCB.Text :
                 DB.GetRowCol(row, "size_name_num").ToString();
             int price = row == null ?
@@ -83,10 +72,9 @@ namespace IIS_Costumes
             int costume_daily_price = row == null ?
                 (int)(costumeCB.DataSource as DataTable).Rows[costumeCB.SelectedIndex]["daily_price"] :
                 (int)DB.GetRowCol(row, "costume_daily_price");
-            DateTime returndate_shedule = returndateSheduleDTP.Value;
-            string note = noteRTB.Text;
+            DateTime returndate_shedule = DateTime.Now.AddDays(7);
             (callerForm as OrderForm).costumeDT.Rows.Add(costume_size_id, costume_name, vendor,
-                size_name, price, costume_daily_price, returndate_shedule, note, 0);
+                size_name, price, costume_daily_price, returndate_shedule, 0);
             (callerForm as OrderForm).Total += price;
         }
 
@@ -96,21 +84,12 @@ namespace IIS_Costumes
             this.callerForm = callerForm;
         }
 
-        public CostumeSizeForm(DataRow orderDR) : this()
-        {
-            this.orderDR = orderDR;
-
-            vendorTB.Text = orderDR["vendor"].ToString();
-            returndateSheduleDTP.Value = (DateTime)orderDR["returndate_shedule"];
-            noteRTB.Text = orderDR["note"].ToString();
-        }
-
         private void CostumeSizeForm_Load(object sender, EventArgs e)
         {
             mainDGV.AutoGenerateColumns = false;
 
             SetMainDGV();
-            CurState = orderDR == null ? State.Table : State.Select;
+            CurState = State.Table;
         }
 
         private void searchTB_TextChanged(object sender, EventArgs e)
@@ -197,10 +176,6 @@ namespace IIS_Costumes
                 DB.SetNoResultQuery(query);
             SetMainDGV(searchTB.Text);
             CurState = State.Table;
-            if (callerForm != null && callerForm.GetType() == typeof(OrderForm))
-            {
-                CurState = State.Select;
-            }
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -213,46 +188,12 @@ namespace IIS_Costumes
             new CostumeForm(this).ShowDialog();
         }
 
-        private void selectionCancelButton_Click(object sender, EventArgs e)
-        {
-            if (orderDR != null) Close();
-            CurState = State.Table;
-        }
-
-        private void selectionOKButton_Click(object sender, EventArgs e)
-        {
-            if (callerForm != null && callerForm.GetType() == typeof(OrderForm))
-            {
-                if (vendorTB.Text == "")
-                {
-                    MessageBox.Show("Введите артикул костюма");
-                    return;
-                }
-            }
-            if (orderDR == null)
-            {
-                AddOrderCostume(curCS_id == -1 ? mainDGV.SelectedRows[0] : null);
-                CurState = State.Table;
-                return;
-            }
-            else
-            {
-                orderDR["vendor"] = vendorTB.Text;
-                orderDR["returndate_shedule"] = returndateSheduleDTP.Value;
-                orderDR["note"] = noteRTB.Text;
-                Close();
-            }
-        }
-
         private void mainDGV_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (callerForm == null)
                 CurState = State.Edit;
             else
-            {
-                CurState = State.Select;
-                curCS_id = -1;
-            }
+                AddOrderCostume(mainDGV.SelectedRows[0]);
         }
     }
 }

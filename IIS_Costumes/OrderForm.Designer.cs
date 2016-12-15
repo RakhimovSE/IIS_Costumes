@@ -28,11 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.headerLabel = new System.Windows.Forms.Label();
             this.searchLabel = new System.Windows.Forms.Label();
             this.searchTB = new System.Windows.Forms.TextBox();
             this.mainDGV = new System.Windows.Forms.DataGridView();
+            this.mainName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainVendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainClientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainClientTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainReturndateShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.issueButton = new System.Windows.Forms.Button();
             this.takeButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
@@ -67,18 +74,11 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.costumeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costumeVendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costumeSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costumePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costumeDailyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumeShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumeNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.mainName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainVendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainClientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainClientTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainReturndateShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeRentPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).BeginInit();
             this.mainMenuStrip.SuspendLayout();
             this.orderGB.SuspendLayout();
@@ -123,7 +123,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mainDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.mainSelected,
             this.mainName,
             this.mainVendor,
             this.mainSizeName,
@@ -141,6 +140,52 @@
             this.mainDGV.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.mainDGV_CellMouseDoubleClick);
             this.mainDGV.SelectionChanged += new System.EventHandler(this.mainDgv_SelectionChanged);
             this.mainDGV.Sorted += new System.EventHandler(this.mainDGV_Sorted);
+            // 
+            // mainName
+            // 
+            this.mainName.DataPropertyName = "costume_name";
+            this.mainName.HeaderText = "Костюм";
+            this.mainName.Name = "mainName";
+            this.mainName.ReadOnly = true;
+            this.mainName.Width = 200;
+            // 
+            // mainVendor
+            // 
+            this.mainVendor.DataPropertyName = "vendor";
+            this.mainVendor.HeaderText = "Артикул";
+            this.mainVendor.Name = "mainVendor";
+            this.mainVendor.ReadOnly = true;
+            this.mainVendor.Width = 60;
+            // 
+            // mainSizeName
+            // 
+            this.mainSizeName.DataPropertyName = "size_name";
+            this.mainSizeName.HeaderText = "Размер";
+            this.mainSizeName.Name = "mainSizeName";
+            this.mainSizeName.ReadOnly = true;
+            this.mainSizeName.Width = 50;
+            // 
+            // mainClientName
+            // 
+            this.mainClientName.DataPropertyName = "client_name";
+            this.mainClientName.HeaderText = "Клиент";
+            this.mainClientName.Name = "mainClientName";
+            this.mainClientName.ReadOnly = true;
+            this.mainClientName.Width = 200;
+            // 
+            // mainClientTelephone
+            // 
+            this.mainClientTelephone.DataPropertyName = "client_telephone";
+            this.mainClientTelephone.HeaderText = "Телефон";
+            this.mainClientTelephone.Name = "mainClientTelephone";
+            this.mainClientTelephone.ReadOnly = true;
+            // 
+            // mainReturndateShedule
+            // 
+            this.mainReturndateShedule.DataPropertyName = "returndate_shedule";
+            this.mainReturndateShedule.HeaderText = "Дата возвр. план.";
+            this.mainReturndateShedule.Name = "mainReturndateShedule";
+            this.mainReturndateShedule.ReadOnly = true;
             // 
             // issueButton
             // 
@@ -331,25 +376,25 @@
             this.costumeDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.costumeName,
             this.costumeVendor,
+            this.costumeShedule,
             this.costumeSizeName,
             this.costumePrice,
             this.costumeDailyPrice,
-            this.costumeShedule,
-            this.costumeNote});
+            this.costumeRentPrice});
             this.costumeDGV.Location = new System.Drawing.Point(8, 74);
             this.costumeDGV.Name = "costumeDGV";
-            this.costumeDGV.ReadOnly = true;
             this.costumeDGV.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.costumeDGV.RowHeadersVisible = false;
             this.costumeDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.costumeDGV.Size = new System.Drawing.Size(786, 211);
+            this.costumeDGV.Size = new System.Drawing.Size(670, 211);
             this.costumeDGV.TabIndex = 29;
             this.costumeDGV.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.costumeDGV_CellMouseDoubleClick);
+            this.costumeDGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.costumeDGV_DataError);
             // 
             // costumeRemoveButton
             // 
             this.costumeRemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.costumeRemoveButton.Location = new System.Drawing.Point(800, 103);
+            this.costumeRemoveButton.Location = new System.Drawing.Point(684, 103);
             this.costumeRemoveButton.Name = "costumeRemoveButton";
             this.costumeRemoveButton.Size = new System.Drawing.Size(24, 23);
             this.costumeRemoveButton.TabIndex = 26;
@@ -360,7 +405,7 @@
             // costumeAddButton
             // 
             this.costumeAddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.costumeAddButton.Location = new System.Drawing.Point(800, 74);
+            this.costumeAddButton.Location = new System.Drawing.Point(684, 74);
             this.costumeAddButton.Name = "costumeAddButton";
             this.costumeAddButton.Size = new System.Drawing.Size(24, 23);
             this.costumeAddButton.TabIndex = 24;
@@ -433,6 +478,7 @@
             this.dateDTP.Name = "dateDTP";
             this.dateDTP.Size = new System.Drawing.Size(80, 20);
             this.dateDTP.TabIndex = 12;
+            this.dateDTP.ValueChanged += new System.EventHandler(this.dateDTP_ValueChanged);
             // 
             // OKButton
             // 
@@ -478,14 +524,30 @@
             // costumeVendor
             // 
             this.costumeVendor.DataPropertyName = "vendor";
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Green;
+            this.costumeVendor.DefaultCellStyle = dataGridViewCellStyle7;
             this.costumeVendor.HeaderText = "Артикул";
             this.costumeVendor.Name = "costumeVendor";
-            this.costumeVendor.ReadOnly = true;
             this.costumeVendor.Width = 70;
+            // 
+            // costumeShedule
+            // 
+            this.costumeShedule.DataPropertyName = "returndate_shedule";
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle8.Format = "d";
+            dataGridViewCellStyle8.NullValue = null;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Green;
+            this.costumeShedule.DefaultCellStyle = dataGridViewCellStyle8;
+            this.costumeShedule.HeaderText = "Возврат план.";
+            this.costumeShedule.Name = "costumeShedule";
+            this.costumeShedule.Width = 80;
             // 
             // costumeSizeName
             // 
-            this.costumeSizeName.DataPropertyName = "size_name";
+            this.costumeSizeName.DataPropertyName = "size_name_num";
             this.costumeSizeName.HeaderText = "Размер";
             this.costumeSizeName.Name = "costumeSizeName";
             this.costumeSizeName.ReadOnly = true;
@@ -493,8 +555,8 @@
             // 
             // costumePrice
             // 
-            this.costumePrice.DataPropertyName = "price";
-            this.costumePrice.HeaderText = "Цена";
+            this.costumePrice.DataPropertyName = "costume_price";
+            this.costumePrice.HeaderText = "Депозит";
             this.costumePrice.Name = "costumePrice";
             this.costumePrice.ReadOnly = true;
             this.costumePrice.Width = 60;
@@ -507,78 +569,13 @@
             this.costumeDailyPrice.ReadOnly = true;
             this.costumeDailyPrice.Width = 80;
             // 
-            // costumeShedule
+            // costumeRentPrice
             // 
-            this.costumeShedule.DataPropertyName = "returndate_shedule";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.costumeShedule.DefaultCellStyle = dataGridViewCellStyle2;
-            this.costumeShedule.HeaderText = "Возврат план.";
-            this.costumeShedule.Name = "costumeShedule";
-            this.costumeShedule.ReadOnly = true;
-            this.costumeShedule.Width = 80;
-            // 
-            // costumeNote
-            // 
-            this.costumeNote.DataPropertyName = "note";
-            this.costumeNote.HeaderText = "Примечание";
-            this.costumeNote.Name = "costumeNote";
-            this.costumeNote.ReadOnly = true;
-            this.costumeNote.Width = 200;
-            // 
-            // mainSelected
-            // 
-            this.mainSelected.HeaderText = "";
-            this.mainSelected.Name = "mainSelected";
-            this.mainSelected.ReadOnly = true;
-            this.mainSelected.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.mainSelected.Width = 30;
-            // 
-            // mainName
-            // 
-            this.mainName.DataPropertyName = "costume_name";
-            this.mainName.HeaderText = "Костюм";
-            this.mainName.Name = "mainName";
-            this.mainName.ReadOnly = true;
-            this.mainName.Width = 200;
-            // 
-            // mainVendor
-            // 
-            this.mainVendor.DataPropertyName = "vendor";
-            this.mainVendor.HeaderText = "Артикул";
-            this.mainVendor.Name = "mainVendor";
-            this.mainVendor.ReadOnly = true;
-            this.mainVendor.Width = 60;
-            // 
-            // mainSizeName
-            // 
-            this.mainSizeName.DataPropertyName = "size_name";
-            this.mainSizeName.HeaderText = "Размер";
-            this.mainSizeName.Name = "mainSizeName";
-            this.mainSizeName.ReadOnly = true;
-            this.mainSizeName.Width = 50;
-            // 
-            // mainClientName
-            // 
-            this.mainClientName.DataPropertyName = "client_name";
-            this.mainClientName.HeaderText = "Клиент";
-            this.mainClientName.Name = "mainClientName";
-            this.mainClientName.ReadOnly = true;
-            this.mainClientName.Width = 200;
-            // 
-            // mainClientTelephone
-            // 
-            this.mainClientTelephone.DataPropertyName = "client_telephone";
-            this.mainClientTelephone.HeaderText = "Телефон";
-            this.mainClientTelephone.Name = "mainClientTelephone";
-            this.mainClientTelephone.ReadOnly = true;
-            // 
-            // mainReturndateShedule
-            // 
-            this.mainReturndateShedule.DataPropertyName = "returndate_shedule";
-            this.mainReturndateShedule.HeaderText = "Дата возвр. план.";
-            this.mainReturndateShedule.Name = "mainReturndateShedule";
-            this.mainReturndateShedule.ReadOnly = true;
+            this.costumeRentPrice.DataPropertyName = "rent_price";
+            this.costumeRentPrice.HeaderText = "Стоимость аренды";
+            this.costumeRentPrice.Name = "costumeRentPrice";
+            this.costumeRentPrice.ReadOnly = true;
+            this.costumeRentPrice.Width = 70;
             // 
             // OrderForm
             // 
@@ -649,7 +646,6 @@
         private System.Windows.Forms.ToolStripMenuItem размерыКостюмовToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem размерыToolStripMenuItem;
         private System.Windows.Forms.DataGridView costumeDGV;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn mainSelected;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainName;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainVendor;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainSizeName;
@@ -658,11 +654,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn mainReturndateShedule;
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeVendor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn costumeShedule;
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeSizeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn costumePrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeDailyPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn costumeShedule;
-        private System.Windows.Forms.DataGridViewTextBoxColumn costumeNote;
+        private System.Windows.Forms.DataGridViewTextBoxColumn costumeRentPrice;
     }
 }
 
