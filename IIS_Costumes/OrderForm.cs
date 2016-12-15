@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.IO;
-using Microsoft.Office.Interop.Word;
 
 namespace IIS_Costumes
 {
@@ -55,8 +54,10 @@ namespace IIS_Costumes
         ClientForm clientForm;
         CostumeForm costumeForm;
         CostumeSizeForm costumeSizeForm;
+        BillForm billForm;
+        JournalForm journalForm;
 
-        public System.Data.DataTable costumeDT;
+        public DataTable costumeDT;
         int totalDeposit;
         int totalRent;
 
@@ -106,11 +107,6 @@ namespace IIS_Costumes
             }
         }
 
-        public int GetRentPrice(DateTime issueDate, DateTime returnDate, int dailyPrice)
-        {
-            return Math.Max(((returnDate - issueDate).Days + 1) * dailyPrice, 0);
-        }
-
         private void SetGB(List<DataGridViewRow> rows = null)
         {
             SetCostumeDT();
@@ -129,7 +125,7 @@ namespace IIS_Costumes
                 DateTime returndate_shedule = (DateTime)DB.GetRowCol(row, "returndate_shedule");
                 int costume_price = Convert.ToInt32(DB.GetRowCol(row, "costume_price"));
                 int costume_daily_price = (int)DB.GetRowCol(row, "costume_daily_price");
-                int rent_price = GetRentPrice(dateDTP.Value, returndate_shedule, costume_daily_price);
+                int rent_price = Controller.GetRentPrice(dateDTP.Value, returndate_shedule, costume_daily_price);
                 int order_id = (int)DB.GetRowCol(row, "id_order");
                 costumeDT.Rows.Add(costume_size_id, costume_name, vendor, size_name_num, costume_price,
                     costume_daily_price, rent_price, returndate_shedule, order_id);
@@ -161,7 +157,7 @@ namespace IIS_Costumes
             {
                 if (x.RowState == DataRowState.Detached) continue;
                 TotalDeposit += (int)x["costume_price"];
-                int rent_price = GetRentPrice(dateDTP.Value, (DateTime)x["returndate_shedule"],
+                int rent_price = Controller.GetRentPrice(dateDTP.Value, (DateTime)x["returndate_shedule"],
                     (int)x["costume_daily_price"]);
                 x["rent_price"] = rent_price;
                 TotalRent += rent_price;
@@ -225,12 +221,14 @@ namespace IIS_Costumes
 
         private void журналЗаказовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            journalForm = new JournalForm();
+            journalForm.Show();
         }
 
         private void счетаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            billForm = new BillForm();
+            billForm.Show();
         }
         private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -336,6 +334,11 @@ namespace IIS_Costumes
                 MessageBox.Show("Выберите костюмы для выдачи");
                 return;
             }
+            if ((from DataRow x in costumeDT.Rows where x["vendor"] == "" select x).ToList().Count > 0)
+            {
+                MessageBox.Show("Введите артикул для каждого костюма");
+                return;
+            }
             string date = DB.DateToMysql(dateDTP.Value, true, false);
             int client_id = (int)clientCB.SelectedValue;
             string query = "";
@@ -414,7 +417,7 @@ namespace IIS_Costumes
             {
                 File.WriteAllBytes("Договор.docx", Properties.Resources.agreement);
                 var applicationWord = new Microsoft.Office.Interop.Word.Application();
-                applicationWord.Documents.Open(Directory.GetParent(System.Windows.Forms.Application.ExecutablePath) + "\\Договор.docx");
+                applicationWord.Documents.Open(Directory.GetParent(Application.ExecutablePath) + "\\Договор.docx");
                 applicationWord.Visible = true;
             }
             catch { }

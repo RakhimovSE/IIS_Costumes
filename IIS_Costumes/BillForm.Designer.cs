@@ -35,13 +35,21 @@
             this.searchLabel = new System.Windows.Forms.Label();
             this.headerLabel = new System.Windows.Forms.Label();
             this.mainDGV = new System.Windows.Forms.DataGridView();
+            this.mainPaid = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.mainDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainCostumeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainBillTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainClientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainClientTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainPriceAbs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.Location = new System.Drawing.Point(607, 184);
+            this.deleteButton.Location = new System.Drawing.Point(883, 155);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(110, 23);
             this.deleteButton.TabIndex = 19;
@@ -51,7 +59,7 @@
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(607, 97);
+            this.editButton.Location = new System.Drawing.Point(883, 97);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(110, 23);
             this.editButton.TabIndex = 17;
@@ -61,7 +69,7 @@
             // issueButton
             // 
             this.issueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.issueButton.Location = new System.Drawing.Point(607, 68);
+            this.issueButton.Location = new System.Drawing.Point(883, 68);
             this.issueButton.Name = "issueButton";
             this.issueButton.Size = new System.Drawing.Size(110, 23);
             this.issueButton.TabIndex = 15;
@@ -74,8 +82,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchTB.Location = new System.Drawing.Point(12, 42);
             this.searchTB.Name = "searchTB";
-            this.searchTB.Size = new System.Drawing.Size(588, 20);
+            this.searchTB.Size = new System.Drawing.Size(864, 20);
             this.searchTB.TabIndex = 14;
+            this.searchTB.TextChanged += new System.EventHandler(this.searchTB_TextChanged);
             // 
             // searchLabel
             // 
@@ -99,34 +108,103 @@
             // mainDGV
             // 
             this.mainDGV.AllowUserToAddRows = false;
-            this.mainDGV.AllowUserToResizeRows = false;
             this.mainDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.mainDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.mainPaid,
+            this.mainDate,
+            this.mainCostumeName,
+            this.mainBillTypeName,
+            this.mainClientName,
+            this.mainClientTelephone,
+            this.mainType,
+            this.mainPriceAbs});
             this.mainDGV.Location = new System.Drawing.Point(12, 68);
             this.mainDGV.Name = "mainDGV";
             this.mainDGV.ReadOnly = true;
-            this.mainDGV.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mainDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.mainDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.mainDGV.Size = new System.Drawing.Size(588, 330);
-            this.mainDGV.TabIndex = 13;
+            this.mainDGV.Size = new System.Drawing.Size(864, 330);
+            this.mainDGV.TabIndex = 20;
+            // 
+            // mainPaid
+            // 
+            this.mainPaid.DataPropertyName = "paid";
+            this.mainPaid.HeaderText = "Опл.";
+            this.mainPaid.Name = "mainPaid";
+            this.mainPaid.ReadOnly = true;
+            this.mainPaid.Width = 40;
+            // 
+            // mainDate
+            // 
+            this.mainDate.DataPropertyName = "date";
+            this.mainDate.HeaderText = "Дата";
+            this.mainDate.Name = "mainDate";
+            this.mainDate.ReadOnly = true;
+            this.mainDate.Width = 70;
+            // 
+            // mainCostumeName
+            // 
+            this.mainCostumeName.DataPropertyName = "costume_name";
+            this.mainCostumeName.HeaderText = "Костюм";
+            this.mainCostumeName.Name = "mainCostumeName";
+            this.mainCostumeName.ReadOnly = true;
+            this.mainCostumeName.Width = 130;
+            // 
+            // mainBillTypeName
+            // 
+            this.mainBillTypeName.DataPropertyName = "bill_type_name";
+            this.mainBillTypeName.HeaderText = "Тип счета";
+            this.mainBillTypeName.Name = "mainBillTypeName";
+            this.mainBillTypeName.ReadOnly = true;
+            this.mainBillTypeName.Width = 180;
+            // 
+            // mainClientName
+            // 
+            this.mainClientName.DataPropertyName = "client_name";
+            this.mainClientName.HeaderText = "Клиент";
+            this.mainClientName.Name = "mainClientName";
+            this.mainClientName.ReadOnly = true;
+            this.mainClientName.Width = 150;
+            // 
+            // mainClientTelephone
+            // 
+            this.mainClientTelephone.DataPropertyName = "client_telephone";
+            this.mainClientTelephone.HeaderText = "Телефон";
+            this.mainClientTelephone.Name = "mainClientTelephone";
+            this.mainClientTelephone.ReadOnly = true;
+            // 
+            // mainType
+            // 
+            this.mainType.DataPropertyName = "type";
+            this.mainType.HeaderText = "Дт/Кт";
+            this.mainType.Name = "mainType";
+            this.mainType.ReadOnly = true;
+            this.mainType.Width = 70;
+            // 
+            // mainPriceAbs
+            // 
+            this.mainPriceAbs.DataPropertyName = "price_abs";
+            this.mainPriceAbs.HeaderText = "Сумма";
+            this.mainPriceAbs.Name = "mainPriceAbs";
+            this.mainPriceAbs.ReadOnly = true;
+            this.mainPriceAbs.Width = 60;
             // 
             // BillForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 410);
+            this.ClientSize = new System.Drawing.Size(1005, 410);
+            this.Controls.Add(this.mainDGV);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.issueButton);
             this.Controls.Add(this.searchTB);
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.headerLabel);
-            this.Controls.Add(this.mainDGV);
             this.Name = "BillForm";
             this.Text = "Карнавальные костюмы - Счета";
+            this.Load += new System.EventHandler(this.BillForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -142,5 +220,13 @@
         private System.Windows.Forms.Label searchLabel;
         private System.Windows.Forms.Label headerLabel;
         private System.Windows.Forms.DataGridView mainDGV;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn mainPaid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainCostumeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainBillTypeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainClientName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainClientTelephone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainPriceAbs;
     }
 }

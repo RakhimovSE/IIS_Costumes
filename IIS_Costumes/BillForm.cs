@@ -12,12 +12,32 @@ namespace IIS_Costumes
 {
     public partial class BillForm : Form
     {
-        public BillForm(List<int> order_ids)
+
+        string searchClientName;
+
+        private void SetMainDGV(string search = "")
         {
-            InitializeComponent();
-            this.order_ids = order_ids;
+            string query = string.Format("CALL bill_search('{0}')", search);
+            DB.FillDGV(mainDGV, query);
         }
 
-        List<int> order_ids;
+        public BillForm(string searchClientName = "")
+        {
+            InitializeComponent();
+            mainDGV.AutoGenerateColumns = false;
+            this.searchClientName = searchClientName;
+            SetMainDGV(searchClientName);
+        }
+
+        private void BillForm_Load(object sender, EventArgs e)
+        {
+            mainDGV.AutoGenerateColumns = false;
+            searchTB.Text = searchClientName;
+        }
+
+        private void searchTB_TextChanged(object sender, EventArgs e)
+        {
+            SetMainDGV(searchTB.Text);
+        }
     }
 }

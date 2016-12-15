@@ -51,5 +51,10 @@ namespace IIS_Costumes
             string hash = GetMD5Hash(input);
             return GetMD5Hash(salt + hash);
         }
+
+        public static int GetRentPrice(DateTime issueDate, DateTime returnDate, int dailyPrice)
+        {
+            return Math.Max(((returnDate - issueDate).Days + 1) * dailyPrice, 0);
+        }
     }
 }

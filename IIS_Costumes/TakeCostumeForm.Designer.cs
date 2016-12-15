@@ -31,11 +31,13 @@
             this.OKButton = new System.Windows.Forms.Button();
             this.returndateLabel = new System.Windows.Forms.Label();
             this.returndateDTP = new System.Windows.Forms.DateTimePicker();
+            this.deptTB = new System.Windows.Forms.TextBox();
+            this.deptLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // OKButton
             // 
-            this.OKButton.Location = new System.Drawing.Point(12, 51);
+            this.OKButton.Location = new System.Drawing.Point(12, 99);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(123, 23);
             this.OKButton.TabIndex = 0;
@@ -59,11 +61,30 @@
             this.returndateDTP.Size = new System.Drawing.Size(123, 20);
             this.returndateDTP.TabIndex = 2;
             // 
+            // deptTB
+            // 
+            this.deptTB.Location = new System.Drawing.Point(12, 73);
+            this.deptTB.Name = "deptTB";
+            this.deptTB.Size = new System.Drawing.Size(65, 20);
+            this.deptTB.TabIndex = 3;
+            this.deptTB.Text = "300";
+            // 
+            // deptLabel
+            // 
+            this.deptLabel.AutoSize = true;
+            this.deptLabel.Location = new System.Drawing.Point(9, 57);
+            this.deptLabel.Name = "deptLabel";
+            this.deptLabel.Size = new System.Drawing.Size(131, 13);
+            this.deptLabel.TabIndex = 4;
+            this.deptLabel.Text = "Цена просрочки на день";
+            // 
             // TakeCostumeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(147, 81);
+            this.ClientSize = new System.Drawing.Size(147, 129);
+            this.Controls.Add(this.deptLabel);
+            this.Controls.Add(this.deptTB);
             this.Controls.Add(this.returndateDTP);
             this.Controls.Add(this.returndateLabel);
             this.Controls.Add(this.OKButton);
@@ -81,5 +102,7 @@
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.Label returndateLabel;
         private System.Windows.Forms.DateTimePicker returndateDTP;
+        private System.Windows.Forms.TextBox deptTB;
+        private System.Windows.Forms.Label deptLabel;
     }
 }
