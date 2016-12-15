@@ -35,7 +35,7 @@ namespace IIS_Costumes
             }
         }
 
-        Form callerForm;
+        OrderForm orderForm;
         State curState;
         int curCS_id;
 
@@ -60,28 +60,27 @@ namespace IIS_Costumes
         private void AddOrderCostume(DataGridViewRow row = null) // доделать
         {
             int costume_size_id = row == null ? curCS_id : (int)DB.GetRowCol(row, "id_costume_size");
-
-            string costume_name = row == null ? costumeCB.Text :
-                DB.GetRowCol(row, "costume_name").ToString();
+            string costume_name = row == null ? costumeCB.Text : DB.GetRowCol(row, "costume_name").ToString();
             string vendor = "";
-            string size_name = row == null ? sizeCB.Text :
+            string size_name_num = row == null ? sizeCB.Text :
                 DB.GetRowCol(row, "size_name_num").ToString();
-            int price = row == null ?
+            int costume_price = row == null ?
                 (int)(costumeCB.DataSource as DataTable).Rows[costumeCB.SelectedIndex]["price"] :
                 (int)DB.GetRowCol(row, "costume_price");
             int costume_daily_price = row == null ?
                 (int)(costumeCB.DataSource as DataTable).Rows[costumeCB.SelectedIndex]["daily_price"] :
                 (int)DB.GetRowCol(row, "costume_daily_price");
             DateTime returndate_shedule = DateTime.Now.AddDays(7);
-            (callerForm as OrderForm).costumeDT.Rows.Add(costume_size_id, costume_name, vendor,
-                size_name, price, costume_daily_price, returndate_shedule, 0);
-            (callerForm as OrderForm).Total += price;
+            orderForm.costumeDT.Rows.Add(costume_size_id, costume_name, vendor, size_name_num, costume_price,
+                costume_daily_price, null, returndate_shedule, null);
         }
 
         public CostumeSizeForm(Form callerForm = null)
         {
             InitializeComponent();
-            this.callerForm = callerForm;
+            if (callerForm != null && callerForm.GetType() == typeof(OrderForm))
+                orderForm = (OrderForm)callerForm;
+            addOrderButton.Enabled = orderForm != null;
         }
 
         private void CostumeSizeForm_Load(object sender, EventArgs e)
@@ -175,6 +174,7 @@ namespace IIS_Costumes
             else
                 DB.SetNoResultQuery(query);
             SetMainDGV(searchTB.Text);
+            if (orderForm != null && orderForm.CurState == OrderForm.State.Add) AddOrderCostume();
             CurState = State.Table;
         }
 
@@ -190,10 +190,25 @@ namespace IIS_Costumes
 
         private void mainDGV_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (callerForm == null)
+            if (orderForm == null || orderForm.CurState != OrderForm.State.Add)
+            {
                 CurState = State.Edit;
-            else
-                AddOrderCostume(mainDGV.SelectedRows[0]);
+                return;
+            }
+            foreach (DataGridViewRow row in mainDGV.SelectedRows)
+            {
+                AddOrderCostume(row);
+            }
+        }
+
+        private void addOrderButton_Click(object sender, EventArgs e)
+        {
+            if (orderForm.CurState != OrderForm.State.Add)
+                orderForm.CurState = OrderForm.State.Add;
+            foreach (DataGridViewRow row in mainDGV.SelectedRows)
+            {
+                AddOrderCostume(row);
+            }
         }
     }
 }

@@ -52,6 +52,7 @@
             this.mainDailyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainInStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addOrderButton = new System.Windows.Forms.Button();
             this.mainGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).BeginInit();
             this.SuspendLayout();
@@ -69,9 +70,9 @@
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.Location = new System.Drawing.Point(670, 156);
+            this.deleteButton.Location = new System.Drawing.Point(678, 185);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(94, 23);
+            this.deleteButton.Size = new System.Drawing.Size(107, 23);
             this.deleteButton.TabIndex = 33;
             this.deleteButton.Text = "Удалить";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -80,9 +81,9 @@
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(670, 97);
+            this.editButton.Location = new System.Drawing.Point(678, 126);
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(94, 23);
+            this.editButton.Size = new System.Drawing.Size(107, 23);
             this.editButton.TabIndex = 32;
             this.editButton.Text = "Редактировать";
             this.editButton.UseVisualStyleBackColor = true;
@@ -91,9 +92,9 @@
             // addButton
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.Location = new System.Drawing.Point(670, 69);
+            this.addButton.Location = new System.Drawing.Point(678, 98);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(94, 23);
+            this.addButton.Size = new System.Drawing.Size(107, 23);
             this.addButton.TabIndex = 31;
             this.addButton.Text = "Добавить";
             this.addButton.UseVisualStyleBackColor = true;
@@ -105,7 +106,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchTB.Location = new System.Drawing.Point(12, 43);
             this.searchTB.Name = "searchTB";
-            this.searchTB.Size = new System.Drawing.Size(652, 20);
+            this.searchTB.Size = new System.Drawing.Size(660, 20);
             this.searchTB.TabIndex = 30;
             this.searchTB.TextChanged += new System.EventHandler(this.searchTB_TextChanged);
             // 
@@ -136,7 +137,7 @@
             this.mainGB.Margin = new System.Windows.Forms.Padding(2);
             this.mainGB.Name = "mainGB";
             this.mainGB.Padding = new System.Windows.Forms.Padding(2);
-            this.mainGB.Size = new System.Drawing.Size(652, 116);
+            this.mainGB.Size = new System.Drawing.Size(660, 116);
             this.mainGB.TabIndex = 34;
             this.mainGB.TabStop = false;
             this.mainGB.Text = "mainGB";
@@ -206,7 +207,7 @@
             // OKButton
             // 
             this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKButton.Location = new System.Drawing.Point(507, 87);
+            this.OKButton.Location = new System.Drawing.Point(515, 87);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(67, 23);
             this.OKButton.TabIndex = 11;
@@ -217,7 +218,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(580, 87);
+            this.cancelButton.Location = new System.Drawing.Point(588, 87);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(67, 23);
             this.cancelButton.TabIndex = 10;
@@ -247,7 +248,7 @@
             this.mainDGV.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.mainDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.mainDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.mainDGV.Size = new System.Drawing.Size(652, 298);
+            this.mainDGV.Size = new System.Drawing.Size(660, 298);
             this.mainDGV.TabIndex = 35;
             this.mainDGV.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.mainDGV_CellMouseDoubleClick);
             // 
@@ -307,11 +308,23 @@
             this.mainInStock.ReadOnly = true;
             this.mainInStock.Width = 60;
             // 
+            // addOrderButton
+            // 
+            this.addOrderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addOrderButton.Location = new System.Drawing.Point(678, 69);
+            this.addOrderButton.Name = "addOrderButton";
+            this.addOrderButton.Size = new System.Drawing.Size(107, 23);
+            this.addOrderButton.TabIndex = 36;
+            this.addOrderButton.Text = "Добавить в заказ";
+            this.addOrderButton.UseVisualStyleBackColor = true;
+            this.addOrderButton.Click += new System.EventHandler(this.addOrderButton_Click);
+            // 
             // CostumeSizeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 379);
+            this.ClientSize = new System.Drawing.Size(797, 379);
+            this.Controls.Add(this.addOrderButton);
             this.Controls.Add(this.headerLabel);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.editButton);
@@ -358,5 +371,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn mainAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainInStock;
         public System.Windows.Forms.ComboBox costumeCB;
+        private System.Windows.Forms.Button addOrderButton;
     }
 }

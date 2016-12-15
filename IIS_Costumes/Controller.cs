@@ -11,19 +11,19 @@ namespace IIS_Costumes
 {
     class Controller
     {
-        public static Form ShowForm(Form form, bool showDialog = false)
+        /*public static Form ShowForm(Form form, bool showDialog = false, params object[] parameters)
         {
             if (form.IsDisposed)
             {
-                form = (Form)Activator.CreateInstance(form.GetType());
-                //var constructorInfo = form.GetType().GetConstructor(new Type[] { });
-                //form = (Form)constructorInfo.Invoke(new object[] { });
+                // form = (Form)Activator.CreateInstance(form.GetType());
+                var constructorInfo = form.GetType().GetConstructor(new Type[] { });
+                form = (Form)constructorInfo.Invoke(new object[] { });
             }
             if (showDialog) form.ShowDialog();
             else form.Show();
             form.Activate();
             return form;
-        }
+        }*/
 
         public static string GetMD5Hash(string input)
         {

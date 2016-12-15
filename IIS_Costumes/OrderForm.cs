@@ -27,7 +27,19 @@ namespace IIS_Costumes
             set
             {
                 curState = value;
-                if (value == State.Add || value == State.Edit) costumeDT = null;
+                if (value == State.Add || value == State.Edit)
+                {
+                    costumeDT = null;
+                    TotalDeposit = 0;
+                    TotalRent = 0;
+                }
+                if (value == State.Add) SetGB();
+                if (value == State.Edit)
+                {
+                    var filter = from DataGridViewRow x in mainDGV.SelectedRows
+                                 select x;
+                    SetGB(filter.ToList());
+                }
                 orderGB.Visible = value != State.Table;
                 searchTB.Enabled = mainDGV.Visible = issueButton.Enabled = takeButton.Enabled =
                     editButton.Enabled = deleteButton.Enabled = value == State.Table;
@@ -42,15 +54,26 @@ namespace IIS_Costumes
         CostumeSizeForm costumeSizeForm;
 
         public DataTable costumeDT;
-        int total;
+        int totalDeposit;
+        int totalRent;
 
-        public int Total
+        public int TotalDeposit
         {
-            get { return total; }
+            get { return totalDeposit; }
             set
             {
-                total = value;
-                totalLabel.Text = string.Format("Итого: {0} руб.", total);
+                totalDeposit = value;
+                totalDepositLabel.Text = string.Format("Итого депозит: {0} руб.", value);
+            }
+        }
+
+        public int TotalRent
+        {
+            get { return totalRent; }
+            set
+            {
+                totalRent = value;
+                totalRentLabel.Text = string.Format("Итого аренда: {0} руб.", value);
             }
         }
 
@@ -80,14 +103,6 @@ namespace IIS_Costumes
             }
         }
 
-        private void PerformEdit()
-        {
-            var filter = from DataGridViewRow x in mainDGV.SelectedRows
-                         select x;
-            CurState = State.Edit;
-            SetGB(filter.ToList());
-        }
-
         public int GetRentPrice(DateTime issueDate, DateTime returnDate, int dailyPrice)
         {
             return Math.Max(((returnDate - issueDate).Days + 1) * dailyPrice, 0);
@@ -96,7 +111,6 @@ namespace IIS_Costumes
         private void SetGB(List<DataGridViewRow> rows = null)
         {
             SetCostumeDT();
-            Total = 0;
             if (rows == null || rows.Count == 0)
             {
                 dateDTP.Value = DateTime.Now;
@@ -116,8 +130,6 @@ namespace IIS_Costumes
                 int order_id = (int)DB.GetRowCol(row, "id_order");
                 costumeDT.Rows.Add(costume_size_id, costume_name, vendor, size_name_num, costume_price,
                     costume_daily_price, rent_price, returndate_shedule, order_id);
-
-                Total += rent_price;
             }
             costumeDGV.DataSource = costumeDT;
             clientCB.SelectedValue = DB.GetRowCol(rows[0], "client_id");
@@ -137,6 +149,21 @@ namespace IIS_Costumes
             costumeDT.Columns.Add("returndate_shedule", typeof(DateTime));
             costumeDT.Columns.Add("id_order", typeof(int));
         }
+
+        private void RecalculateTotal()
+        {
+            TotalDeposit = 0;
+            TotalRent = 0;
+            foreach (DataRow x in costumeDT.Rows)
+            {
+                if (x.RowState == DataRowState.Detached) continue;
+                TotalDeposit += (int)x["costume_price"];
+                int rent_price = GetRentPrice(dateDTP.Value, (DateTime)x["returndate_shedule"],
+                    (int)x["costume_daily_price"]);
+                x["rent_price"] = rent_price;
+                TotalRent += rent_price;
+            }
+        }
         #endregion
         #region Main
         public OrderForm()
@@ -146,10 +173,6 @@ namespace IIS_Costumes
 
         private void OrderForm_Load(object sender, EventArgs e)
         {
-            clientForm = new ClientForm();
-            costumeForm = new CostumeForm();
-            costumeSizeForm = new CostumeSizeForm();
-
             mainDGV.AutoGenerateColumns = false;
             SetMainDGV();
             CurState = State.Table;
@@ -187,13 +210,14 @@ namespace IIS_Costumes
 
         private void mainDGV_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            PerformEdit();
+            CurState = State.Edit;
         }
         #endregion
         #region Menu
         private void костюмыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            costumeForm = (CostumeForm)Controller.ShowForm(costumeForm);
+            costumeForm = new CostumeForm();
+            costumeForm.Show();
         }
 
         private void журналЗаказовToolStripMenuItem_Click(object sender, EventArgs e)
@@ -207,12 +231,14 @@ namespace IIS_Costumes
         }
         private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            clientForm = (ClientForm)Controller.ShowForm(clientForm);
+            clientForm = new ClientForm();
+            clientForm.Show();
         }
 
         private void размерыКостюмовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            costumeSizeForm = (CostumeSizeForm)Controller.ShowForm(costumeSizeForm);
+            costumeSizeForm = new CostumeSizeForm(this);
+            costumeSizeForm.Show();
         }
 
         private void типыКостюмовToolStripMenuItem_Click(object sender, EventArgs e)
@@ -230,7 +256,6 @@ namespace IIS_Costumes
         private void issueButton_Click(object sender, EventArgs e)
         {
             CurState = State.Add;
-            SetGB();
         }
 
         private void takeButton_Click(object sender, EventArgs e)
@@ -241,7 +266,7 @@ namespace IIS_Costumes
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            PerformEdit();
+            CurState = State.Edit;
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -361,16 +386,22 @@ namespace IIS_Costumes
 
         private void dateDTP_ValueChanged(object sender, EventArgs e)
         {
-            foreach (DataRow x in costumeDT.Rows)
-            {
-                x["rent_price"] = GetRentPrice(dateDTP.Value, (DateTime)x["returndate_shedule"],
-                    (int)x["costume_daily_price"]);
-            }
+            RecalculateTotal();
         }
 
         private void costumeDGV_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             costumeDGV.CancelEdit();
+        }
+
+        private void costumeDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            RecalculateTotal();
+        }
+
+        private void costumeDGV_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            RecalculateTotal();
         }
     }
 }

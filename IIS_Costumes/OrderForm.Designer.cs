@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.headerLabel = new System.Windows.Forms.Label();
             this.searchLabel = new System.Windows.Forms.Label();
             this.searchTB = new System.Windows.Forms.TextBox();
@@ -60,9 +60,16 @@
             this.employeeLabel = new System.Windows.Forms.Label();
             this.employeeTB = new System.Windows.Forms.TextBox();
             this.costumeDGV = new System.Windows.Forms.DataGridView();
+            this.costumeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeVendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeDailyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costumeRentPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costumeRemoveButton = new System.Windows.Forms.Button();
             this.costumeAddButton = new System.Windows.Forms.Button();
-            this.totalLabel = new System.Windows.Forms.Label();
+            this.totalDepositLabel = new System.Windows.Forms.Label();
             this.clientButton = new System.Windows.Forms.Button();
             this.costumeLabel = new System.Windows.Forms.Label();
             this.clientCB = new System.Windows.Forms.ComboBox();
@@ -72,13 +79,7 @@
             this.OKButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.costumeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumeVendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumeShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumeSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumeDailyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costumeRentPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalRentLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).BeginInit();
             this.mainMenuStrip.SuspendLayout();
             this.orderGB.SuspendLayout();
@@ -326,12 +327,13 @@
             this.orderGB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.orderGB.Controls.Add(this.totalRentLabel);
             this.orderGB.Controls.Add(this.employeeLabel);
             this.orderGB.Controls.Add(this.employeeTB);
             this.orderGB.Controls.Add(this.costumeDGV);
             this.orderGB.Controls.Add(this.costumeRemoveButton);
             this.orderGB.Controls.Add(this.costumeAddButton);
-            this.orderGB.Controls.Add(this.totalLabel);
+            this.orderGB.Controls.Add(this.totalDepositLabel);
             this.orderGB.Controls.Add(this.clientButton);
             this.orderGB.Controls.Add(this.costumeLabel);
             this.orderGB.Controls.Add(this.clientCB);
@@ -390,6 +392,72 @@
             this.costumeDGV.TabIndex = 29;
             this.costumeDGV.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.costumeDGV_CellMouseDoubleClick);
             this.costumeDGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.costumeDGV_DataError);
+            this.costumeDGV.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.costumeDGV_RowsAdded);
+            this.costumeDGV.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.costumeDGV_RowsRemoved);
+            // 
+            // costumeName
+            // 
+            this.costumeName.DataPropertyName = "costume_name";
+            this.costumeName.HeaderText = "Название";
+            this.costumeName.Name = "costumeName";
+            this.costumeName.ReadOnly = true;
+            this.costumeName.Width = 200;
+            // 
+            // costumeVendor
+            // 
+            this.costumeVendor.DataPropertyName = "vendor";
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Green;
+            this.costumeVendor.DefaultCellStyle = dataGridViewCellStyle3;
+            this.costumeVendor.HeaderText = "Артикул";
+            this.costumeVendor.Name = "costumeVendor";
+            this.costumeVendor.Width = 70;
+            // 
+            // costumeShedule
+            // 
+            this.costumeShedule.DataPropertyName = "returndate_shedule";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Green;
+            this.costumeShedule.DefaultCellStyle = dataGridViewCellStyle4;
+            this.costumeShedule.HeaderText = "Возврат план.";
+            this.costumeShedule.Name = "costumeShedule";
+            this.costumeShedule.Width = 80;
+            // 
+            // costumeSizeName
+            // 
+            this.costumeSizeName.DataPropertyName = "size_name_num";
+            this.costumeSizeName.HeaderText = "Размер";
+            this.costumeSizeName.Name = "costumeSizeName";
+            this.costumeSizeName.ReadOnly = true;
+            this.costumeSizeName.Width = 70;
+            // 
+            // costumePrice
+            // 
+            this.costumePrice.DataPropertyName = "costume_price";
+            this.costumePrice.HeaderText = "Депозит";
+            this.costumePrice.Name = "costumePrice";
+            this.costumePrice.ReadOnly = true;
+            this.costumePrice.Width = 60;
+            // 
+            // costumeDailyPrice
+            // 
+            this.costumeDailyPrice.DataPropertyName = "costume_daily_price";
+            this.costumeDailyPrice.HeaderText = "Цена/день";
+            this.costumeDailyPrice.Name = "costumeDailyPrice";
+            this.costumeDailyPrice.ReadOnly = true;
+            this.costumeDailyPrice.Width = 80;
+            // 
+            // costumeRentPrice
+            // 
+            this.costumeRentPrice.DataPropertyName = "rent_price";
+            this.costumeRentPrice.HeaderText = "Стоимость аренды";
+            this.costumeRentPrice.Name = "costumeRentPrice";
+            this.costumeRentPrice.ReadOnly = true;
+            this.costumeRentPrice.Width = 70;
             // 
             // costumeRemoveButton
             // 
@@ -413,16 +481,16 @@
             this.costumeAddButton.UseVisualStyleBackColor = true;
             this.costumeAddButton.Click += new System.EventHandler(this.costumeAddButton_Click);
             // 
-            // totalLabel
+            // totalDepositLabel
             // 
-            this.totalLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.totalLabel.AutoSize = true;
-            this.totalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.totalLabel.Location = new System.Drawing.Point(8, 296);
-            this.totalLabel.Name = "totalLabel";
-            this.totalLabel.Size = new System.Drawing.Size(85, 13);
-            this.totalLabel.TabIndex = 11;
-            this.totalLabel.Text = "Итого: 0 руб.";
+            this.totalDepositLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalDepositLabel.AutoSize = true;
+            this.totalDepositLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.totalDepositLabel.Location = new System.Drawing.Point(8, 288);
+            this.totalDepositLabel.Name = "totalDepositLabel";
+            this.totalDepositLabel.Size = new System.Drawing.Size(137, 13);
+            this.totalDepositLabel.TabIndex = 11;
+            this.totalDepositLabel.Text = "Итого депозит: 0 руб.";
             // 
             // clientButton
             // 
@@ -513,69 +581,16 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // costumeName
+            // totalRentLabel
             // 
-            this.costumeName.DataPropertyName = "costume_name";
-            this.costumeName.HeaderText = "Название";
-            this.costumeName.Name = "costumeName";
-            this.costumeName.ReadOnly = true;
-            this.costumeName.Width = 200;
-            // 
-            // costumeVendor
-            // 
-            this.costumeVendor.DataPropertyName = "vendor";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Green;
-            this.costumeVendor.DefaultCellStyle = dataGridViewCellStyle7;
-            this.costumeVendor.HeaderText = "Артикул";
-            this.costumeVendor.Name = "costumeVendor";
-            this.costumeVendor.Width = 70;
-            // 
-            // costumeShedule
-            // 
-            this.costumeShedule.DataPropertyName = "returndate_shedule";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle8.Format = "d";
-            dataGridViewCellStyle8.NullValue = null;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Green;
-            this.costumeShedule.DefaultCellStyle = dataGridViewCellStyle8;
-            this.costumeShedule.HeaderText = "Возврат план.";
-            this.costumeShedule.Name = "costumeShedule";
-            this.costumeShedule.Width = 80;
-            // 
-            // costumeSizeName
-            // 
-            this.costumeSizeName.DataPropertyName = "size_name_num";
-            this.costumeSizeName.HeaderText = "Размер";
-            this.costumeSizeName.Name = "costumeSizeName";
-            this.costumeSizeName.ReadOnly = true;
-            this.costumeSizeName.Width = 70;
-            // 
-            // costumePrice
-            // 
-            this.costumePrice.DataPropertyName = "costume_price";
-            this.costumePrice.HeaderText = "Депозит";
-            this.costumePrice.Name = "costumePrice";
-            this.costumePrice.ReadOnly = true;
-            this.costumePrice.Width = 60;
-            // 
-            // costumeDailyPrice
-            // 
-            this.costumeDailyPrice.DataPropertyName = "costume_daily_price";
-            this.costumeDailyPrice.HeaderText = "Цена/день";
-            this.costumeDailyPrice.Name = "costumeDailyPrice";
-            this.costumeDailyPrice.ReadOnly = true;
-            this.costumeDailyPrice.Width = 80;
-            // 
-            // costumeRentPrice
-            // 
-            this.costumeRentPrice.DataPropertyName = "rent_price";
-            this.costumeRentPrice.HeaderText = "Стоимость аренды";
-            this.costumeRentPrice.Name = "costumeRentPrice";
-            this.costumeRentPrice.ReadOnly = true;
-            this.costumeRentPrice.Width = 70;
+            this.totalRentLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalRentLabel.AutoSize = true;
+            this.totalRentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.totalRentLabel.Location = new System.Drawing.Point(8, 301);
+            this.totalRentLabel.Name = "totalRentLabel";
+            this.totalRentLabel.Size = new System.Drawing.Size(131, 13);
+            this.totalRentLabel.TabIndex = 32;
+            this.totalRentLabel.Text = "Итого аренда: 0 руб.";
             // 
             // OrderForm
             // 
@@ -636,7 +651,7 @@
         private System.Windows.Forms.DateTimePicker dateDTP;
         private System.Windows.Forms.Button costumeRemoveButton;
         private System.Windows.Forms.Button costumeAddButton;
-        private System.Windows.Forms.Label totalLabel;
+        private System.Windows.Forms.Label totalDepositLabel;
         private System.Windows.Forms.Button clientButton;
         private System.Windows.Forms.ToolStripMenuItem журналЗаказовToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
@@ -659,6 +674,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn costumePrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeDailyPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeRentPrice;
+        private System.Windows.Forms.Label totalRentLabel;
     }
 }
 
