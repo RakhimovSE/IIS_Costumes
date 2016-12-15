@@ -103,6 +103,12 @@
       <DependentUpon>CostumeType.cs</DependentUpon>
     </Compile>
     <Compile Include="DB.cs" />
+    <Compile Include="SizeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SizeForm.Designer.cs">
+      <DependentUpon>SizeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TakeCostumeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SizeForm.resx">
+      <DependentUpon>SizeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TakeCostumeForm.resx">
       <DependentUpon>TakeCostumeForm.cs</DependentUpon>
     </EmbeddedResource>

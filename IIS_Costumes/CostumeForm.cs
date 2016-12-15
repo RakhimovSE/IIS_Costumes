@@ -67,7 +67,15 @@ namespace IIS_Costumes
         }
 
         Form callerForm;
-
+        private void SetGB(DataGridViewRow row = null)
+        {
+            if (row == null) return;
+            nameTB.Text = DB.GetRowCol(row, "name").ToString();
+            priceTB.Text = DB.GetRowCol(row, "price").ToString();
+            daily_priceTB.Text = DB.GetRowCol(row, "daily_price").ToString();
+            DB.FillCB(typeCB, "SELECT * FROM carnaval.costume_type;", "id_costume_type", "name");
+            typeCB.SelectedIndex = Convert.ToInt32(DB.GetRowCol(row, "costume_type_id"))-1;
+        }
         private void CostumeForm_Load(object sender, EventArgs e)
         {
             refreshData();
@@ -80,6 +88,7 @@ namespace IIS_Costumes
         private void addButton_Click(object sender, EventArgs e)
         {
             show("add");
+            state = "add";
         }
 
         private void deleteButton_Click(object sender, EventArgs e) //не доделал
@@ -128,14 +137,16 @@ namespace IIS_Costumes
 
         private void editButton_Click(object sender, EventArgs e)
         {
+            SetGB(mainDGV.SelectedRows[0]);
             show("no add");
+            state = "edit";
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
             hide();
         }
-
+        string state;
         private void OKButton_Click(object sender, EventArgs e)
         {
             if (nameTB.Text.Trim(' ') == "" || priceTB.Text.Trim(' ') == "" || typeCB.SelectedText.ToString()==null || daily_priceTB.Text.Trim(' ') == "")
@@ -145,9 +156,11 @@ namespace IIS_Costumes
             else
             {
                 string priceCostume=priceTB.Text, daily_priceCostume=daily_priceTB.Text, typeCostume= typeCB.SelectedValue.ToString(), nameCostume = nameTB.Text.Replace("'", "\'");
-              
 
-                string query = String.Format(@"INSERT INTO `carnaval`.`costume`
+                string query;
+                if (state == "add")
+                {
+                    query = String.Format(@"INSERT INTO `carnaval`.`costume`
                                 (`name`,
                                 `costume_type_id`,
                                 `price`,
@@ -157,6 +170,18 @@ namespace IIS_Costumes
                                  {1},
                                  {2},
                                  {3});", nameCostume, typeCostume, priceCostume, daily_priceCostume);
+                }
+                else
+                {
+                    query = String.Format(@"UPDATE `carnaval`.`costume`
+                                            SET
+                                            `name` = '{0}',
+                                            `costume_type_id` = '{1}',
+                                            `price` = '{2}',
+                                            `daily_price` = '{3}'
+                                            WHERE `id_costume` = '{4}';
+                                            ", nameCostume, typeCostume, priceCostume, daily_priceCostume, DB.GetRowCol(mainDGV.SelectedRows[0], "id_costume").ToString());
+                }
                 long inserted_id = DB.SetNoResultQuery(query);
                 if (inserted_id > 0)
                 {
@@ -197,10 +222,12 @@ namespace IIS_Costumes
             if (callerForm == null)
             {
                 show("no add");
+                SetGB(mainDGV.SelectedRows[0]);
                 return;
             }
             int costume_id = (int)DB.GetRowCol(mainDGV.SelectedRows[0], "id_costume");
 
+           
         }
     }
 }

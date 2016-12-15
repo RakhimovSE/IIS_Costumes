@@ -351,8 +351,8 @@
             this.Controls.Add(this.searchTB);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.mainDGV);
             this.Controls.Add(this.mainGB);
+            this.Controls.Add(this.mainDGV);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ClientForm";
             this.Text = "Карнавальные костюмы - Клиенты";
