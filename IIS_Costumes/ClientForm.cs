@@ -72,9 +72,20 @@ namespace IIS_Costumes
         {
             mainDGV.Rows[mainDGV.RowCount - 1].Selected = true;
         }
+        private void SetGB(DataGridViewRow row = null)
+        {
+            if (row == null) return;
+            fioTB.Text = DB.GetRowCol(row, "name").ToString();
+            phoneTB.Text = DB.GetRowCol(row, "telephone").ToString();
+            adressTB.Text= DB.GetRowCol(row, "address").ToString();
+            passNumTB.Text = DB.GetRowCol(row, "id_passport").ToString();
+            passDateDTP.Value = (DateTime)DB.GetRowCol(row, "passport_issue");
+            passDepartRTB.Text = DB.GetRowCol(row, "passport_depart").ToString();
+        }
         private void addButton_Click(object sender, EventArgs e)
         {
             show("add");
+          
         }
         void refreshData()
         {
@@ -83,6 +94,7 @@ namespace IIS_Costumes
         }
         private void editButton_Click(object sender, EventArgs e)
         {
+            SetGB(mainDGV.SelectedRows[0]);
             show("edit");
         }
 
@@ -159,6 +171,7 @@ namespace IIS_Costumes
             if (callerForm == null)
             {
                 show("edit");
+                SetGB(mainDGV.SelectedRows[0]);
                 return;
             }
             int client_id = (int)DB.GetRowCol(mainDGV.SelectedRows[0], "id_client");
@@ -172,8 +185,6 @@ namespace IIS_Costumes
         {
             DataGridViewSelectedRowCollection rows = mainDGV.SelectedRows;
             int n = rows.Count;
-            string text;
-            string caption;
             if (n == 1)
             {
                 if (MessageBox.Show(String.Format("Вы уверены, что хотите удалить запись о клиенте\n{0}?",

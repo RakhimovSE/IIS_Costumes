@@ -220,7 +220,8 @@ namespace IIS_Costumes
 
         private void размерыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            SizeForm sf = new SizeForm();
+            sf.Show();
         }
         #endregion
         #region Tools

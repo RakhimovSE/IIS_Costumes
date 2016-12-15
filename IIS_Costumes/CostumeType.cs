@@ -30,7 +30,7 @@ namespace IIS_Costumes
         }
         void show(string str)
         {
-            resetGB();
+            //resetGB();
             mainDGV.Visible = false;
             mainGB.Visible = true;
             OKButton.Enabled = true;
@@ -105,9 +105,15 @@ namespace IIS_Costumes
             refreshData();
             hide();
         }
-
+        private void SetGB(DataGridViewRow row = null)
+        {
+            if (row == null) return;
+            nameTypeTB.Text = DB.GetRowCol(row, "name").ToString();
+           
+        }
         private void editButton_Click(object sender, EventArgs e)
         {
+            SetGB(mainDGV.SelectedRows[0]);
             show("no add");
         }
 
@@ -115,8 +121,6 @@ namespace IIS_Costumes
         {
             DataGridViewSelectedRowCollection rows = mainDGV.SelectedRows;
             int n = rows.Count;
-            string text;
-            string caption;
             if (n == 1)
             {
                 if (MessageBox.Show(String.Format("Вы уверены, что хотите удалить запись о типе костюма\n{0}?",
@@ -158,6 +162,16 @@ namespace IIS_Costumes
                 costume.typeCB.SelectedValue = costume_id;
                 this.Close();
             }
+            else
+            {
+                SetGB(mainDGV.SelectedRows[0]);
+                Show();
+            }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            hide();
         }
     }
 }

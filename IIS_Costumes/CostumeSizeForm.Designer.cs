@@ -70,18 +70,20 @@
             // 
             this.headerLabel.AutoSize = true;
             this.headerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.headerLabel.Location = new System.Drawing.Point(12, 9);
+            this.headerLabel.Location = new System.Drawing.Point(16, 11);
+            this.headerLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(124, 13);
+            this.headerLabel.Size = new System.Drawing.Size(150, 17);
             this.headerLabel.TabIndex = 28;
             this.headerLabel.Text = "Размеры костюмов";
             // 
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.Location = new System.Drawing.Point(670, 156);
+            this.deleteButton.Location = new System.Drawing.Point(893, 192);
+            this.deleteButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(94, 23);
+            this.deleteButton.Size = new System.Drawing.Size(125, 28);
             this.deleteButton.TabIndex = 33;
             this.deleteButton.Text = "Удалить";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -90,9 +92,10 @@
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(670, 97);
+            this.editButton.Location = new System.Drawing.Point(893, 119);
+            this.editButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(94, 23);
+            this.editButton.Size = new System.Drawing.Size(125, 28);
             this.editButton.TabIndex = 32;
             this.editButton.Text = "Редактировать";
             this.editButton.UseVisualStyleBackColor = true;
@@ -101,9 +104,10 @@
             // addButton
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.Location = new System.Drawing.Point(670, 69);
+            this.addButton.Location = new System.Drawing.Point(893, 85);
+            this.addButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(94, 23);
+            this.addButton.Size = new System.Drawing.Size(125, 28);
             this.addButton.TabIndex = 31;
             this.addButton.Text = "Добавить";
             this.addButton.UseVisualStyleBackColor = true;
@@ -113,18 +117,20 @@
             // 
             this.searchTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchTB.Location = new System.Drawing.Point(12, 43);
+            this.searchTB.Location = new System.Drawing.Point(16, 53);
+            this.searchTB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.searchTB.Name = "searchTB";
-            this.searchTB.Size = new System.Drawing.Size(652, 20);
+            this.searchTB.Size = new System.Drawing.Size(868, 22);
             this.searchTB.TabIndex = 30;
             this.searchTB.TextChanged += new System.EventHandler(this.searchTB_TextChanged);
             // 
             // searchLabel
             // 
             this.searchLabel.AutoSize = true;
-            this.searchLabel.Location = new System.Drawing.Point(12, 26);
+            this.searchLabel.Location = new System.Drawing.Point(16, 32);
+            this.searchLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.searchLabel.Name = "searchLabel";
-            this.searchLabel.Size = new System.Drawing.Size(39, 13);
+            this.searchLabel.Size = new System.Drawing.Size(48, 17);
             this.searchLabel.TabIndex = 29;
             this.searchLabel.Text = "Поиск";
             // 
@@ -142,20 +148,21 @@
             this.mainGB.Controls.Add(this.costumeLabel);
             this.mainGB.Controls.Add(this.OKButton);
             this.mainGB.Controls.Add(this.cancelButton);
-            this.mainGB.Location = new System.Drawing.Point(12, 69);
-            this.mainGB.Margin = new System.Windows.Forms.Padding(2);
+            this.mainGB.Location = new System.Drawing.Point(16, 85);
+            this.mainGB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mainGB.Name = "mainGB";
-            this.mainGB.Padding = new System.Windows.Forms.Padding(2);
-            this.mainGB.Size = new System.Drawing.Size(652, 116);
+            this.mainGB.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mainGB.Size = new System.Drawing.Size(869, 143);
             this.mainGB.TabIndex = 34;
             this.mainGB.TabStop = false;
             this.mainGB.Text = "mainGB";
             // 
             // selectCostumeButton
             // 
-            this.selectCostumeButton.Location = new System.Drawing.Point(258, 36);
+            this.selectCostumeButton.Location = new System.Drawing.Point(344, 44);
+            this.selectCostumeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selectCostumeButton.Name = "selectCostumeButton";
-            this.selectCostumeButton.Size = new System.Drawing.Size(24, 23);
+            this.selectCostumeButton.Size = new System.Drawing.Size(32, 28);
             this.selectCostumeButton.TabIndex = 18;
             this.selectCostumeButton.Text = "...";
             this.selectCostumeButton.UseVisualStyleBackColor = true;
@@ -164,34 +171,38 @@
             // amountLabel
             // 
             this.amountLabel.AutoSize = true;
-            this.amountLabel.Location = new System.Drawing.Point(419, 17);
+            this.amountLabel.Location = new System.Drawing.Point(559, 21);
+            this.amountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.amountLabel.Name = "amountLabel";
-            this.amountLabel.Size = new System.Drawing.Size(66, 13);
+            this.amountLabel.Size = new System.Drawing.Size(86, 17);
             this.amountLabel.TabIndex = 17;
             this.amountLabel.Text = "Количество";
             // 
             // amountTB
             // 
-            this.amountTB.Location = new System.Drawing.Point(422, 37);
+            this.amountTB.Location = new System.Drawing.Point(563, 46);
+            this.amountTB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.amountTB.Name = "amountTB";
-            this.amountTB.Size = new System.Drawing.Size(43, 20);
+            this.amountTB.Size = new System.Drawing.Size(56, 22);
             this.amountTB.TabIndex = 16;
             // 
             // sizeCB
             // 
             this.sizeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sizeCB.FormattingEnabled = true;
-            this.sizeCB.Location = new System.Drawing.Point(314, 37);
+            this.sizeCB.Location = new System.Drawing.Point(419, 46);
+            this.sizeCB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sizeCB.Name = "sizeCB";
-            this.sizeCB.Size = new System.Drawing.Size(84, 21);
+            this.sizeCB.Size = new System.Drawing.Size(111, 24);
             this.sizeCB.TabIndex = 15;
             // 
             // sizeLabel
             // 
             this.sizeLabel.AutoSize = true;
-            this.sizeLabel.Location = new System.Drawing.Point(314, 17);
+            this.sizeLabel.Location = new System.Drawing.Point(419, 21);
+            this.sizeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.sizeLabel.Name = "sizeLabel";
-            this.sizeLabel.Size = new System.Drawing.Size(46, 13);
+            this.sizeLabel.Size = new System.Drawing.Size(57, 17);
             this.sizeLabel.TabIndex = 14;
             this.sizeLabel.Text = "Размер";
             // 
@@ -199,26 +210,29 @@
             // 
             this.costumeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.costumeCB.FormattingEnabled = true;
-            this.costumeCB.Location = new System.Drawing.Point(6, 37);
+            this.costumeCB.Location = new System.Drawing.Point(8, 46);
+            this.costumeCB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.costumeCB.Name = "costumeCB";
-            this.costumeCB.Size = new System.Drawing.Size(251, 21);
+            this.costumeCB.Size = new System.Drawing.Size(333, 24);
             this.costumeCB.TabIndex = 13;
             // 
             // costumeLabel
             // 
             this.costumeLabel.AutoSize = true;
-            this.costumeLabel.Location = new System.Drawing.Point(6, 17);
+            this.costumeLabel.Location = new System.Drawing.Point(8, 21);
+            this.costumeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.costumeLabel.Name = "costumeLabel";
-            this.costumeLabel.Size = new System.Drawing.Size(47, 13);
+            this.costumeLabel.Size = new System.Drawing.Size(58, 17);
             this.costumeLabel.TabIndex = 12;
             this.costumeLabel.Text = "Костюм";
             // 
             // OKButton
             // 
             this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKButton.Location = new System.Drawing.Point(507, 87);
+            this.OKButton.Location = new System.Drawing.Point(676, 107);
+            this.OKButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(67, 23);
+            this.OKButton.Size = new System.Drawing.Size(89, 28);
             this.OKButton.TabIndex = 11;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
@@ -227,9 +241,10 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(580, 87);
+            this.cancelButton.Location = new System.Drawing.Point(773, 107);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(67, 23);
+            this.cancelButton.Size = new System.Drawing.Size(89, 28);
             this.cancelButton.TabIndex = 10;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -251,13 +266,14 @@
             this.mainDailyPrice,
             this.mainAmount,
             this.mainInStock});
-            this.mainDGV.Location = new System.Drawing.Point(12, 69);
+            this.mainDGV.Location = new System.Drawing.Point(16, 85);
+            this.mainDGV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mainDGV.Name = "mainDGV";
             this.mainDGV.ReadOnly = true;
             this.mainDGV.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.mainDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.mainDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.mainDGV.Size = new System.Drawing.Size(652, 298);
+            this.mainDGV.Size = new System.Drawing.Size(869, 367);
             this.mainDGV.TabIndex = 35;
             this.mainDGV.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.mainDGV_CellMouseDoubleClick);
             // 
@@ -330,9 +346,11 @@
             this.selectionGB.Controls.Add(this.returndateSheduleDTP);
             this.selectionGB.Controls.Add(this.vendorLabel);
             this.selectionGB.Controls.Add(this.vendorTB);
-            this.selectionGB.Location = new System.Drawing.Point(12, 69);
+            this.selectionGB.Location = new System.Drawing.Point(16, 85);
+            this.selectionGB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selectionGB.Name = "selectionGB";
-            this.selectionGB.Size = new System.Drawing.Size(652, 116);
+            this.selectionGB.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.selectionGB.Size = new System.Drawing.Size(869, 143);
             this.selectionGB.TabIndex = 19;
             this.selectionGB.TabStop = false;
             this.selectionGB.Text = "Выдача костюма";
@@ -340,26 +358,29 @@
             // noteLabel
             // 
             this.noteLabel.AutoSize = true;
-            this.noteLabel.Location = new System.Drawing.Point(311, 17);
+            this.noteLabel.Location = new System.Drawing.Point(415, 21);
+            this.noteLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.noteLabel.Name = "noteLabel";
-            this.noteLabel.Size = new System.Drawing.Size(51, 13);
+            this.noteLabel.Size = new System.Drawing.Size(64, 17);
             this.noteLabel.TabIndex = 15;
             this.noteLabel.Text = "Заметки";
             // 
             // noteRTB
             // 
-            this.noteRTB.Location = new System.Drawing.Point(314, 33);
+            this.noteRTB.Location = new System.Drawing.Point(419, 41);
+            this.noteRTB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.noteRTB.Name = "noteRTB";
-            this.noteRTB.Size = new System.Drawing.Size(332, 48);
+            this.noteRTB.Size = new System.Drawing.Size(441, 58);
             this.noteRTB.TabIndex = 14;
             this.noteRTB.Text = "";
             // 
             // selectionOKButton
             // 
             this.selectionOKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectionOKButton.Location = new System.Drawing.Point(506, 87);
+            this.selectionOKButton.Location = new System.Drawing.Point(675, 107);
+            this.selectionOKButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selectionOKButton.Name = "selectionOKButton";
-            this.selectionOKButton.Size = new System.Drawing.Size(67, 23);
+            this.selectionOKButton.Size = new System.Drawing.Size(89, 28);
             this.selectionOKButton.TabIndex = 13;
             this.selectionOKButton.Text = "OK";
             this.selectionOKButton.UseVisualStyleBackColor = true;
@@ -368,9 +389,10 @@
             // selectionCancelButton
             // 
             this.selectionCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectionCancelButton.Location = new System.Drawing.Point(579, 87);
+            this.selectionCancelButton.Location = new System.Drawing.Point(772, 107);
+            this.selectionCancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selectionCancelButton.Name = "selectionCancelButton";
-            this.selectionCancelButton.Size = new System.Drawing.Size(67, 23);
+            this.selectionCancelButton.Size = new System.Drawing.Size(89, 28);
             this.selectionCancelButton.TabIndex = 12;
             this.selectionCancelButton.Text = "Отмена";
             this.selectionCancelButton.UseVisualStyleBackColor = true;
@@ -379,50 +401,55 @@
             // returndateSheduleLabel
             // 
             this.returndateSheduleLabel.AutoSize = true;
-            this.returndateSheduleLabel.Location = new System.Drawing.Point(143, 17);
+            this.returndateSheduleLabel.Location = new System.Drawing.Point(191, 21);
+            this.returndateSheduleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.returndateSheduleLabel.Name = "returndateSheduleLabel";
-            this.returndateSheduleLabel.Size = new System.Drawing.Size(134, 13);
+            this.returndateSheduleLabel.Size = new System.Drawing.Size(173, 17);
             this.returndateSheduleLabel.TabIndex = 3;
             this.returndateSheduleLabel.Text = "Дата возврата плановая";
             // 
             // returndateSheduleDTP
             // 
             this.returndateSheduleDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.returndateSheduleDTP.Location = new System.Drawing.Point(146, 33);
+            this.returndateSheduleDTP.Location = new System.Drawing.Point(195, 41);
+            this.returndateSheduleDTP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.returndateSheduleDTP.Name = "returndateSheduleDTP";
-            this.returndateSheduleDTP.Size = new System.Drawing.Size(97, 20);
+            this.returndateSheduleDTP.Size = new System.Drawing.Size(128, 22);
             this.returndateSheduleDTP.TabIndex = 2;
             // 
             // vendorLabel
             // 
             this.vendorLabel.AutoSize = true;
-            this.vendorLabel.Location = new System.Drawing.Point(6, 17);
+            this.vendorLabel.Location = new System.Drawing.Point(8, 21);
+            this.vendorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.vendorLabel.Name = "vendorLabel";
-            this.vendorLabel.Size = new System.Drawing.Size(48, 13);
+            this.vendorLabel.Size = new System.Drawing.Size(62, 17);
             this.vendorLabel.TabIndex = 1;
             this.vendorLabel.Text = "Артикул";
             // 
             // vendorTB
             // 
-            this.vendorTB.Location = new System.Drawing.Point(5, 33);
+            this.vendorTB.Location = new System.Drawing.Point(7, 41);
+            this.vendorTB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.vendorTB.Name = "vendorTB";
-            this.vendorTB.Size = new System.Drawing.Size(80, 20);
+            this.vendorTB.Size = new System.Drawing.Size(105, 22);
             this.vendorTB.TabIndex = 0;
             // 
             // CostumeSizeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 379);
+            this.ClientSize = new System.Drawing.Size(1035, 466);
             this.Controls.Add(this.headerLabel);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.searchTB);
             this.Controls.Add(this.searchLabel);
+            this.Controls.Add(this.mainGB);
             this.Controls.Add(this.selectionGB);
             this.Controls.Add(this.mainDGV);
-            this.Controls.Add(this.mainGB);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CostumeSizeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Карнавальные костюмы - Размеры костюмов";
