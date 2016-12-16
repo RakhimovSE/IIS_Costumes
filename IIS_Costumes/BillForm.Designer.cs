@@ -30,7 +30,6 @@
         {
             this.deleteButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
-            this.issueButton = new System.Windows.Forms.Button();
             this.searchTB = new System.Windows.Forms.TextBox();
             this.searchLabel = new System.Windows.Forms.Label();
             this.headerLabel = new System.Windows.Forms.Label();
@@ -41,40 +40,36 @@
             this.mainBillTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainClientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainClientTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainEmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainPriceAbs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paidButton = new System.Windows.Forms.Button();
+            this.notPaidButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.Location = new System.Drawing.Point(883, 155);
+            this.deleteButton.Location = new System.Drawing.Point(1025, 184);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(110, 23);
             this.deleteButton.TabIndex = 19;
             this.deleteButton.Text = "Удалить";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Visible = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(883, 97);
+            this.editButton.Location = new System.Drawing.Point(1025, 126);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(110, 23);
             this.editButton.TabIndex = 17;
             this.editButton.Text = "Редактировать";
             this.editButton.UseVisualStyleBackColor = true;
-            // 
-            // issueButton
-            // 
-            this.issueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.issueButton.Location = new System.Drawing.Point(883, 68);
-            this.issueButton.Name = "issueButton";
-            this.issueButton.Size = new System.Drawing.Size(110, 23);
-            this.issueButton.TabIndex = 15;
-            this.issueButton.Text = "Выдать костюмы";
-            this.issueButton.UseVisualStyleBackColor = true;
+            this.editButton.Visible = false;
             // 
             // searchTB
             // 
@@ -82,7 +77,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchTB.Location = new System.Drawing.Point(12, 42);
             this.searchTB.Name = "searchTB";
-            this.searchTB.Size = new System.Drawing.Size(864, 20);
+            this.searchTB.Size = new System.Drawing.Size(1006, 20);
             this.searchTB.TabIndex = 14;
             this.searchTB.TextChanged += new System.EventHandler(this.searchTB_TextChanged);
             // 
@@ -119,12 +114,14 @@
             this.mainBillTypeName,
             this.mainClientName,
             this.mainClientTelephone,
+            this.mainEmployeeName,
             this.mainType,
             this.mainPriceAbs});
             this.mainDGV.Location = new System.Drawing.Point(12, 68);
             this.mainDGV.Name = "mainDGV";
             this.mainDGV.ReadOnly = true;
-            this.mainDGV.Size = new System.Drawing.Size(864, 330);
+            this.mainDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.mainDGV.Size = new System.Drawing.Size(1006, 330);
             this.mainDGV.TabIndex = 20;
             // 
             // mainPaid
@@ -174,6 +171,14 @@
             this.mainClientTelephone.Name = "mainClientTelephone";
             this.mainClientTelephone.ReadOnly = true;
             // 
+            // mainEmployeeName
+            // 
+            this.mainEmployeeName.DataPropertyName = "employee_name";
+            this.mainEmployeeName.HeaderText = "Сотрудник";
+            this.mainEmployeeName.Name = "mainEmployeeName";
+            this.mainEmployeeName.ReadOnly = true;
+            this.mainEmployeeName.Width = 140;
+            // 
             // mainType
             // 
             this.mainType.DataPropertyName = "type";
@@ -190,15 +195,38 @@
             this.mainPriceAbs.ReadOnly = true;
             this.mainPriceAbs.Width = 60;
             // 
+            // paidButton
+            // 
+            this.paidButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.paidButton.Location = new System.Drawing.Point(1025, 68);
+            this.paidButton.Name = "paidButton";
+            this.paidButton.Size = new System.Drawing.Size(110, 23);
+            this.paidButton.TabIndex = 21;
+            this.paidButton.Text = "Оплачено";
+            this.paidButton.UseVisualStyleBackColor = true;
+            this.paidButton.Click += new System.EventHandler(this.paidButton_Click);
+            // 
+            // notPaidButton
+            // 
+            this.notPaidButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.notPaidButton.Location = new System.Drawing.Point(1025, 97);
+            this.notPaidButton.Name = "notPaidButton";
+            this.notPaidButton.Size = new System.Drawing.Size(110, 23);
+            this.notPaidButton.TabIndex = 22;
+            this.notPaidButton.Text = "Не оплачено";
+            this.notPaidButton.UseVisualStyleBackColor = true;
+            this.notPaidButton.Click += new System.EventHandler(this.notPaidButton_Click);
+            // 
             // BillForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1005, 410);
+            this.ClientSize = new System.Drawing.Size(1147, 410);
+            this.Controls.Add(this.notPaidButton);
+            this.Controls.Add(this.paidButton);
             this.Controls.Add(this.mainDGV);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.editButton);
-            this.Controls.Add(this.issueButton);
             this.Controls.Add(this.searchTB);
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.headerLabel);
@@ -215,7 +243,6 @@
 
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button editButton;
-        private System.Windows.Forms.Button issueButton;
         private System.Windows.Forms.TextBox searchTB;
         private System.Windows.Forms.Label searchLabel;
         private System.Windows.Forms.Label headerLabel;
@@ -226,7 +253,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn mainBillTypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainClientName;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainClientTelephone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainEmployeeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainType;
         private System.Windows.Forms.DataGridViewTextBoxColumn mainPriceAbs;
+        private System.Windows.Forms.Button paidButton;
+        private System.Windows.Forms.Button notPaidButton;
     }
 }

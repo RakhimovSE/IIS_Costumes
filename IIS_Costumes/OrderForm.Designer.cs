@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.headerLabel = new System.Windows.Forms.Label();
             this.searchLabel = new System.Windows.Forms.Label();
             this.searchTB = new System.Windows.Forms.TextBox();
             this.mainDGV = new System.Windows.Forms.DataGridView();
-            this.mainName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainVendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainClientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainClientTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,20 +91,18 @@
             // 
             this.headerLabel.AutoSize = true;
             this.headerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.headerLabel.Location = new System.Drawing.Point(16, 32);
-            this.headerLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.headerLabel.Location = new System.Drawing.Point(12, 26);
             this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(63, 17);
+            this.headerLabel.Size = new System.Drawing.Size(52, 13);
             this.headerLabel.TabIndex = 0;
             this.headerLabel.Text = "Заказы";
             // 
             // searchLabel
             // 
             this.searchLabel.AutoSize = true;
-            this.searchLabel.Location = new System.Drawing.Point(16, 53);
-            this.searchLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.searchLabel.Location = new System.Drawing.Point(12, 43);
             this.searchLabel.Name = "searchLabel";
-            this.searchLabel.Size = new System.Drawing.Size(48, 17);
+            this.searchLabel.Size = new System.Drawing.Size(39, 13);
             this.searchLabel.TabIndex = 1;
             this.searchLabel.Text = "Поиск";
             // 
@@ -112,10 +110,9 @@
             // 
             this.searchTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchTB.Location = new System.Drawing.Point(16, 73);
-            this.searchTB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchTB.Location = new System.Drawing.Point(12, 59);
             this.searchTB.Name = "searchTB";
-            this.searchTB.Size = new System.Drawing.Size(1067, 22);
+            this.searchTB.Size = new System.Drawing.Size(821, 20);
             this.searchTB.TabIndex = 2;
             this.searchTB.TextChanged += new System.EventHandler(this.searchTB_TextChanged);
             // 
@@ -128,32 +125,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.mainDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.mainName,
             this.mainVendor,
+            this.mainName,
             this.mainSizeName,
             this.mainClientName,
             this.mainClientTelephone,
             this.mainReturndateShedule});
-            this.mainDGV.Location = new System.Drawing.Point(16, 105);
-            this.mainDGV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mainDGV.Location = new System.Drawing.Point(12, 85);
             this.mainDGV.Name = "mainDGV";
             this.mainDGV.ReadOnly = true;
             this.mainDGV.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mainDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.mainDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.mainDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.mainDGV.Size = new System.Drawing.Size(1068, 393);
+            this.mainDGV.Size = new System.Drawing.Size(821, 319);
             this.mainDGV.TabIndex = 1;
             this.mainDGV.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.mainDGV_CellMouseDoubleClick);
             this.mainDGV.SelectionChanged += new System.EventHandler(this.mainDgv_SelectionChanged);
             this.mainDGV.Sorted += new System.EventHandler(this.mainDGV_Sorted);
-            // 
-            // mainName
-            // 
-            this.mainName.DataPropertyName = "costume_name";
-            this.mainName.HeaderText = "Костюм";
-            this.mainName.Name = "mainName";
-            this.mainName.ReadOnly = true;
-            this.mainName.Width = 200;
             // 
             // mainVendor
             // 
@@ -163,13 +151,21 @@
             this.mainVendor.ReadOnly = true;
             this.mainVendor.Width = 60;
             // 
+            // mainName
+            // 
+            this.mainName.DataPropertyName = "costume_name";
+            this.mainName.HeaderText = "Костюм";
+            this.mainName.Name = "mainName";
+            this.mainName.ReadOnly = true;
+            this.mainName.Width = 200;
+            // 
             // mainSizeName
             // 
-            this.mainSizeName.DataPropertyName = "size_name";
+            this.mainSizeName.DataPropertyName = "size_name_num";
             this.mainSizeName.HeaderText = "Размер";
             this.mainSizeName.Name = "mainSizeName";
             this.mainSizeName.ReadOnly = true;
-            this.mainSizeName.Width = 50;
+            this.mainSizeName.Width = 70;
             // 
             // mainClientName
             // 
@@ -196,10 +192,9 @@
             // issueButton
             // 
             this.issueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.issueButton.Location = new System.Drawing.Point(1092, 105);
-            this.issueButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.issueButton.Location = new System.Drawing.Point(839, 85);
             this.issueButton.Name = "issueButton";
-            this.issueButton.Size = new System.Drawing.Size(147, 28);
+            this.issueButton.Size = new System.Drawing.Size(110, 23);
             this.issueButton.TabIndex = 4;
             this.issueButton.Text = "Выдать костюмы";
             this.issueButton.UseVisualStyleBackColor = true;
@@ -208,10 +203,9 @@
             // takeButton
             // 
             this.takeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.takeButton.Location = new System.Drawing.Point(1092, 140);
-            this.takeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.takeButton.Location = new System.Drawing.Point(839, 114);
             this.takeButton.Name = "takeButton";
-            this.takeButton.Size = new System.Drawing.Size(147, 28);
+            this.takeButton.Size = new System.Drawing.Size(110, 23);
             this.takeButton.TabIndex = 5;
             this.takeButton.Text = "Принять костюмы";
             this.takeButton.UseVisualStyleBackColor = true;
@@ -220,10 +214,9 @@
             // editButton
             // 
             this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editButton.Location = new System.Drawing.Point(1091, 176);
-            this.editButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editButton.Location = new System.Drawing.Point(838, 143);
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(147, 28);
+            this.editButton.Size = new System.Drawing.Size(110, 23);
             this.editButton.TabIndex = 7;
             this.editButton.Text = "Редактировать";
             this.editButton.UseVisualStyleBackColor = true;
@@ -237,8 +230,7 @@
             this.справочникиToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.mainMenuStrip.Size = new System.Drawing.Size(1255, 28);
+            this.mainMenuStrip.Size = new System.Drawing.Size(961, 24);
             this.mainMenuStrip.TabIndex = 8;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -247,13 +239,13 @@
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.выходToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             // 
             // справочникиToolStripMenuItem
@@ -269,65 +261,65 @@
             this.типыКостюмовToolStripMenuItem,
             this.размерыToolStripMenuItem});
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
-            this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(115, 24);
+            this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.справочникиToolStripMenuItem.Text = "Справочники";
             // 
             // журналЗаказовToolStripMenuItem
             // 
             this.журналЗаказовToolStripMenuItem.Name = "журналЗаказовToolStripMenuItem";
-            this.журналЗаказовToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.журналЗаказовToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.журналЗаказовToolStripMenuItem.Text = "Журнал заказов";
             this.журналЗаказовToolStripMenuItem.Click += new System.EventHandler(this.журналЗаказовToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(216, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(179, 6);
             // 
             // счетаToolStripMenuItem
             // 
             this.счетаToolStripMenuItem.Name = "счетаToolStripMenuItem";
-            this.счетаToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.счетаToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.счетаToolStripMenuItem.Text = "Счета";
             this.счетаToolStripMenuItem.Click += new System.EventHandler(this.счетаToolStripMenuItem_Click);
             // 
             // клиентыToolStripMenuItem
             // 
             this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
-            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.клиентыToolStripMenuItem.Text = "Клиенты";
             this.клиентыToolStripMenuItem.Click += new System.EventHandler(this.клиентыToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(216, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(179, 6);
             // 
             // костюмыToolStripMenuItem
             // 
             this.костюмыToolStripMenuItem.Name = "костюмыToolStripMenuItem";
-            this.костюмыToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.костюмыToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.костюмыToolStripMenuItem.Text = "Костюмы";
             this.костюмыToolStripMenuItem.Click += new System.EventHandler(this.костюмыToolStripMenuItem_Click);
             // 
             // размерыКостюмовToolStripMenuItem
             // 
             this.размерыКостюмовToolStripMenuItem.Name = "размерыКостюмовToolStripMenuItem";
-            this.размерыКостюмовToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.размерыКостюмовToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.размерыКостюмовToolStripMenuItem.Text = "Размеры костюмов";
             this.размерыКостюмовToolStripMenuItem.Click += new System.EventHandler(this.размерыКостюмовToolStripMenuItem_Click);
             // 
             // типыКостюмовToolStripMenuItem
             // 
             this.типыКостюмовToolStripMenuItem.Name = "типыКостюмовToolStripMenuItem";
-            this.типыКостюмовToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.типыКостюмовToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.типыКостюмовToolStripMenuItem.Text = "Типы костюмов";
             this.типыКостюмовToolStripMenuItem.Click += new System.EventHandler(this.типыКостюмовToolStripMenuItem_Click);
             // 
             // размерыToolStripMenuItem
             // 
             this.размерыToolStripMenuItem.Name = "размерыToolStripMenuItem";
-            this.размерыToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.размерыToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.размерыToolStripMenuItem.Text = "Размеры";
             this.размерыToolStripMenuItem.Click += new System.EventHandler(this.размерыToolStripMenuItem_Click);
             // 
@@ -349,11 +341,11 @@
             this.orderGB.Controls.Add(this.dateDTP);
             this.orderGB.Controls.Add(this.OKButton);
             this.orderGB.Controls.Add(this.cancelButton);
-            this.orderGB.Location = new System.Drawing.Point(16, 105);
-            this.orderGB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.orderGB.Location = new System.Drawing.Point(12, 85);
+            this.orderGB.Margin = new System.Windows.Forms.Padding(2);
             this.orderGB.Name = "orderGB";
-            this.orderGB.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.orderGB.Size = new System.Drawing.Size(1068, 393);
+            this.orderGB.Padding = new System.Windows.Forms.Padding(2);
+            this.orderGB.Size = new System.Drawing.Size(801, 319);
             this.orderGB.TabIndex = 9;
             this.orderGB.TabStop = false;
             this.orderGB.Text = "orderGB";
@@ -361,10 +353,9 @@
             // printButton
             // 
             this.printButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.printButton.Location = new System.Drawing.Point(721, 358);
-            this.printButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.printButton.Location = new System.Drawing.Point(541, 291);
             this.printButton.Name = "printButton";
-            this.printButton.Size = new System.Drawing.Size(89, 28);
+            this.printButton.Size = new System.Drawing.Size(67, 23);
             this.printButton.TabIndex = 33;
             this.printButton.Text = "Печать";
             this.printButton.UseVisualStyleBackColor = true;
@@ -374,30 +365,27 @@
             // 
             this.totalRentLabel.AutoSize = true;
             this.totalRentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.totalRentLabel.Location = new System.Drawing.Point(15, 370);
-            this.totalRentLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.totalRentLabel.Location = new System.Drawing.Point(11, 301);
             this.totalRentLabel.Name = "totalRentLabel";
-            this.totalRentLabel.Size = new System.Drawing.Size(165, 17);
+            this.totalRentLabel.Size = new System.Drawing.Size(131, 13);
             this.totalRentLabel.TabIndex = 32;
             this.totalRentLabel.Text = "Итого аренда: 0 руб.";
             // 
             // employeeLabel
             // 
             this.employeeLabel.AutoSize = true;
-            this.employeeLabel.Location = new System.Drawing.Point(256, 18);
-            this.employeeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.employeeLabel.Location = new System.Drawing.Point(192, 15);
             this.employeeLabel.Name = "employeeLabel";
-            this.employeeLabel.Size = new System.Drawing.Size(74, 17);
+            this.employeeLabel.Size = new System.Drawing.Size(56, 13);
             this.employeeLabel.TabIndex = 31;
             this.employeeLabel.Text = "Оператор";
             // 
             // employeeTB
             // 
-            this.employeeTB.Location = new System.Drawing.Point(256, 38);
-            this.employeeTB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.employeeTB.Location = new System.Drawing.Point(192, 31);
             this.employeeTB.Name = "employeeTB";
             this.employeeTB.ReadOnly = true;
-            this.employeeTB.Size = new System.Drawing.Size(304, 22);
+            this.employeeTB.Size = new System.Drawing.Size(229, 20);
             this.employeeTB.TabIndex = 30;
             // 
             // costumeDGV
@@ -416,13 +404,12 @@
             this.costumePrice,
             this.costumeDailyPrice,
             this.costumeRentPrice});
-            this.costumeDGV.Location = new System.Drawing.Point(15, 91);
-            this.costumeDGV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.costumeDGV.Location = new System.Drawing.Point(11, 74);
             this.costumeDGV.Name = "costumeDGV";
             this.costumeDGV.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.costumeDGV.RowHeadersVisible = false;
             this.costumeDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.costumeDGV.Size = new System.Drawing.Size(893, 260);
+            this.costumeDGV.Size = new System.Drawing.Size(670, 211);
             this.costumeDGV.TabIndex = 29;
             this.costumeDGV.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.costumeDGV_CellMouseDoubleClick);
             this.costumeDGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.costumeDGV_DataError);
@@ -440,10 +427,10 @@
             // costumeVendor
             // 
             this.costumeVendor.DataPropertyName = "vendor";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Green;
-            this.costumeVendor.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Green;
+            this.costumeVendor.DefaultCellStyle = dataGridViewCellStyle3;
             this.costumeVendor.HeaderText = "Артикул";
             this.costumeVendor.Name = "costumeVendor";
             this.costumeVendor.Width = 70;
@@ -451,12 +438,12 @@
             // costumeShedule
             // 
             this.costumeShedule.DataPropertyName = "returndate_shedule";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Green;
-            this.costumeShedule.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Green;
+            this.costumeShedule.DefaultCellStyle = dataGridViewCellStyle4;
             this.costumeShedule.HeaderText = "Возврат план.";
             this.costumeShedule.Name = "costumeShedule";
             this.costumeShedule.Width = 80;
@@ -495,10 +482,9 @@
             // 
             // costumeRemoveButton
             // 
-            this.costumeRemoveButton.Location = new System.Drawing.Point(916, 127);
-            this.costumeRemoveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.costumeRemoveButton.Location = new System.Drawing.Point(687, 103);
             this.costumeRemoveButton.Name = "costumeRemoveButton";
-            this.costumeRemoveButton.Size = new System.Drawing.Size(32, 28);
+            this.costumeRemoveButton.Size = new System.Drawing.Size(24, 23);
             this.costumeRemoveButton.TabIndex = 26;
             this.costumeRemoveButton.Text = "-";
             this.costumeRemoveButton.UseVisualStyleBackColor = true;
@@ -506,10 +492,9 @@
             // 
             // costumeAddButton
             // 
-            this.costumeAddButton.Location = new System.Drawing.Point(916, 91);
-            this.costumeAddButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.costumeAddButton.Location = new System.Drawing.Point(687, 74);
             this.costumeAddButton.Name = "costumeAddButton";
-            this.costumeAddButton.Size = new System.Drawing.Size(32, 28);
+            this.costumeAddButton.Size = new System.Drawing.Size(24, 23);
             this.costumeAddButton.TabIndex = 24;
             this.costumeAddButton.Text = "+";
             this.costumeAddButton.UseVisualStyleBackColor = true;
@@ -519,19 +504,17 @@
             // 
             this.totalDepositLabel.AutoSize = true;
             this.totalDepositLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.totalDepositLabel.Location = new System.Drawing.Point(15, 354);
-            this.totalDepositLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.totalDepositLabel.Location = new System.Drawing.Point(11, 288);
             this.totalDepositLabel.Name = "totalDepositLabel";
-            this.totalDepositLabel.Size = new System.Drawing.Size(172, 17);
+            this.totalDepositLabel.Size = new System.Drawing.Size(137, 13);
             this.totalDepositLabel.TabIndex = 11;
             this.totalDepositLabel.Text = "Итого депозит: 0 руб.";
             // 
             // clientButton
             // 
-            this.clientButton.Location = new System.Drawing.Point(1027, 37);
-            this.clientButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.clientButton.Location = new System.Drawing.Point(770, 30);
             this.clientButton.Name = "clientButton";
-            this.clientButton.Size = new System.Drawing.Size(32, 28);
+            this.clientButton.Size = new System.Drawing.Size(24, 23);
             this.clientButton.TabIndex = 23;
             this.clientButton.Text = "...";
             this.clientButton.UseVisualStyleBackColor = true;
@@ -540,10 +523,9 @@
             // costumeLabel
             // 
             this.costumeLabel.AutoSize = true;
-            this.costumeLabel.Location = new System.Drawing.Point(15, 71);
-            this.costumeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.costumeLabel.Location = new System.Drawing.Point(11, 58);
             this.costumeLabel.Name = "costumeLabel";
-            this.costumeLabel.Size = new System.Drawing.Size(68, 17);
+            this.costumeLabel.Size = new System.Drawing.Size(55, 13);
             this.costumeLabel.TabIndex = 18;
             this.costumeLabel.Text = "Костюмы";
             // 
@@ -551,49 +533,44 @@
             // 
             this.clientCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.clientCB.FormattingEnabled = true;
-            this.clientCB.Location = new System.Drawing.Point(721, 38);
-            this.clientCB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.clientCB.Location = new System.Drawing.Point(541, 31);
             this.clientCB.Name = "clientCB";
-            this.clientCB.Size = new System.Drawing.Size(304, 24);
+            this.clientCB.Size = new System.Drawing.Size(229, 21);
             this.clientCB.TabIndex = 16;
             // 
             // clientLabel
             // 
             this.clientLabel.AutoSize = true;
-            this.clientLabel.Location = new System.Drawing.Point(721, 18);
-            this.clientLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.clientLabel.Location = new System.Drawing.Point(541, 15);
             this.clientLabel.Name = "clientLabel";
-            this.clientLabel.Size = new System.Drawing.Size(56, 17);
+            this.clientLabel.Size = new System.Drawing.Size(43, 13);
             this.clientLabel.TabIndex = 15;
             this.clientLabel.Text = "Клиент";
             // 
             // dateLabel
             // 
             this.dateLabel.AutoSize = true;
-            this.dateLabel.Location = new System.Drawing.Point(11, 18);
-            this.dateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.dateLabel.Location = new System.Drawing.Point(8, 15);
             this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(95, 17);
+            this.dateLabel.Size = new System.Drawing.Size(73, 13);
             this.dateLabel.TabIndex = 13;
             this.dateLabel.Text = "Дата выдачи";
             // 
             // dateDTP
             // 
             this.dateDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateDTP.Location = new System.Drawing.Point(11, 38);
-            this.dateDTP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateDTP.Location = new System.Drawing.Point(8, 31);
             this.dateDTP.Name = "dateDTP";
-            this.dateDTP.Size = new System.Drawing.Size(105, 22);
+            this.dateDTP.Size = new System.Drawing.Size(80, 20);
             this.dateDTP.TabIndex = 12;
             this.dateDTP.ValueChanged += new System.EventHandler(this.dateDTP_ValueChanged);
             // 
             // OKButton
             // 
             this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKButton.Location = new System.Drawing.Point(875, 358);
-            this.OKButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OKButton.Location = new System.Drawing.Point(656, 291);
             this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(89, 28);
+            this.OKButton.Size = new System.Drawing.Size(67, 23);
             this.OKButton.TabIndex = 11;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
@@ -602,10 +579,9 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(972, 358);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelButton.Location = new System.Drawing.Point(729, 291);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(89, 28);
+            this.cancelButton.Size = new System.Drawing.Size(67, 23);
             this.cancelButton.TabIndex = 10;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -614,10 +590,9 @@
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.Location = new System.Drawing.Point(1092, 247);
-            this.deleteButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deleteButton.Location = new System.Drawing.Point(839, 201);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(147, 28);
+            this.deleteButton.Size = new System.Drawing.Size(110, 23);
             this.deleteButton.TabIndex = 10;
             this.deleteButton.Text = "Удалить";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -625,9 +600,9 @@
             // 
             // OrderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1255, 512);
+            this.ClientSize = new System.Drawing.Size(961, 416);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.takeButton);
@@ -636,10 +611,9 @@
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.headerLabel);
             this.Controls.Add(this.mainMenuStrip);
-            this.Controls.Add(this.orderGB);
             this.Controls.Add(this.mainDGV);
+            this.Controls.Add(this.orderGB);
             this.MainMenuStrip = this.mainMenuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "OrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Карнавальные костюмы - Заказы";
@@ -693,12 +667,6 @@
         private System.Windows.Forms.ToolStripMenuItem размерыКостюмовToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem размерыToolStripMenuItem;
         private System.Windows.Forms.DataGridView costumeDGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mainName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mainVendor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mainSizeName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mainClientName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mainClientTelephone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mainReturndateShedule;
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeVendor;
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeShedule;
@@ -708,6 +676,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn costumeRentPrice;
         private System.Windows.Forms.Label totalRentLabel;
         private System.Windows.Forms.Button printButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainVendor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainSizeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainClientName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainClientTelephone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainReturndateShedule;
     }
 }
 

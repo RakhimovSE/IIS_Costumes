@@ -39,5 +39,32 @@ namespace IIS_Costumes
         {
             SetMainDGV(searchTB.Text);
         }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void paidButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in mainDGV.SelectedRows)
+            {
+                int bill_id = (int)DB.GetRowCol(row, "id_bill");
+                string query = string.Format("UPDATE `bill` SET `paid` = 1 WHERE `id_bill` = {0}", bill_id);
+                DB.SetNoResultQuery(query);
+            }
+            SetMainDGV(searchTB.Text);
+        }
+
+        private void notPaidButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in mainDGV.SelectedRows)
+            {
+                int bill_id = (int)DB.GetRowCol(row, "id_bill");
+                string query = string.Format("UPDATE `bill` SET `paid` = 0 WHERE `id_bill` = {0}", bill_id);
+                DB.SetNoResultQuery(query);
+            }
+            SetMainDGV(searchTB.Text);
+        }
     }
 }

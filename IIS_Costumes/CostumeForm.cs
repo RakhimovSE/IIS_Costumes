@@ -137,8 +137,8 @@ namespace IIS_Costumes
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            SetGB(mainDGV.SelectedRows[0]);
             show("no add");
+            SetGB(mainDGV.SelectedRows[0]);
             state = "edit";
         }
 
@@ -182,27 +182,18 @@ namespace IIS_Costumes
                                             WHERE `id_costume` = '{4}';
                                             ", nameCostume, typeCostume, priceCostume, daily_priceCostume, DB.GetRowCol(mainDGV.SelectedRows[0], "id_costume").ToString());
                 }
-                long inserted_id = DB.SetNoResultQuery(query);
-                if (inserted_id > 0)
+                int inserted_id = DB.SetNoResultQuery(query);
+                hide();
+                //  mainDGV.Rows.Add(fio, phone);
+                //focusOnRowDGV();
+                refreshData();
+                if (callerForm != null && callerForm.GetType() == typeof(CostumeSizeForm))
                 {
-                    hide();
-                    //  mainDGV.Rows.Add(fio, phone);
-                    //focusOnRowDGV();
-                    refreshData();
-                    if (callerForm != null && callerForm.GetType() == typeof(CostumeSizeForm))
-                    {
-                        CostumeSizeForm CSForm = (CostumeSizeForm)callerForm;
-                        DB.FillCB(CSForm.costumeCB, Properties.Resources.CostumeQuery, "id_costume", "name");
-                        CSForm.costumeCB.SelectedValue = inserted_id;
-                        Close();
-                    }
+                    CostumeSizeForm CSForm = (CostumeSizeForm)callerForm;
+                    DB.FillCB(CSForm.costumeCB, Properties.Resources.CostumeQuery, "id_costume", "name");
+                    if (inserted_id != 0) CSForm.costumeCB.SelectedValue = inserted_id;
+                    Close();
                 }
-                else
-                {
-                    MessageBox.Show("При добавлении костюма произошла ошибка, \nобратитесь к системному администратору!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-
             }
         }
 

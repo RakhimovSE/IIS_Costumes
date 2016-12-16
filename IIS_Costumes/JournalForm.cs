@@ -77,7 +77,7 @@ namespace IIS_Costumes
         }
         private void SetMainDGV(string search = "")
         {
-            string query = string.Format("CALL order_search('{0}')", search);
+            string query = string.Format("CALL journal_search('{0}')", search);
             DB.FillDGV(mainDGV, query);
             SetDGVStyle();
         }
@@ -140,16 +140,6 @@ namespace IIS_Costumes
             for (int i = 0; i < mainDGV.Rows.Count; i++)
             {
                 mainDGV.Rows[i].HeaderCell.Value = (i + 1).ToString();
-                DateTime dtShedule;
-                dtShedule = (DateTime)DB.GetRowCol(mainDGV.Rows[i], "returndate_shedule");
-                object objActual = DB.GetRowCol(mainDGV.Rows[i], "returndate_actual");
-                if (objActual.GetType() == typeof(DBNull))
-                {
-                    if (dtShedule < DateTime.Now)
-                        mainDGV.Rows[i].DefaultCellStyle.BackColor = Color.Red;
-                }
-                else
-                    mainDGV.Rows[i].DefaultCellStyle.BackColor = Color.LightGray;
             }
         }
         private void JournalForm_Load(object sender, EventArgs e)

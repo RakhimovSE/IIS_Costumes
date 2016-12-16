@@ -25,6 +25,7 @@ namespace IIS_Costumes
             set
             {
                 curState = value;
+                addOrderButton.Enabled = value == State.Table && orderForm != null;
                 mainGB.Visible = value == State.Add || value == State.Edit;
                 searchTB.Enabled = mainDGV.Visible = addButton.Enabled = editButton.Enabled =
                     deleteButton.Enabled = value == State.Table;
@@ -80,7 +81,6 @@ namespace IIS_Costumes
             InitializeComponent();
             if (callerForm != null && callerForm.GetType() == typeof(OrderForm))
                 orderForm = (OrderForm)callerForm;
-            addOrderButton.Enabled = orderForm != null;
         }
 
         private void CostumeSizeForm_Load(object sender, EventArgs e)
