@@ -136,9 +136,9 @@ namespace IIS_Costumes
         }
 
         private void editButton_Click(object sender, EventArgs e)
-        {
-            SetGB(mainDGV.SelectedRows[0]);
+        {  
             show("no add");
+            SetGB(mainDGV.SelectedRows[0]);
             state = "edit";
         }
 
